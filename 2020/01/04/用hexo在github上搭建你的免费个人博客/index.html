@@ -111,14 +111,14 @@
 
 
 
-<meta name="description" content="简单易学 ###环境准备 1.安装Node 到Node.js官网下载相应平台的最新版本，一路安装即可。 2.安装notepad++ notepad++官网 注意:安装Git时，文本编辑器请选择notepad++ 3.安装Git 这里推荐去阿里镜像下载，git官网速度太慢 ###github 注册一个『GitHub』帐号，已有的默认默认请忽略 建立与你用户名对应的仓库，仓库名必须为『你的用户名.gi">
+<meta name="description" content="简单易学 环境准备1.安装Node 到Node.js官网下载相应平台的最新版本，一路安装即可。 2.安装notepad++ notepad++官网 注意:安装Git时，文本编辑器请选择notepad++ 3.安装Git 这里推荐去阿里镜像下载，git官网速度太慢 github注册一个『GitHub』帐号，已有的默认默认请忽略 建立与你用户名对应的仓库，仓库名必须为『你的用户名.github.io』">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用hexo在github上搭建你的免费个人博客">
 <meta property="og:url" content="http://yoursite.com/2020/01/04/%E7%94%A8hexo%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%BD%A0%E7%9A%84%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="piyi的小站">
-<meta property="og:description" content="简单易学 ###环境准备 1.安装Node 到Node.js官网下载相应平台的最新版本，一路安装即可。 2.安装notepad++ notepad++官网 注意:安装Git时，文本编辑器请选择notepad++ 3.安装Git 这里推荐去阿里镜像下载，git官网速度太慢 ###github 注册一个『GitHub』帐号，已有的默认默认请忽略 建立与你用户名对应的仓库，仓库名必须为『你的用户名.gi">
+<meta property="og:description" content="简单易学 环境准备1.安装Node 到Node.js官网下载相应平台的最新版本，一路安装即可。 2.安装notepad++ notepad++官网 注意:安装Git时，文本编辑器请选择notepad++ 3.安装Git 这里推荐去阿里镜像下载，git官网速度太慢 github注册一个『GitHub』帐号，已有的默认默认请忽略 建立与你用户名对应的仓库，仓库名必须为『你的用户名.github.io』">
 <meta property="article:published_time" content="2020-01-04T10:13:55.000Z">
-<meta property="article:modified_time" content="2020-01-10T15:39:09.665Z">
+<meta property="article:modified_time" content="2020-01-11T06:08:03.578Z">
 <meta property="article:author" content="piyi">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -389,44 +389,36 @@
 
       
         <p>简单易学</p>
-<p>###环境准备</p>
-<p>1.安装Node</p>
+<h1 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h1><p>1.安装Node</p>
 <p>到<a href="https://nodejs.org/en/" target="_blank" rel="noopener">Node.js</a>官网下载相应平台的最新版本，一路安装即可。</p>
 <p>2.安装notepad++</p>
 <p><a href="https://notepad-plus-plus.org/downloads/" target="_blank" rel="noopener">notepad++官网</a></p>
 <p>注意:安装Git时，文本编辑器请选择notepad++</p>
 <p>3.安装Git</p>
 <p>这里推荐去<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">阿里镜像</a>下载，<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git官网</a>速度太慢</p>
-<p>###github</p>
-<p>注册一个『GitHub』帐号，已有的默认默认请忽略</p>
+<h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><p>注册一个『GitHub』帐号，已有的默认默认请忽略</p>
 <p>建立与你用户名对应的仓库，仓库名必须为『你的用户名.github.io』</p>
-<p>###git配置</p>
-<p>打开git-bash.exe</p>
+<h1 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h1><p>打开git-bash.exe</p>
 <p>设置你的用户名密码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email <span class="string">"你的github邮箱"</span></span><br><span class="line">git config --global user.name <span class="string">"你的github账号"</span></span><br></pre></td></tr></table></figure>
 
-<p>###安装hexo</p>
-<p>在git下输入如下命令安装hexo</p>
+<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><p>在git下输入如下命令安装hexo</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br></pre></td></tr></table></figure>
 
-<p>###初始化</p>
-<p>执行init命令初始化hexo到你指定的目录：&lt;网站的所有数据都在此目录&gt;</p>
+<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><p>执行init命令初始化hexo到你指定的目录：&lt;网站的所有数据都在此目录&gt;</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br></pre></td></tr></table></figure>
 
 <p>也可以cd到目录下执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
 
-<p>###生成静态页面</p>
-<p>cd 到你的init目录，执行如下命令，生成静态页面至hexo\public\目录。</p>
+<h1 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h1><p>cd 到你的init目录，执行如下命令，生成静态页面至hexo\public\目录。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>###本地启动</p>
-<p>执行如下命令，启动本地服务，进行网页预览调试。</p>
+<h1 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h1><p>执行如下命令，启动本地服务，进行网页预览调试。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
 <p>浏览器输入 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 就可以看到效果。</p>
-<p>###将git和github建立联系</p>
-<p>用notepad++打开建站目录下的 _config.yml &lt;千万不要用记事本编辑任何文本文件，记事本保持utf-8编码的文件会在每个文件开头添加0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题&gt;</p>
+<h1 id="将git和github建立联系"><a href="#将git和github建立联系" class="headerlink" title="将git和github建立联系"></a>将git和github建立联系</h1><p>用notepad++打开建站目录下的 _config.yml &lt;千万不要用记事本编辑任何文本文件，记事本保持utf-8编码的文件会在每个文件开头添加0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题&gt;</p>
 <p>翻到最下面，改成我这样子的，注意： : 后面要有空格</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: https://github.com/你的github账号/你的github账号.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
@@ -440,8 +432,7 @@
 <p>每次修改网页后都需要如下操作才把静态页面部署到github上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate 生成静态页面</span><br><span class="line">hexo deploy 将.deploy目录部署到GitHub</span><br></pre></td></tr></table></figure>
 
-<p>###常用命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"postName"</span> <span class="comment">#新建文章</span></span><br><span class="line">hexo new page <span class="string">"pageName"</span> <span class="comment">#新建页面</span></span><br><span class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></span><br><span class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></span><br><span class="line">hexo deploy <span class="comment">#将.deploy目录部署到GitHub</span></span><br><span class="line">hexo <span class="built_in">help</span>  <span class="comment">#查看帮助</span></span><br><span class="line">hexo version  <span class="comment">#查看Hexo的版本</span></span><br></pre></td></tr></table></figure>
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"postName"</span> <span class="comment">#新建文章</span></span><br><span class="line">hexo new page <span class="string">"pageName"</span> <span class="comment">#新建页面</span></span><br><span class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></span><br><span class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></span><br><span class="line">hexo deploy <span class="comment">#将.deploy目录部署到GitHub</span></span><br><span class="line">hexo <span class="built_in">help</span>  <span class="comment">#查看帮助</span></span><br><span class="line">hexo version  <span class="comment">#查看Hexo的版本</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -535,8 +526,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -545,7 +545,7 @@
                 alt="piyi" />
             
               <p class="site-author-name" itemprop="name">piyi</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">piyi</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -610,6 +610,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境准备"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github"><span class="nav-number">2.</span> <span class="nav-text">github</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#git配置"><span class="nav-number">3.</span> <span class="nav-text">git配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装hexo"><span class="nav-number">4.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#初始化"><span class="nav-number">5.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成静态页面"><span class="nav-number">6.</span> <span class="nav-text">生成静态页面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#本地启动"><span class="nav-number">7.</span> <span class="nav-text">本地启动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将git和github建立联系"><span class="nav-number">8.</span> <span class="nav-text">将git和github建立联系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用命令"><span class="nav-number">9.</span> <span class="nav-text">常用命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
