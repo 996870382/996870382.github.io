@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="piyi的小站">
 <meta property="og:description" content="Shell 脚本Shell 脚本（shell script），是一种为 shell 编写的脚本程序。业界所说的 shell 通常都是指 shell 脚本，但读者朋友要知道，shell 和 shell script 是两个不同的概念。由于习惯的原因，简洁起见，本文出现的 “shell编程” 都是指 shell 脚本编程，不是指开发 shell 自身。 本文关注的是 Bash，也就是 Bourne A">
 <meta property="article:published_time" content="2020-01-14T05:36:13.000Z">
-<meta property="article:modified_time" content="2020-01-14T07:44:30.260Z">
+<meta property="article:modified_time" content="2020-01-15T04:09:28.239Z">
 <meta property="article:author" content="piyi">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Shell">
@@ -498,8 +498,8 @@
 <h2 id="获取数组的长度"><a href="#获取数组的长度" class="headerlink" title="获取数组的长度"></a>获取数组的长度</h2><p>获取数组长度的方法与获取字符串长度的方法相同，例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 取得数组的长度</span><br><span class="line">length&#x3D;$&#123;#arr[@]&#125;</span><br><span class="line"># 或者</span><br><span class="line">length&#x3D;$&#123;#arr[*]&#125;</span><br><span class="line"></span><br><span class="line"># 取得数组单个元素的长度</span><br><span class="line">lengthn&#x3D;$&#123;#array_name[下标]&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="Shell-注释"><a href="#Shell-注释" class="headerlink" title="Shell 注释"></a>Shell 注释</h2><blockquote>
-<p>以 # 开头的行就是注释，会被解释器忽略。</p>
+<h1 id="Shell-注释"><a href="#Shell-注释" class="headerlink" title="Shell 注释"></a>Shell 注释</h1><blockquote>
+<p>以 <code>#</code> 开头的行就是注释，会被解释器忽略。</p>
 </blockquote>
 <h2 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h2><blockquote>
 <p>:&lt;&lt;EOF<br>内容..<br>EOF    </p>
@@ -551,6 +551,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/15/CentOS7%E5%AE%89%E8%A3%85jdk%E7%8E%AF%E5%A2%83-eclipse%E4%B8%80%E6%9D%A1%E9%BE%99/" rel="prev" title="CentOS7安装jdk环境,eclipse一条龙">
+                CentOS7安装jdk环境,eclipse一条龙 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -631,7 +635,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -696,7 +700,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-脚本"><span class="nav-number">1.</span> <span class="nav-text">Shell 脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个shell脚本"><span class="nav-number">1.1.</span> <span class="nav-text">第一个shell脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行-Shell-脚本有两种方法："><span class="nav-number">1.2.</span> <span class="nav-text">运行 Shell 脚本有两种方法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-变量"><span class="nav-number">2.</span> <span class="nav-text">Shell 变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用变量"><span class="nav-number">2.1.</span> <span class="nav-text">使用变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只读变量"><span class="nav-number">2.2.</span> <span class="nav-text">只读变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除变量"><span class="nav-number">2.3.</span> <span class="nav-text">删除变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量类型"><span class="nav-number">2.4.</span> <span class="nav-text">变量类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-字符串"><span class="nav-number">3.</span> <span class="nav-text">Shell 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单引号"><span class="nav-number">3.1.</span> <span class="nav-text">单引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双引号"><span class="nav-number">3.2.</span> <span class="nav-text">双引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取字符串长度"><span class="nav-number">3.3.</span> <span class="nav-text">获取字符串长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提取子字符串"><span class="nav-number">3.4.</span> <span class="nav-text">提取子字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找子字符串"><span class="nav-number">3.5.</span> <span class="nav-text">查找子字符串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-数组"><span class="nav-number">4.</span> <span class="nav-text">Shell 数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义数组"><span class="nav-number">4.1.</span> <span class="nav-text">定义数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取数组"><span class="nav-number">4.2.</span> <span class="nav-text">读取数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取数组的长度"><span class="nav-number">4.3.</span> <span class="nav-text">获取数组的长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-注释"><span class="nav-number">4.4.</span> <span class="nav-text">Shell 注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行注释"><span class="nav-number">4.5.</span> <span class="nav-text">多行注释</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-脚本"><span class="nav-number">1.</span> <span class="nav-text">Shell 脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个shell脚本"><span class="nav-number">1.1.</span> <span class="nav-text">第一个shell脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行-Shell-脚本有两种方法："><span class="nav-number">1.2.</span> <span class="nav-text">运行 Shell 脚本有两种方法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-变量"><span class="nav-number">2.</span> <span class="nav-text">Shell 变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用变量"><span class="nav-number">2.1.</span> <span class="nav-text">使用变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只读变量"><span class="nav-number">2.2.</span> <span class="nav-text">只读变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除变量"><span class="nav-number">2.3.</span> <span class="nav-text">删除变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量类型"><span class="nav-number">2.4.</span> <span class="nav-text">变量类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-字符串"><span class="nav-number">3.</span> <span class="nav-text">Shell 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单引号"><span class="nav-number">3.1.</span> <span class="nav-text">单引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双引号"><span class="nav-number">3.2.</span> <span class="nav-text">双引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取字符串长度"><span class="nav-number">3.3.</span> <span class="nav-text">获取字符串长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提取子字符串"><span class="nav-number">3.4.</span> <span class="nav-text">提取子字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找子字符串"><span class="nav-number">3.5.</span> <span class="nav-text">查找子字符串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-数组"><span class="nav-number">4.</span> <span class="nav-text">Shell 数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义数组"><span class="nav-number">4.1.</span> <span class="nav-text">定义数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取数组"><span class="nav-number">4.2.</span> <span class="nav-text">读取数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取数组的长度"><span class="nav-number">4.3.</span> <span class="nav-text">获取数组的长度</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-注释"><span class="nav-number">5.</span> <span class="nav-text">Shell 注释</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多行注释"><span class="nav-number">5.1.</span> <span class="nav-text">多行注释</span></a></li></ol></li></ol></div>
             
 
           </div>
