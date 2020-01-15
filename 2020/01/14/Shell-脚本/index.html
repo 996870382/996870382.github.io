@@ -118,7 +118,7 @@
 <meta property="og:site_name" content="piyi的小站">
 <meta property="og:description" content="Shell 脚本Shell 脚本（shell script），是一种为 shell 编写的脚本程序。业界所说的 shell 通常都是指 shell 脚本，但读者朋友要知道，shell 和 shell script 是两个不同的概念。由于习惯的原因，简洁起见，本文出现的 “shell编程” 都是指 shell 脚本编程，不是指开发 shell 自身。 本文关注的是 Bash，也就是 Bourne A">
 <meta property="article:published_time" content="2020-01-14T05:36:13.000Z">
-<meta property="article:modified_time" content="2020-01-14T05:47:08.122Z">
+<meta property="article:modified_time" content="2020-01-14T07:44:30.260Z">
 <meta property="article:author" content="piyi">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Shell">
@@ -412,6 +412,104 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;sh test.sh</span><br><span class="line">&#x2F;bin&#x2F;php test.php</span><br></pre></td></tr></table></figure>
 <p>这种方式运行的脚本，不需要在第一行指定解释器信息，写了也没用。</p>
+<h1 id="Shell-变量"><a href="#Shell-变量" class="headerlink" title="Shell 变量"></a>Shell 变量</h1><p>定义变量:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name&#x3D;&quot;piyi&quot;</span><br></pre></td></tr></table></figure>
+
+<p>注意，<strong>变量名和等号之间不能有空格</strong>，这可能和你熟悉的所有编程语言都不一样。同时，变量名的命名须遵循如下规则：</p>
+<blockquote>
+<ul>
+<li>命名只能使用英文字母，数字和下划线，首个字符不能以数字开头</li>
+<li>中间不能有空格，可以使用下划线 <code>_</code>。</li>
+<li>不能使用标点符号</li>
+<li>不能使用bash里的关键字（可用help命令查看保留关键字）</li>
+</ul>
+</blockquote>
+<p>除了显式地直接赋值，还可以用语句给变量赋值，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for file in &#96;ls &#x2F;etc&#96;</span><br><span class="line">或</span><br><span class="line">for file in $(ls &#x2F;etc)</span><br></pre></td></tr></table></figure>
+<p>以上语句将 /etc 下目录的文件名循环出来。</p>
+<h2 id="使用变量"><a href="#使用变量" class="headerlink" title="使用变量"></a>使用变量</h2><p>使用一个定义过的变量，只要在变量名前面加美元符号即可，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name&#x3D;&quot;ysj&quot;</span><br><span class="line">echo $name</span><br><span class="line">echo $&#123;name&#125;</span><br></pre></td></tr></table></figure>
+<p>变量名外面的花括号是可选的,加花括号是为了帮助解释器识别变量的边界,不然会出现预期之外的结果</p>
+<h2 id="只读变量"><a href="#只读变量" class="headerlink" title="只读变量"></a>只读变量</h2><p>使用 <code>readonly</code> 命令可以将变量定义为只读变量，只读变量的值不能被改变。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">readonly name&#x3D;&quot;piyi&quot;</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除变量"><a href="#删除变量" class="headerlink" title="删除变量"></a>删除变量</h2><p>使用 <code>unset</code> 命令可以删除变量。语法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unset name</span><br></pre></td></tr></table></figure>
+<p>变量被删除后不能再次使用。<strong>unset 命令不能删除只读变量</strong>。</p>
+<h2 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a>变量类型</h2><blockquote>
+<p>运行shell时，会同时存在三种变量：</p>
+<blockquote>
+<ul>
+<li><strong>局部变量</strong> 局部变量在脚本或命令中定义，仅在当前shell实例中有效，其他shell启动的程序不能访问局部变量</li>
+<li><strong>环境变量</strong> 所有的程序，包括shell启动的程序，都能访问环境变量，有些程序需要环境变量来保证其正常运行。必要的时候shell脚本也可以定义环境变量</li>
+<li><strong>shell变量</strong> shell变量是由shell程序设置的特殊变量。shell变量中有一部分是环境变量，有一部分是局部变量，这些变量保证了shell的正常运行</li>
+</ul>
+</blockquote>
+</blockquote>
+<h1 id="Shell-字符串"><a href="#Shell-字符串" class="headerlink" title="Shell 字符串"></a>Shell 字符串</h1><p>字符串是shell编程中最常用最有用的数据类型（除了数字和字符串，也没啥其它类型好用了），字符串可以用单引号，也可以用双引号，也可以不用引号。单双引号的区别跟PHP类似</p>
+<h2 id="单引号"><a href="#单引号" class="headerlink" title="单引号"></a>单引号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str&#x3D;&#39;piyi&#39;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>单引号字符串的限制：</p>
+<blockquote>
+<ul>
+<li>单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的</li>
+<li>单引号字串中不能出现单独一个的单引号(对单引号使用转义符后也不行)，但 <code>&#39;</code> 可成对出现，作为字符串拼接使用</li>
+</ul>
+</blockquote>
+</blockquote>
+<h2 id="双引号"><a href="#双引号" class="headerlink" title="双引号"></a>双引号</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name&#x3D;&quot;piyi&quot;</span><br><span class="line">str&#x3D;&quot;hello $name&quot;</span><br><span class="line">echo str</span><br></pre></td></tr></table></figure>
+<p>输入结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello piyi</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>双引号的优点</p>
+<blockquote>
+<ul>
+<li>双引号可以直接拼接变量</li>
+<li>双引号中可以使用转义字符</li>
+</ul>
+</blockquote>
+</blockquote>
+<h2 id="获取字符串长度"><a href="#获取字符串长度" class="headerlink" title="获取字符串长度"></a>获取字符串长度</h2><p>使用 <code>#</code> 获取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">name&#x3D;&quot;piyi&quot;</span><br><span class="line">echo $&#123;#name&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="提取子字符串"><a href="#提取子字符串" class="headerlink" title="提取子字符串"></a>提取子字符串</h2><p>提取rap(下标从零开始)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hobby&#x3D;&quot;唱,跳,rap,篮球&quot;</span><br><span class="line">echo $&#123;hobby:4:3&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="查找子字符串"><a href="#查找子字符串" class="headerlink" title="查找子字符串"></a>查找子字符串</h2><p>查找字符 r 或 p 的位置(哪个字母先出现就计算哪个)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hobby&#x3D;&quot;唱,跳,rap,篮球&quot;</span><br><span class="line">echo &#96;expr index &quot;$hobby&quot; rp&#96;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">9</span><br></pre></td></tr></table></figure>
+<p>查找子字符串时，汉字的个数跟编码有关，这里一个汉字占3个字符</p>
+<h1 id="Shell-数组"><a href="#Shell-数组" class="headerlink" title="Shell 数组"></a>Shell 数组</h1><p>bash支持一维数组（不支持多维数组），并且没有限定数组的大小。<br>类似于 C 语言，数组元素的下标由 0 开始编号。获取数组中的元素要利用下标，下标可以是整数或算术表达式，其值应大于或等于 0</p>
+<h2 id="定义数组"><a href="#定义数组" class="headerlink" title="定义数组"></a>定义数组</h2><p>在 Shell 中，用括号来表示数组，<strong>数组元素用”空格”符号分割开</strong>。定义数组的一般形式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr&#x3D;(value1 value2 value3)</span><br></pre></td></tr></table></figure>
+
+<p>还可以单独定义数组的各个分量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr[0]&#x3D;value1</span><br><span class="line">arr[1]&#x3D;value2</span><br><span class="line">arr[2]&#x3D;value3</span><br></pre></td></tr></table></figure>
+
+<h2 id="读取数组"><a href="#读取数组" class="headerlink" title="读取数组"></a>读取数组</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;数组名[下标]&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用 <code>@</code> 符号可以获取数组中的所有元素，例如：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo $&#123;arr[@]&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取数组的长度"><a href="#获取数组的长度" class="headerlink" title="获取数组的长度"></a>获取数组的长度</h2><p>获取数组长度的方法与获取字符串长度的方法相同，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 取得数组的长度</span><br><span class="line">length&#x3D;$&#123;#arr[@]&#125;</span><br><span class="line"># 或者</span><br><span class="line">length&#x3D;$&#123;#arr[*]&#125;</span><br><span class="line"></span><br><span class="line"># 取得数组单个元素的长度</span><br><span class="line">lengthn&#x3D;$&#123;#array_name[下标]&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Shell-注释"><a href="#Shell-注释" class="headerlink" title="Shell 注释"></a>Shell 注释</h2><blockquote>
+<p>以 # 开头的行就是注释，会被解释器忽略。</p>
+</blockquote>
+<h2 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h2><blockquote>
+<p>:&lt;&lt;EOF<br>内容..<br>EOF    </p>
+</blockquote>
+<blockquote>
+<p>:&lt;&lt;’<br>内容..<br>‘    </p>
+</blockquote>
+<blockquote>
+<p>:&lt;&lt;!<br>内容..<br>!    </p>
+</blockquote>
 
       
     </div>
@@ -598,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-脚本"><span class="nav-number">1.</span> <span class="nav-text">Shell 脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个shell脚本"><span class="nav-number">1.1.</span> <span class="nav-text">第一个shell脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行-Shell-脚本有两种方法："><span class="nav-number">1.2.</span> <span class="nav-text">运行 Shell 脚本有两种方法：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-脚本"><span class="nav-number">1.</span> <span class="nav-text">Shell 脚本</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个shell脚本"><span class="nav-number">1.1.</span> <span class="nav-text">第一个shell脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行-Shell-脚本有两种方法："><span class="nav-number">1.2.</span> <span class="nav-text">运行 Shell 脚本有两种方法：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-变量"><span class="nav-number">2.</span> <span class="nav-text">Shell 变量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用变量"><span class="nav-number">2.1.</span> <span class="nav-text">使用变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只读变量"><span class="nav-number">2.2.</span> <span class="nav-text">只读变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除变量"><span class="nav-number">2.3.</span> <span class="nav-text">删除变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量类型"><span class="nav-number">2.4.</span> <span class="nav-text">变量类型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-字符串"><span class="nav-number">3.</span> <span class="nav-text">Shell 字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单引号"><span class="nav-number">3.1.</span> <span class="nav-text">单引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双引号"><span class="nav-number">3.2.</span> <span class="nav-text">双引号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取字符串长度"><span class="nav-number">3.3.</span> <span class="nav-text">获取字符串长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提取子字符串"><span class="nav-number">3.4.</span> <span class="nav-text">提取子字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查找子字符串"><span class="nav-number">3.5.</span> <span class="nav-text">查找子字符串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-数组"><span class="nav-number">4.</span> <span class="nav-text">Shell 数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义数组"><span class="nav-number">4.1.</span> <span class="nav-text">定义数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读取数组"><span class="nav-number">4.2.</span> <span class="nav-text">读取数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取数组的长度"><span class="nav-number">4.3.</span> <span class="nav-text">获取数组的长度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Shell-注释"><span class="nav-number">4.4.</span> <span class="nav-text">Shell 注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行注释"><span class="nav-number">4.5.</span> <span class="nav-text">多行注释</span></a></li></ol></li></ol></div>
             
 
           </div>
