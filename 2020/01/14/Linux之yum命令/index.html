@@ -111,14 +111,14 @@
 
 
 
-<meta name="description" content="yum（ Yellow dog Updater, Modified）是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。 yum 语法1yum [">
+<meta name="description" content="yum（ Yellow dog Updater, Modified）是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。 yum 语法1yum [">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux之yum命令">
 <meta property="og:url" content="http://yoursite.com/2020/01/14/Linux%E4%B9%8Byum%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="piyi的小站">
-<meta property="og:description" content="yum（ Yellow dog Updater, Modified）是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。 yum 语法1yum [">
+<meta property="og:description" content="yum（ Yellow dog Updater, Modified）是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。 yum 语法1yum [">
 <meta property="article:published_time" content="2020-01-14T02:24:00.000Z">
-<meta property="article:modified_time" content="2020-01-14T03:48:11.247Z">
+<meta property="article:modified_time" content="2020-01-15T16:31:33.450Z">
 <meta property="article:author" content="piyi">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
@@ -388,7 +388,7 @@
       
 
       
-        <p>yum（ Yellow dog Updater, Modified）是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。<br>基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软体包，无须繁琐地一次次下载、安装。<br>yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。</p>
+        <p>yum（ Yellow dog Updater, Modified）是一个在Fedora和RedHat以及SUSE中的Shell前端软件包管理器。<br>基于RPM包管理，能够从指定的服务器自动下载RPM包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无须繁琐地一次次下载、安装。<br>yum提供了查找、安装、删除某一个、一组甚至全部软件包的命令，而且命令简洁而又好记。</p>
 <h1 id="yum-语法"><a href="#yum-语法" class="headerlink" title="yum 语法"></a>yum 语法</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum [options] [command] [package ...]</span><br></pre></td></tr></table></figure>
 
 <div class="note danger"><p>options：可选，选项包括-h（帮助），-y（当安装过程提示选择全部为”yes”），-q（不显示安装的过程）等等。<br>command：要进行的操作。<br>package操作的对象。</p></div>
@@ -413,7 +413,7 @@
 </blockquote>
 <h1 id="国内-yum-源"><a href="#国内-yum-源" class="headerlink" title="国内 yum 源"></a>国内 yum 源</h1><p>网易（163）yum源是国内最好的yum源之一 ，无论是速度还是软件版本，都非常的不错。<br>将yum源设置为163 yum，可以提升软件包安装和更新的速度，同时避免一些常见软件版本无法找到。</p>
 <h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><p>首先 <code>cd</code> 到 <code>/etc/yum.repos.d/</code> 目录下:</p>
-<p>下载对应版本 repo 文件, 放入 /etc/yum.repos.d/ (操作前请做好相应备份)</p>
+<p>下载对应版本 repo 文件, 放入 /etc/yum.repos.d/ </p>
 <blockquote>
 <ul>
 <li>CentOS5 ：<a href="http://mirrors.163.com/.help/CentOS5-Base-163.repo" target="_blank" rel="noopener">http://mirrors.163.com/.help/CentOS5-Base-163.repo</a></li>
@@ -422,11 +422,11 @@
 </ul>
 </blockquote>
 <blockquote>
-<p>下载命令:<code>wget http://mirrors.163.com/.help/CentOS6-Base-163.repo</code></p>
+<p>下载命令:<code>wget http://mirrors.163.com/.help/CentOS7-Base-163.repo</code>(我这里是Linux7)</p>
 </blockquote>
-<p>然后将下载的<code>CentOS7-Base-163.repo</code> 覆盖到 <code>CentOS-Base.repo</code> (我这里是Linux7)</p>
+<p>然后将下载的<code>CentOS7-Base-163.repo</code> 覆盖到 <code>CentOS-Base.repo</code> </p>
 <blockquote>
-<p><code>mv CentOS6-Base-163.repo CentOS-Base.repo</code></p>
+<p><code>mv CentOS7-Base-163.repo CentOS-Base.repo</code></p>
 </blockquote>
 <p>运行以下命令生成缓存</p>
 <blockquote>
