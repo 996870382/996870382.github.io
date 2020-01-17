@@ -111,14 +111,14 @@
 
 
 
-<meta name="description" content="简单易学 环境准备1.安装Node 到Node.js官网下载相应平台的最新版本，一路安装即可。 2.安装notepad++ notepad++官网 注意:安装Git时，文本编辑器请选择notepad++ 3.安装Git 这里推荐去阿里镜像下载，git官网速度太慢 github注册一个『GitHub』帐号，已有的默认默认请忽略 建立与你用户名对应的仓库，仓库名必须为『你的用户名.github.io』">
+<meta name="description" content="简单易学 环境准备1.安装Node 到Node.js官网下载相应平台的最新版本，一路安装即可。 2.安装notepad++ notepad++官网 注意:安装Git时，文本编辑器请选择notepad++ 3.安装Git 这里推荐去阿里镜像下载，git官网速度太慢 github注册一个『GitHub』帐号，已有的请忽略 建立与你用户名对应的仓库，仓库名必须为『你的用户名.github.io』 git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用hexo在github上搭建你的免费个人博客">
 <meta property="og:url" content="http://yoursite.com/2020/01/04/%E7%94%A8hexo%E5%9C%A8github%E4%B8%8A%E6%90%AD%E5%BB%BA%E4%BD%A0%E7%9A%84%E5%85%8D%E8%B4%B9%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="piyi的小站">
-<meta property="og:description" content="简单易学 环境准备1.安装Node 到Node.js官网下载相应平台的最新版本，一路安装即可。 2.安装notepad++ notepad++官网 注意:安装Git时，文本编辑器请选择notepad++ 3.安装Git 这里推荐去阿里镜像下载，git官网速度太慢 github注册一个『GitHub』帐号，已有的默认默认请忽略 建立与你用户名对应的仓库，仓库名必须为『你的用户名.github.io』">
+<meta property="og:description" content="简单易学 环境准备1.安装Node 到Node.js官网下载相应平台的最新版本，一路安装即可。 2.安装notepad++ notepad++官网 注意:安装Git时，文本编辑器请选择notepad++ 3.安装Git 这里推荐去阿里镜像下载，git官网速度太慢 github注册一个『GitHub』帐号，已有的请忽略 建立与你用户名对应的仓库，仓库名必须为『你的用户名.github.io』 git">
 <meta property="article:published_time" content="2020-01-04T10:13:55.000Z">
-<meta property="article:modified_time" content="2020-01-11T06:08:03.578Z">
+<meta property="article:modified_time" content="2020-01-15T16:52:26.645Z">
 <meta property="article:author" content="piyi">
 <meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
@@ -396,7 +396,7 @@
 <p>注意:安装Git时，文本编辑器请选择notepad++</p>
 <p>3.安装Git</p>
 <p>这里推荐去<a href="https://npm.taobao.org/mirrors/git-for-windows/" target="_blank" rel="noopener">阿里镜像</a>下载，<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">git官网</a>速度太慢</p>
-<h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><p>注册一个『GitHub』帐号，已有的默认默认请忽略</p>
+<h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><p>注册一个『GitHub』帐号，已有的请忽略</p>
 <p>建立与你用户名对应的仓库，仓库名必须为『你的用户名.github.io』</p>
 <h1 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h1><p>打开git-bash.exe</p>
 <p>设置你的用户名密码：</p>
@@ -411,15 +411,15 @@
 <p>也可以cd到目录下执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
 
-<h1 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h1><p>cd 到你的init目录，执行如下命令，生成静态页面至hexo\public\目录。</p>
+<h1 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h1><p>在你指定的目录执行如下命令，生成静态页面至public目录。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
 <h1 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h1><p>执行如下命令，启动本地服务，进行网页预览调试。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
 <p>浏览器输入 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 就可以看到效果。</p>
-<h1 id="将git和github建立联系"><a href="#将git和github建立联系" class="headerlink" title="将git和github建立联系"></a>将git和github建立联系</h1><p>用notepad++打开建站目录下的 _config.yml &lt;千万不要用记事本编辑任何文本文件，记事本保持utf-8编码的文件会在每个文件开头添加0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题&gt;</p>
-<p>翻到最下面，改成我这样子的，注意： : 后面要有空格</p>
+<h1 id="将git和github建立联系"><a href="#将git和github建立联系" class="headerlink" title="将git和github建立联系"></a>将git和github建立联系</h1><p>用notepad++打开建站目录下的 _config.yml &lt;千万不要用记事本编辑任何文本文件，记事本保存utf-8编码的文件会在每个文件开头添加0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题&gt;</p>
+<p>翻到最下面，改成我这样子的，注意：<code>:</code> 后面要有空格</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repository: https://github.com/你的github账号/你的github账号.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
 
 <p>执行命令使用git部署</p>
@@ -428,7 +428,7 @@
 <p>然后将.deploy目录部署到GitHub</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>现在在浏览器中输入http://你的github账号.github.io/就行了，我的 github 的账户叫 996870382 ,把这个改成你 github 的账户名就行了</p>
+<p>现在在浏览器中输入 <code>http://你的github账号.github.io</code> 就行了</p>
 <p>每次修改网页后都需要如下操作才把静态页面部署到github上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate 生成静态页面</span><br><span class="line">hexo deploy 将.deploy目录部署到GitHub</span><br></pre></td></tr></table></figure>
 
@@ -566,7 +566,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -577,7 +577,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
