@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="oracle," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="视图什么是视图？ 视图(view)也被称作虚表，即虚拟的表。是一组数据的逻辑表示视图对应于一条select语句，结果集被赋予一个名字，即视图名字视图本身并不包含任何数据，它只包含映射到基表的一个查询语句，当基表数据发生变化，视图数据也随之变化视图创建后，可以像操作表一样操作视图，主要是查询Subquery是select查询语句，对应的表被称作基表  根据视图所对应的子查询种类分为几种类型  sel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oracle视图、序列、索引">
+<meta property="og:url" content="http://yoursite.com/2020/05/09/oracle%E8%A7%86%E5%9B%BE%E3%80%81%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95/index.html">
+<meta property="og:site_name" content="piyi的小站">
+<meta property="og:description" content="视图什么是视图？ 视图(view)也被称作虚表，即虚拟的表。是一组数据的逻辑表示视图对应于一条select语句，结果集被赋予一个名字，即视图名字视图本身并不包含任何数据，它只包含映射到基表的一个查询语句，当基表数据发生变化，视图数据也随之变化视图创建后，可以像操作表一样操作视图，主要是查询Subquery是select查询语句，对应的表被称作基表  根据视图所对应的子查询种类分为几种类型  sel">
+<meta property="article:published_time" content="2020-05-09T01:57:01.000Z">
+<meta property="article:modified_time" content="2020-05-09T03:01:54.903Z">
+<meta property="article:author" content="piyi">
+<meta property="article:tag" content="oracle">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/09/oracle视图、序列、索引/"/>
+
+
+
+
+
+  <title>oracle视图、序列、索引 | piyi的小站</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b15569dfb7ac0a3548e36ce0ac946914";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">piyi的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">深度自闭中···</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/oracle%E8%A7%86%E5%9B%BE%E3%80%81%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="piyi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="piyi的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">oracle视图、序列、索引</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-09T09:57:01+08:00">
+                2020-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/oracle%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">oracle数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><h2 id="什么是视图？"><a href="#什么是视图？" class="headerlink" title="什么是视图？"></a>什么是视图？</h2><blockquote>
+<p>视图(view)也被称作虚表，即虚拟的表。是一组数据的逻辑表示<br>视图对应于一条select语句，结果集被赋予一个名字，即视图名字<br>视图本身并不包含任何数据，它只包含映射到基表的一个查询语句，当基表数据发生变化，视图数据也随之变化<br>视图创建后，可以像操作表一样操作视图，主要是查询<br>Subquery是select查询语句，对应的表被称作基表</p>
+</blockquote>
+<p>根据视图所对应的子查询种类分为几种类型</p>
+<ol>
+<li>select语句是基于单表建立的，且不包含任何函数运算、表达式或分组函数、叫做<strong><em>简单视图</em></strong>，此时视图是基表的子集</li>
+<li>select语句同样是基于单表，但包含了单行函数、表达式、分组函数或group by 子句，叫做<strong><em>复杂视图</em></strong></li>
+<li>select语句是基于多个表的，叫做<strong><em>连接视图</em></strong></li>
+</ol>
+<h2 id="视图的作用"><a href="#视图的作用" class="headerlink" title="视图的作用"></a>视图的作用</h2><blockquote>
+<p>如果需要经常执行某项复杂查询，可以基于这个复杂查询建立视图，此后查询此视图即可，<strong><em>简化复杂查询</em></strong><br>视图本质上就是一条select语句，所以当访问视图时，只能访问到所对应的select语句中涉及到的列，对基表中的其它列起到安全和保密的作用，<strong><em>限制数据访问</em></strong></p>
+</blockquote>
+<h2 id="视图的创建"><a href="#视图的创建" class="headerlink" title="视图的创建"></a>视图的创建</h2><h3 id="授权创建视图"><a href="#授权创建视图" class="headerlink" title="授权创建视图"></a>授权创建视图</h3><pre><code>a.创建视图的语句是 CREATE VIEW
+    b.用户必须有create view 系统权限，才能创建视图。没有权限会提示:权限不足
+    c.管理员可以通过DCL语句授予用户创建视图的权限
+        GRANT CREATE VIEW TO user
+        #grant...to... DCL授权命令
+        #create view 此处为授予何种权限
+        #user 授予给谁</code></pre><h3 id="创建简单视图-单表"><a href="#创建简单视图-单表" class="headerlink" title="创建简单视图(单表)"></a>创建简单视图(单表)</h3><pre><code>a.例:创建一个简单视图v_emp_10 来显示部门10中员工的编码、姓名和薪水
+    create view v_emp_10
+    as
+    select empno,ename,sal,deptno from emp where deptno=10;
+
+b.
+OR REPLACE 短语表示在创建视图时,如果已存在同名的视图,则重新创建。不用此短语创建同名视图，则要将原视图删除才能创建
+    例:
+    create or replace view v_emp_10
+    as
+    select empno,ename,sal,deptno from emp where deptno=10;</code></pre><h3 id="查询视图"><a href="#查询视图" class="headerlink" title="查询视图"></a>查询视图</h3><pre><code>a.查询视图和查询表的操作相同:
+    例:
+        selct * from v_emp_10;</code></pre><h3 id="对视图进行insert操作"><a href="#对视图进行insert操作" class="headerlink" title="对视图进行insert操作"></a>对视图进行insert操作</h3><pre><code>a.视图本身不包含数据，只是基表数据的逻辑映射
+b.当对视图执行DML操作时，实际上是对基表的DML操作
+c.对视图执行DML操作的基本原则:
+    简单视图能够执行DML操作，下列情况除外: 
+        1)在基表中定义了非空列，但简单视图对应select语句没有包含这个非空列，导致这个非空列对视图不可见，这是无法对视图执行insert操作
+
+        2) 如果视图定义中包含了函数、表达式、分组语句、distinct关键字或rownum为列，则不允许执行DML操作
+
+        3) DML操作不能违反基表的约束条件
+
+d.插入操作
+    insert into v_emp_10 values(1234,&apos;do&apos;,4000,10);
+e.简单视图可以通过DML操作影响到基表数据</code></pre><h3 id="CHECK-OPTION约束-限制修改"><a href="#CHECK-OPTION约束-限制修改" class="headerlink" title="CHECK OPTION约束(限制修改)"></a>CHECK OPTION约束(限制修改)</h3><pre><code>a.with check option短语表示，通过视图所做的修改必须在视图的可见范围内
+    1) 假设insert，新增的记录在视图仍可查看
+    2) 假设update，修改后的结果必须能通过视图查看到
+    3) 假设delete，只能删除现有视图里能够查到的记录
+
+    例:create or replace view v_emp_10
+        as    
+        select empno id,ename name,sal salary,deptno from emp where deptno=10 with check option;
+
+    DML失败操作:
+        1) insert into v_emp_10 values(1008,&apos;do&apos;,5500,20);
+        //部门20不在视图可见范围内，操作失败
+        2) update v_emp_10 set deptno=20 where id=7782;
+        //部门20不在视图可见范围内，操作失败</code></pre><h3 id="READ-ONLY-约束-只读约束"><a href="#READ-ONLY-约束-只读约束" class="headerlink" title="READ ONLY 约束(只读约束)"></a>READ ONLY 约束(只读约束)</h3><pre><code>a.对简单视图进行DML操作是合法的，但是不安全
+b.如果没有在视图上执行DML操作的必要，在建立视图时声明为只读来避免这种情况，保证视图对应的基表数据不会被非法修改
+    例:
+        create or replace view v_emp_10
+        as    
+        select empno id,ename name,sal salary,deptno from emp where deptno=10 with read only;</code></pre><h3 id="通过查询user-views-获取相关信息"><a href="#通过查询user-views-获取相关信息" class="headerlink" title="通过查询user_views 获取相关信息"></a>通过查询user_views 获取相关信息</h3><blockquote>
+<p>此处略 见 javaPDF 05 153页</p>
+</blockquote>
+<h3 id="创建复杂视图"><a href="#创建复杂视图" class="headerlink" title="创建复杂视图"></a>创建复杂视图</h3><pre><code>a.复杂视图指在子查询中包含了表达式、单行函数或分组函数的视图
+b.必须为子查询中的表达式或函数定义别名
+    例:创建一个视图v_emp_sal,把职员表的数据按部门分组，获得每个部门的平均薪水、薪水总和、最高薪水和最低薪水
+        create view v_emp_sal as select deptno,avg(sal) avg_sal,sum(sal) sum_sal,max(sal) max_sal,min(sal) min_sal from emp group by deptno;
+c.复杂视图不允许DML操作</code></pre><h3 id="删除视图"><a href="#删除视图" class="headerlink" title="删除视图"></a>删除视图</h3><pre><code>a. 使用drop view语句删除
+    drop view 视图名;
+b.视图虽然是存放在数据字典中的独立对象，但视图仅仅是基于表的一个查询定义，所以对视图的删除不会导致基表数据的丢失，不会影响基表数据</code></pre><h1 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h1><h2 id="什么是序列？"><a href="#什么是序列？" class="headerlink" title="什么是序列？"></a>什么是序列？</h2><blockquote>
+<p>序列(sequence)是一种用来生成唯一数字值的数据库对象<br>序列的值由oracle程序按递增或递减顺序自动生成，通常用来自动产生表的主键值，是一种高效率获得唯一键值的途径<br>序列是独立的数据库对象，和表是独立的对象，序列并不依附于表<br>通常情况下，一个序列为一个表提供主键值，但一个序列也可以为多个表提供主键值</p>
+</blockquote>
+<h2 id="创建序列"><a href="#创建序列" class="headerlink" title="创建序列"></a>创建序列</h2><pre><code>create sequence 序列名 [start with i] [increment by j] [maxvalue m | nomaxvalue] [minvalue n | nominvalue] [cycle | nocycle] [cache p | nocache]    
+#i:第一个序列值    j:步长，j为正表示递增，j为负表示递减
+#序列可生成的最大值是m，最小值是n
+#如果没有设置任何可选参数，序列的第一个值是1，步长为1
+#cycle表示在递增至最大值或递减至最小值后是否继续生成序列号,默认是nocycle
+#cache用来指定先预取p个数据在缓存中，以提高序列值的生成效率，默认为20</code></pre><h2 id="使用序列"><a href="#使用序列" class="headerlink" title="使用序列"></a>使用序列</h2><blockquote>
+<p>创建一个序列，起始数据是100，步长为10<br><code>create sequence emp_seq start with 100 increment by 10;</code></p>
+</blockquote>
+<blockquote>
+<p>序列中有两个伪列</p>
+</blockquote>
+<ol>
+<li><code>NEXTVAL</code>:获取序列的下个值</li>
+<li><code>CURRVAL</code>:获取序列的当前值</li>
+</ol>
+<p><strong><em>当序列创建以后，必须先执行一次NEXTVAL,之后才能使用CURRVAL</em></strong></p>
+<blockquote>
+<p>获取序列的第一个值，并且使用序列值为EMP表插入新的记录<br><code>select emp_seq.nextval from dual;</code><br><code>insert into emp(empno,ename) values(emp_seq.nextval,&#39;donna&#39;);</code></p>
+</blockquote>
+<blockquote>
+<p>查询刚刚生成的记录，会发现主键为110<br><code>select empno，ename from emp where ename=&#39;donna&#39;;</code></p>
+</blockquote>
+<blockquote>
+<p>查询当前序列值，会得到110<br><code>select emp_seq.currval from dual;</code></p>
+</blockquote>
+<p><strong><em>在序列的使用过程中，每执行一次包含<code>NEXTVAL</code>的语句，都会递增或递减一次序列值，<code>CURRVAL</code>的使用是取当前序列值，不会改变序列的值</em></strong></p>
+<h3 id="删除序列"><a href="#删除序列" class="headerlink" title="删除序列"></a>删除序列</h3><blockquote>
+<p><code>drop sequence 序列名;</code></p>
+</blockquote>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><h2 id="索引的原理"><a href="#索引的原理" class="headerlink" title="索引的原理"></a>索引的原理</h2><blockquote>
+<ul>
+<li>索引是一种允许直接访问数据表中某一数据行的树型结构，为了提高查询效率而引入，是独立于表的对象，可以存放在与表不同的表空间(tablespace)中</li>
+<li>索引记录中存有索引关键字和指向表中数据的指针(地址)</li>
+<li>对索引进行的I/O操作比对表进行操作要少很多</li>
+<li>索引一旦被建立就将被oracle系统自动维护，查询语句中不用指定使用哪个索引</li>
+<li>索引是一种提高查询效率的机制</li>
+<li>Oracle B-tree索引的结构</li>
+<li>ROWID:伪列，唯一标识一条数据记录，可理解为行地址</li>
+</ul>
+</blockquote>
+<h2 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h2><blockquote>
+<p>语法<br><code>CREATE [UNIQUE] INDEX 索引名 ON 表名(colunm[,column...]);</code><br>#UNIQUE表示唯一索引</p>
+</blockquote>
+<blockquote>
+<p>在emp表的enmae列上建立索引<br><code>create index idx_emp_ename on emp(ename);</code></p>
+</blockquote>
+<blockquote>
+<p>复合索引也叫多列索引，是基于多个列的索引</p>
+</blockquote>
+<ul>
+<li>如果经常在order by子句中使用job和sal作为排序依据，可以建立复合索引:<br><code>create index idx_emp_job_sal on emp(job,sal);</code></li>
+<li>当作如下查询时，会自动引用索引idx_emp_job_sal<br><code>select empno,ename,sal,job from emp order by job,sal;</code></li>
+</ul>
+<h2 id="创建基于函数的索引"><a href="#创建基于函数的索引" class="headerlink" title="创建基于函数的索引"></a>创建基于函数的索引</h2><blockquote>
+<p>如果需要在emp表的ename列上执行大小写无关搜索，可以在此列上建立一个基于upper函数的索引:<br><code>create index emp_ename_upper_idx on emp(upper(ename));</code></p>
+</blockquote>
+<blockquote>
+<p>当做如下查询时，会自动引用刚刚建立的索引:<br><code>select * from emp where upper(ename)=&#39;KING&#39;;</code></p>
+</blockquote>
+<h2 id="修改和删除索引"><a href="#修改和删除索引" class="headerlink" title="修改和删除索引"></a>修改和删除索引</h2><blockquote>
+<p>如果经常在索引列上执行DNL操作，需要定期重建索引，提高索引的空间利用率:</p>
+</blockquote>
+<ul>
+<li>重建索引<br><code>alter index 索引名 rebuild;</code></li>
+<li>当一个表上有不合理的索引，会导致操作性能下降，删除索引的语法:<br><code>drop index 索引名;</code></li>
+</ul>
+<h2 id="合理使用索引提升查询效率"><a href="#合理使用索引提升查询效率" class="headerlink" title="合理使用索引提升查询效率"></a>合理使用索引提升查询效率</h2><ol>
+<li>为经常出现在where子句中的列创建索引</li>
+<li>为经常出现在order by、distinct后面的字段建立索引。如果建立的是复合索引，索引的字段顺序要和这些关键字后面的字段顺序一致</li>
+<li>为经常作为表的连接条件的列上创建索引</li>
+<li>不要在经常做DML操作的表上建立索引</li>
+<li>不要在小表上建立索引</li>
+<li>限制表上的索引数目，索引不是越多越好</li>
+<li>删除很少被使用、不合理的索引</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oracle/" rel="tag"># oracle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/09/oracle%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="next" title="oracle数据库">
+                <i class="fa fa-chevron-left"></i> oracle数据库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/09/oracle%E7%BA%A6%E6%9D%9F/" rel="prev" title="oracle约束">
+                oracle约束 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="piyi" />
+            
+              <p class="site-author-name" itemprop="name">piyi</p>
+              <p class="site-description motion-element" itemprop="description">piyi</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/996870382" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#视图"><span class="nav-number">1.</span> <span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是视图？"><span class="nav-number">1.1.</span> <span class="nav-text">什么是视图？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图的作用"><span class="nav-number">1.2.</span> <span class="nav-text">视图的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图的创建"><span class="nav-number">1.3.</span> <span class="nav-text">视图的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#授权创建视图"><span class="nav-number">1.3.1.</span> <span class="nav-text">授权创建视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建简单视图-单表"><span class="nav-number">1.3.2.</span> <span class="nav-text">创建简单视图(单表)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询视图"><span class="nav-number">1.3.3.</span> <span class="nav-text">查询视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对视图进行insert操作"><span class="nav-number">1.3.4.</span> <span class="nav-text">对视图进行insert操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CHECK-OPTION约束-限制修改"><span class="nav-number">1.3.5.</span> <span class="nav-text">CHECK OPTION约束(限制修改)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#READ-ONLY-约束-只读约束"><span class="nav-number">1.3.6.</span> <span class="nav-text">READ ONLY 约束(只读约束)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过查询user-views-获取相关信息"><span class="nav-number">1.3.7.</span> <span class="nav-text">通过查询user_views 获取相关信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建复杂视图"><span class="nav-number">1.3.8.</span> <span class="nav-text">创建复杂视图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除视图"><span class="nav-number">1.3.9.</span> <span class="nav-text">删除视图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#序列"><span class="nav-number">2.</span> <span class="nav-text">序列</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是序列？"><span class="nav-number">2.1.</span> <span class="nav-text">什么是序列？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建序列"><span class="nav-number">2.2.</span> <span class="nav-text">创建序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用序列"><span class="nav-number">2.3.</span> <span class="nav-text">使用序列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#删除序列"><span class="nav-number">2.3.1.</span> <span class="nav-text">删除序列</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number">3.</span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#索引的原理"><span class="nav-number">3.1.</span> <span class="nav-text">索引的原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建索引"><span class="nav-number">3.2.</span> <span class="nav-text">创建索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建基于函数的索引"><span class="nav-number">3.3.</span> <span class="nav-text">创建基于函数的索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改和删除索引"><span class="nav-number">3.4.</span> <span class="nav-text">修改和删除索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合理使用索引提升查询效率"><span class="nav-number">3.5.</span> <span class="nav-text">合理使用索引提升查询效率</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">piyi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

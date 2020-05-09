@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="oracle," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="结构化查询语言–SQL概述SQL是在关系数据库上执行数据操作、检索及维护所使用的标准语言，可以用来查询数据，操作数据，定义数据，控制数据 所有数据库都使用相同或者相似的语言 数据定义语言(DDL) 用于建立、修改、删除数据库对象   CREATE:创建表或其他对象的结构 ALTER:修改表或其他对象的结构 DROP:删除表或其他对象的结构 TRUNCATE:删除表数据、保留表结构  数据操作语言(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oracle数据库">
+<meta property="og:url" content="http://yoursite.com/2020/05/09/oracle%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="piyi的小站">
+<meta property="og:description" content="结构化查询语言–SQL概述SQL是在关系数据库上执行数据操作、检索及维护所使用的标准语言，可以用来查询数据，操作数据，定义数据，控制数据 所有数据库都使用相同或者相似的语言 数据定义语言(DDL) 用于建立、修改、删除数据库对象   CREATE:创建表或其他对象的结构 ALTER:修改表或其他对象的结构 DROP:删除表或其他对象的结构 TRUNCATE:删除表数据、保留表结构  数据操作语言(">
+<meta property="article:published_time" content="2020-05-09T00:00:58.000Z">
+<meta property="article:modified_time" content="2020-05-09T03:10:37.470Z">
+<meta property="article:author" content="piyi">
+<meta property="article:tag" content="oracle">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/09/oracle数据库/"/>
+
+
+
+
+
+  <title>oracle数据库 | piyi的小站</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b15569dfb7ac0a3548e36ce0ac946914";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">piyi的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">深度自闭中···</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/09/oracle%E6%95%B0%E6%8D%AE%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="piyi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="piyi的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">oracle数据库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-09T08:00:58+08:00">
+                2020-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/oracle%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">oracle数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="结构化查询语言–SQL概述"><a href="#结构化查询语言–SQL概述" class="headerlink" title="结构化查询语言–SQL概述"></a>结构化查询语言–SQL概述</h1><p>SQL是在关系数据库上执行数据操作、检索及维护所使用的标准语言，可以用来查询数据，操作数据，定义数据，控制数据</p>
+<p>所有数据库都使用相同或者相似的语言</p>
+<h2 id="数据定义语言-DDL"><a href="#数据定义语言-DDL" class="headerlink" title="数据定义语言(DDL)"></a>数据定义语言(DDL)</h2><blockquote>
+<p>用于建立、修改、删除数据库对象</p>
+</blockquote>
+<ul>
+<li>CREATE:创建表或其他对象的结构</li>
+<li>ALTER:修改表或其他对象的结构</li>
+<li>DROP:删除表或其他对象的结构</li>
+<li>TRUNCATE:删除表数据、保留表结构</li>
+</ul>
+<h2 id="数据操作语言-DML"><a href="#数据操作语言-DML" class="headerlink" title="数据操作语言(DML)"></a>数据操作语言(DML)</h2><blockquote>
+<p>用于改变数据表中的数据;和事务相关，执行完后需要经过事务控制语句提交后才真正的将改变应用到数据库中</p>
+</blockquote>
+<ul>
+<li>INSERT:将数据插入到数据表中</li>
+<li>UPDATE:更新数据表中已存在的数据</li>
+<li>DELETE:删除数据表中的数据</li>
+</ul>
+<h2 id="事务控制语言-TCL"><a href="#事务控制语言-TCL" class="headerlink" title="事务控制语言(TCL)"></a>事务控制语言(TCL)</h2><blockquote>
+<p>用来维护数据一致性的语句</p>
+</blockquote>
+<ul>
+<li>COMMIT:提交，确定已经进行的数据改变</li>
+<li>ROLLBACK:回滚，取消已经进行的数据改变</li>
+<li>SAVEPOINT:保存点，使当前的事务可以回退到指定的保存点，便于取消部分改变</li>
+</ul>
+<h2 id="数据查询语言-DQL"><a href="#数据查询语言-DQL" class="headerlink" title="数据查询语言(DQL)"></a>数据查询语言(DQL)</h2><blockquote>
+<p>用来查询所需要的数据</p>
+</blockquote>
+<ul>
+<li>SELECT语句</li>
+</ul>
+<h2 id="数据控制语言-DCL"><a href="#数据控制语言-DCL" class="headerlink" title="数据控制语言(DCL)"></a>数据控制语言(DCL)</h2><blockquote>
+<p>用于执行权限的授予和收回操作</p>
+</blockquote>
+<ul>
+<li>GRANT:授予，用于给用户或角色授予权限</li>
+<li>REVOKE:用于收回用于或角色已有的权限</li>
+</ul>
+<h1 id="oracle数据结构"><a href="#oracle数据结构" class="headerlink" title="oracle数据结构"></a>oracle数据结构</h1><ol>
+<li><code>NUMBER(P[,S])</code>:数字类型<br>P:总位数,范围:1-38<br>S:小数位数<blockquote>
+<p>没有设置S,则默认值为0<br>P可以设置为 *，即为38</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<ol start="2">
+<li><code>CHAR(N [BYTE/CHAR])</code>:固定长度的字符类型<br>N:占用字节数,最大长度为2000字节,默认为字节，可指定字符(一个字母占一个字节，中文字符按编码不同占2-4个字节)<blockquote>
+<p>存放定长字符，存不满补空格;浪费空间，节省时间;可以不指定长度，默认为1</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<ol start="3">
+<li><code>VARCHAR2(N)</code>:变长的字符串类型<br>N:最多可占用字节数,最大长度为4000字节<blockquote>
+<p>变长:根据保存的数据长度，占用的空间是变化的;必须指定长度</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<ol start="4">
+<li><code>LONG</code>和<code>CLOB</code>类型<br>a. <code>LONG</code>:<code>VARCHAR2</code>加长版，存储变长字符串，最多达2GB的字符串数据<br>b. <code>LONG</code>的限制:每个表只能有一个<code>LONG</code>类型列;不能作为主键;不能建立索引;不能出现在查询条件中…<br>c. <code>CLOB</code>:存储定长或变长字符串，最多达4GB的字符串数据<br>d.oracle建议开发中使用<code>CLOB</code>替代<code>LONG</code>类型</li>
+</ol>
+<hr>
+<ol start="5">
+<li><code>DATE</code>:定义日期时间的数据<br>默认格式:DD-MON-RR<blockquote>
+<p>DATE类型在数据库中的存储固定为7个字节，格式为:<code>世纪+100    年    月    日    小时+1 分+1    秒+1</code></p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<ol start="6">
+<li><code>TIMESTAMP</code>:常用的日期类型<br>a. 与<code>DATA</code>的区别是不仅可以保存日期和时间，还能保存小数秒，最高精度可以到ns(纳秒)<br>b. 数据库内部用7或11个字节存储;精度为0,用7字节存储，精度大于0，则用11字节存储<br>格式为:<blockquote>
+<p>1-7:与DATE相同<br>8-11:纳秒，内部运算类型为整形<br>create table test(c1 DATE,c2 TIMESTAMP);</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h1><blockquote>
+<p>创建表</p>
+</blockquote>
+<ul>
+<li><code>CREATE TABLE 表名(字段);</code></li>
+</ul>
+<blockquote>
+<p>查看表的结构</p>
+</blockquote>
+<ul>
+<li><code>DESC 表名</code></li>
+</ul>
+<blockquote>
+<p>在字段后面添加此语句，’ ‘里为默认值</p>
+</blockquote>
+<ul>
+<li><code>DEFAULT &#39;默认值&#39;</code></li>
+</ul>
+<blockquote>
+<p>非空约束</p>
+</blockquote>
+<ul>
+<li><code>NOT NULL</code></li>
+</ul>
+<h1 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h1><blockquote>
+<p>修改表名</p>
+</blockquote>
+<ul>
+<li><code>RENAME 原表名 TO 新表名;</code></li>
+</ul>
+<blockquote>
+<p>增加列</p>
+</blockquote>
+<ul>
+<li><code>ALTER TABLE 表名 ADD(字段);</code><br>列只能增加在最后，不能插入到现有的列中</li>
+</ul>
+<blockquote>
+<p>删除列</p>
+</blockquote>
+<ul>
+<li><code>ALTER TABLE 表名 DROP(字段名);</code><br>删除字段需要从每行中删掉该字段占据的长度和数据，并释放在数据块中占据的空间，如果表记录比较大，删除字段可能需要比较长的时间</li>
+</ul>
+<h1 id="DML语句"><a href="#DML语句" class="headerlink" title="DML语句"></a>DML语句</h1><blockquote>
+<p>执行DML操作后，需要再执行commit语句才算真正确认了此操作</p>
+</blockquote>
+<pre><code>1)INSERT语句
+    INSERT INTO 表名[(字段[,字段,字段,...])] VALUES(value,value,...);
+        插入行
+            #如果插入的列有日期字段，需要考虑日期的格式，默认格式 &apos;DD-MON-RR&apos;
+            #可使用TO_DATE函数自定义日期格式
+                例:
+                    INSERT INTO 表名(...) VALUES(..,..,TO_DATE(&apos;2020-02-12&apos;,&apos;YYYY-MM-DD&apos;));
+
+2)UPDATE语句
+    UPDATE 表名 SET 属性=value [WHERE 属性=value];
+        更新表中的记录。WHERE子句用来筛选，没有则修改全表数据
+
+3)DELETE语句
+    DELETE FROM 表名 [WHERE 条件];
+        删除表数据
+            #在DDL语句中的TRUNCATE语句同样有删除表数据的作用
+                TRUNCATE语句和DELETE语句区别:
+                    a. DELETE可以有条件删除，TRUNCATE将表数据全部删除
+                    b. DELETE是DML语句，可以回退;TRUNCATE是DDL语句，立即生效，无法回退
+                    c. 如果是删除全部表记录，且数据量较大，DELETE效率比TRUNCATE语句低</code></pre><h1 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h1><pre><code>CONCAT和 ||
+    a. CONCAT(c1,c2)
+        返回两个字符串连接后的结果
+    b. 等价操作: 连接操作符 ||
+    c.如果c1和c2任何一个为NULL,相当于连接了一个空格
+        例:
+            SELECT CONCAT(CONCAT(ename,&apos;:&apos;),sal) FROM emp;
+
+            SELECT ename || &apos;:&apos; sal FROM emp;
+
+
+LENGTH
+    a. LENGTH(字段)
+        用于返回字符串的长度
+            #类型为VARCHAR2,返回实际长度；为CHAR,则返回最大长度
+        例:
+            SELECT job,LENGTH(job) FROM emp;
+
+
+UPPER、LOWER和INITCAP
+    a.大小写转换函数:
+        UPDATE(字段)  将字符串转换为大写
+        LOWER(字段)      将字符串转换为小写
+        INITCAP(字段) 将字符串每个单词首字母大写，其它小写
+    b.如果输入的参数为空，仍然返回空
+        例：
+            select upper(&apos;hello world&apos;),lower(&apos;hello world&apos;),INITCAP(&apos;hello world&apos;) FROM dual;
+        #dual是内部表 具体见百度
+
+
+TRIM、LTRIM、RTRIM
+    a. 截去字符串
+        TRIM([c2 FROM ]c1)  从c1两端去除c2
+        LTRIM(c1[,c2])        从c1左边去除c2
+        RTRIM(c1[,c2])        从c1右边去除c2
+            #没有可选参数即为去除空格
+
+
+LPAD、RPAD
+    a.补位函数，如c1不足n位，用c2重复补齐到n位;如c1超过n位，将c1从后往前截取直到n位
+        LPAD(c1,n,c2) 将c2从c1左侧补齐
+        RPAD(c1,n,c2) 将c2从c1右侧补齐
+
+
+SUBSTR
+    a.获取子串，返回c中从m位开始取n个字符(下标从1开始)
+        SUBSTR(c,m[,n])
+            #m=0 则从首字符开始。m为负数，则从尾部开始(不是反转)
+            #没有参数n，或者n的长度超过c的长度，则取到字符串结尾为止
+
+INSTR
+    a.返回c2在c1中的位置(下标从1开始)
+        INSTR(c1,c2[,n[,m]])
+            #n:从n位开始搜索，默认唯一
+            #m:指定子串第m次出现的位置，默认为1
+            #没有找到子串c2，返回0</code></pre><h1 id="数值函数"><a href="#数值函数" class="headerlink" title="数值函数"></a>数值函数</h1><pre><code>ROUND
+    a. 四舍五入
+        ROUND(n[,m])
+            #n为被处理的数字，m控制保留几位
+            #m取0或没有m，则四舍五入到整数位
+            #m取正数，则四舍五入到小数点后m位
+            #m取负数，则四舍五入到小数点前m位
+
+
+TRUNC
+    a.截取数字
+        TRUNC(n,[,m])
+            #n,m的定义和ROUND相同，不过是按截取的方式处理数字
+
+
+MDO
+    a. 返回m除以n后的余数
+        MOD(m,n)
+            #n为0，则直接返回m
+
+
+CEIL和FLOOR
+    a. 截取小数部分
+        CEIL(n)        截去小数，整数进一位
+        FLOOR(n)    截取小数，整数不变</code></pre><h1 id="日期操作"><a href="#日期操作" class="headerlink" title="日期操作"></a>日期操作</h1><pre><code>日期关键字
+    1) SYSDATE
+        a.本质是一个oracle的内部函数，返回当前的系统时间，精确到秒
+        b.默认显示格式: DD-MON-RR
+
+    2) SYSTIMESTAMP
+        a.内部函数，返回当前系统日期和时间，精确到毫秒
+
+
+日期转换函数
+    TO_DATE
+        a. 将字符串按照指定格式转换为日期类型
+            TO_DATE(c[,fmt[,nlsparams]])
+                #日期格式表:
+                    YY        两位数年份
+                    YYYY    四位数年份
+                    MM        两位数月份
+                    MON        简拼月份
+                    MONTH    全拼月份
+                    DD        两位数的日
+                    DY        周几的缩写
+                    DAY        周几的全拼
+                    HH24      24小时制的小时
+                    HH12    12小时制的小时
+                    MI        显示分钟
+                    SS        显示秒
+
+    TO_CHAR
+        a.将其他类型的数据转换为字符类型
+            TO_CHAR(date[,fmt[,nlsparams]])
+                #将日期类型数据date按照fmt格式输出字符串，nlsparams用于指定日期语言
+                    例:
+                        select to_char(sysdate,&apos;YYYY&quot;年&quot;MM&quot;月&quot;DD&quot;日&quot;&apos;)
+
+
+日期常用函数            
+    LAST_DAY
+        a.返回日期date所在月的最后一天
+            LAST_DAY(date)
+
+    ADD_MONTHS
+        a.返回日期deate加上i个月后的日期值
+            ADD_MONTHS(date,i)
+
+    MONTHS_BETWEEN
+        a.计算date1和date2两个日期值之间隔了多少个月
+            MONTH_BETWEEN(date1,date2)    
+                #实际运算是date1-date2，如果date2比date1晚，会得到负值
+                #除非两个日期间隔是整数月，否则会得到带小数位置的结果
+
+    NEXT_DAY
+        a.返回date日期数据的下一个周几，由char决定
+            NEXT_DAY(date,char)
+                #插入参数可用数字1-7表示周日-周六
+
+    LEAST、GREATEST
+        LEAST(obj1[,obj2[,obj3]]....)     返回参数中的最小值
+        GREATEST(obj1[,obj2[,obj3]]....) 返回参数中的最大值
+            #参数类型必须一致
+            #在比较之前，参数表中第二个及以后的参数会被隐式的转换为第一个参数的数据类型，如可以转换则继续，不能转换将会报错
+
+    EXTRACT
+        a. 从datetime中提取date指定的数据，如提取年、月、日
+            EXTRACT(date from datetime)</code></pre><h1 id="空值操作"><a href="#空值操作" class="headerlink" title="空值操作"></a>空值操作</h1><pre><code>NULL的含义
+    a.数据库里的重要概念:NULL,即空值
+    b.有时表中的某些字段值，数据未知或暂时不存在，取值NULL
+    c.任何数据类型均可取值NULL
+
+插入NULL值
+    例:
+        create table test(id number(4),name char(5));
+        insert into text values(1001,NULL)//显式插入NULL值
+        insert into text(id) values(1001)//隐式插入NULL值
+
+更新成NULL值
+    update text set name=NULL;
+        #更新为NULL只能在此列没有非空约束的情况下才可操作
+        #如果有非空约束，则无法更新，会报错
+
+NULL条件查询
+    a. NULL不等于任何值，所以:
+        select * from text where name is NULL;//不能为=号，why？ 见a
+
+空值函数
+    NVL
+        a. 如果expr1为NULL，则取expr2的值，expr1不为NULl，则取expr1的值;相当于else
+            NVL(expr1,expr2)
+                #两个参数可以是任何数据类型，但都要为同一种数据类型
+
+    NVL2
+        a.如果expr1不为NULL,取expr2的值，否则取expr3的值
+            NVL(expr1,expr2,expr3)</code></pre><h1 id="基础查询"><a href="#基础查询" class="headerlink" title="基础查询"></a>基础查询</h1><pre><code>基本查询语句
+    1) FROM子句
+        a. select colunm [alias]... from table;
+            select用于指定要查询的列
+            from指定从哪个表查询
+        b.如果要查询所有列，select后面使用 *
+        c.查询特定列，select后面指定列名，列明之间逗号隔开
+
+    2) 使用别名
+        a.可以通过使用列的别名改变标题的显示样式
+        b.使用方法: 列的别名跟在列名后面，空格隔开，可以使用 as 关键字，也可以不使用
+        c.如果希望别名区分大小写，或包含字符或空格，则必须用双引号引起来
+
+    3) WHERE子句用
+        a. 在select语句中使用where子句来限制查询结果
+
+查询条件
+    1)逻辑判断符
+        &gt;    &lt;    &gt;=    !=    &lt;&gt;    =
+        #!=等价于&lt;&gt;
+
+    2)AND、OR关键字
+        AND 表示 与
+        OR     表示 或
+
+    3)LIKE条件(模糊查询)
+        a. 查询时不能完全确定某些信息的查询条件，或者只知道信息的一部分，可以使用LIKE
+            LIKE需要借助两个通配符:
+                %    表示0到多个字符
+                _    表示单个字符
+                    例:
+                        select ename from emp where ename like &apos;%n%&apos;;
+
+    4) IN和NOT IN
+        a.比例操作符，用来筛选符合列表范围中的数据，用另一列的值来限定要查询的列
+            IN        表示在此范围
+            NOT IN    表示不再此范围
+                例:
+                    select enmae from emp where worktime in(12193,11908);
+
+    5) BETWEEN...AND...
+        a.BETWEEN...AND...操作符用来查询符合某个值域范围条件的数据
+        b.数字、字符、日期类型都适用
+            例:
+                select enmae from emp where worktime between 11000 and 12000;
+
+    6) IS NULL 和 IS NOT NULL
+        a.null不等于任何值，比较的时候不能用 = ，必须使用 is
+
+    7) ANY 和 ALL
+        a.ANY 和 ALL不能单独使用，需配合 &gt; &gt;= &lt; &lt;= 一起使用
+            &gt; ANY    大于最小
+            &lt; ANY     小于最大
+            &gt; ALL    大于最大
+            &lt; ALL   小于最小
+                例:
+                    select ename from emp where worktime &lt;any(12000,13000);
+
+    8) 查询条件中使用表达式和函数
+        a.当需要对选出的字段进行进一步计算，可以在数字列上使用算术表达式 + - * /
+
+    9) 使用DISTINCT过滤重复
+        a.执行查询操作时，会默认显示所有行，不管查询结果是否有重复数据，去掉重复值，使用DISTINCT实现
+            例:
+                select distinct depton from emp;
+
+
+排序    
+    1) 使用ORDER BY 子句
+        a.对数据按升序或降序排序，默认为升序(asc)    asc/desc
+        b.ORDER BY 子句必须出现在select语句最后
+        c.可以多列排序
+            例:
+                select * from emp order by ename asc;</code></pre><h1 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h1><pre><code>什么是聚合函数
+    查询时需要做一些数据统计，比如:查询职员表中各部门职员的平均薪水，各部门的员工人数，需要统计的数据并不能在职员表里直观列出，而是需要根据现有的数据计算得到结果，这种功能可以使用聚合函数来实现，即:将表的全部数据划分为几组数据，每组数据统计出一个结果，因为是多行数据参与运算返回一行结果，也称分组函数、多行函数、集合函数
+
+    1) MAX 和 MIN
+        a.用来取得列或表达式的最大、最小值
+        b.可以用来统计任何数据类型
+            例:
+                select min(worktime) from emp;
+
+    2) AVG 和 SUM
+        a.统计列或表达式的平均值和和值
+        b.只能操作数字类型，忽略NULL值
+
+    3) COUNT
+        a.用来计算表中的记录条数，忽略NULL值
+            例:
+                select count(ename) from emp;</code></pre><blockquote>
+<p>聚合函数忽略NULL值</p>
+</blockquote>
+<h1 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h1><pre><code>1) GROUP BY子句
+    a.当希望得到每个部门的平均薪水，而不是整个公司的平均薪水，可以把整个数据表按部门划分成一个个小组，每个小组包含一行或多行数据，在每个小组中再使用分组函数进行计算，每组返回一个结果，划分的小组有多少，最终结果集行数就有多少
+
+例:
+    select max(id),job from emp group by job;
+
+2) HAVING 子句
+    a.HAVING 子句用来对分组后的结果进一步限制，比如按部门分组后，得到每个部门的最高薪水，可以继续限制输出结果
+    b. 必须跟在GROUP BY后面，不能单独存在
+        例:
+            select depton,max(sal) max_sal from emp group by depton having max(sal)&gt;4000;</code></pre><h1 id="查询语句执行顺序"><a href="#查询语句执行顺序" class="headerlink" title="查询语句执行顺序"></a>查询语句执行顺序</h1><pre><code>查询语句的执行循序依下列子句次序:
+    1) from 子句
+        执行顺序为从后往前、从右到左
+            #数据量较少的表尽量放在后面
+
+    2) where 子句
+        执行顺序为自下而上、从右到左
+            #将能过滤掉最大数量记录的条件写在where子句的最右
+
+    3) group by
+        执行顺序从左往右分组
+            #最好在group by前使用where将不需要的记录在group by之前过滤掉
+
+    4) having
+        having子句消耗资源，尽量避免使用，having会在检索出所有记录之后才对结果集进行过滤，需要排序等操作
+
+    5) select 子句
+        少用*,尽量取字段名称，oracle在解析的过程中，通过查询数据字典将*依次转换成所有的列名，消耗时间
+
+    6) order by 子句
+        执行顺序为从左到右排序，消耗资源</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/oracle/" rel="tag"># oracle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/15/CentOS7%E5%AE%89%E8%A3%85jdk%E7%8E%AF%E5%A2%83-eclipse%E4%B8%80%E6%9D%A1%E9%BE%99/" rel="next" title="CentOS7安装jdk环境,eclipse一条龙">
+                <i class="fa fa-chevron-left"></i> CentOS7安装jdk环境,eclipse一条龙
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/09/oracle%E8%A7%86%E5%9B%BE%E3%80%81%E5%BA%8F%E5%88%97%E3%80%81%E7%B4%A2%E5%BC%95/" rel="prev" title="oracle视图、序列、索引">
+                oracle视图、序列、索引 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="piyi" />
+            
+              <p class="site-author-name" itemprop="name">piyi</p>
+              <p class="site-description motion-element" itemprop="description">piyi</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/996870382" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#结构化查询语言–SQL概述"><span class="nav-number">1.</span> <span class="nav-text">结构化查询语言–SQL概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据定义语言-DDL"><span class="nav-number">1.1.</span> <span class="nav-text">数据定义语言(DDL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据操作语言-DML"><span class="nav-number">1.2.</span> <span class="nav-text">数据操作语言(DML)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事务控制语言-TCL"><span class="nav-number">1.3.</span> <span class="nav-text">事务控制语言(TCL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据查询语言-DQL"><span class="nav-number">1.4.</span> <span class="nav-text">数据查询语言(DQL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据控制语言-DCL"><span class="nav-number">1.5.</span> <span class="nav-text">数据控制语言(DCL)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#oracle数据结构"><span class="nav-number">2.</span> <span class="nav-text">oracle数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建表"><span class="nav-number">3.</span> <span class="nav-text">创建表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改表"><span class="nav-number">4.</span> <span class="nav-text">修改表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DML语句"><span class="nav-number">5.</span> <span class="nav-text">DML语句</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串函数"><span class="nav-number">6.</span> <span class="nav-text">字符串函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数值函数"><span class="nav-number">7.</span> <span class="nav-text">数值函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日期操作"><span class="nav-number">8.</span> <span class="nav-text">日期操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#空值操作"><span class="nav-number">9.</span> <span class="nav-text">空值操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基础查询"><span class="nav-number">10.</span> <span class="nav-text">基础查询</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#聚合函数"><span class="nav-number">11.</span> <span class="nav-text">聚合函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组"><span class="nav-number">12.</span> <span class="nav-text">分组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询语句执行顺序"><span class="nav-number">13.</span> <span class="nav-text">查询语句执行顺序</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">piyi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
