@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="编码概念 计算机存放数据只能存放数字，所有的字符都会被转换为不同的数字。就像一个棋盘一样，不同的字，处于不同的位置，而不同的位置，有不同的数字编号有的棋盘很小，只能放数字和英文有的大一点，还能放中文有的“足够”大，能够放下世界人民所使用的所有文字和符号  如图所示，英文字符 A 能够放在所有的棋盘里，而且位置都差不多中文字符, 中文字符 中 能够放在后两种棋盘里，并且位置不一样，而且在小的那个棋盘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java IO中文问题">
+<meta property="og:url" content="http://yoursite.com/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="piyi的小站">
+<meta property="og:description" content="编码概念 计算机存放数据只能存放数字，所有的字符都会被转换为不同的数字。就像一个棋盘一样，不同的字，处于不同的位置，而不同的位置，有不同的数字编号有的棋盘很小，只能放数字和英文有的大一点，还能放中文有的“足够”大，能够放下世界人民所使用的所有文字和符号  如图所示，英文字符 A 能够放在所有的棋盘里，而且位置都差不多中文字符, 中文字符 中 能够放在后两种棋盘里，并且位置不一样，而且在小的那个棋盘">
+<meta property="og:image" content="http://yoursite.com/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b2.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b3.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b4.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b5.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b6.png">
+<meta property="article:published_time" content="2020-05-26T04:06:20.000Z">
+<meta property="article:modified_time" content="2020-05-27T12:06:56.013Z">
+<meta property="article:author" content="piyi">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/26/java-IO中文问题/"/>
+
+
+
+
+
+  <title>java IO中文问题 | piyi的小站</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b15569dfb7ac0a3548e36ce0ac946914";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">piyi的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">深度自闭中···</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="piyi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="piyi的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java IO中文问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-26T12:06:20+08:00">
+                2020-05-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">基础教程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="编码概念"><a href="#编码概念" class="headerlink" title="编码概念"></a>编码概念</h1><blockquote>
+<p>计算机存放数据只能存放数字，所有的字符都会被转换为不同的数字。<br>就像一个棋盘一样，不同的字，处于不同的位置，而不同的位置，有不同的数字编号<br>有的棋盘很小，只能放数字和英文<br>有的大一点，还能放中文<br>有的“足够”大，能够放下世界人民所使用的所有文字和符号</p>
+</blockquote>
+<p>如图所示，英文字符 A 能够放在所有的棋盘里，而且位置都差不多<br>中文字符, 中文字符 中 能够放在后两种棋盘里，并且位置不一样，而且在小的那个棋盘里，就放不下中文<br><img src="/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b1.png" alt="img"></p>
+<h1 id="常见编码"><a href="#常见编码" class="headerlink" title="常见编码"></a>常见编码</h1><blockquote>
+<p>工作后经常接触的编码方式有如下几种：</p>
+</blockquote>
+<ul>
+<li><code>SO-8859-1</code>  <code>ASCII</code> 数字和西欧字母</li>
+</ul>
+<p><strong><em>ISO-8859-1 包含 ASCII</em></strong></p>
+<ul>
+<li><code>GBK</code> <code>GB2312</code> <code>BIG5</code> 中文</li>
+</ul>
+<p><strong><em>GB2312 是简体中文，BIG5是繁体中文，GBK同时包含简体和繁体以及日文</em></strong></p>
+<ul>
+<li><code>UNICODE</code> (统一码，万国码)</li>
+</ul>
+<p><strong><em>UNICODE 包括了所有的文字，无论中文，英文，藏文，法文，世界所有的文字都包含其中</em></strong></p>
+<h1 id="UNICODE和UTF"><a href="#UNICODE和UTF" class="headerlink" title="UNICODE和UTF"></a><code>UNICODE</code>和<code>UTF</code></h1><blockquote>
+<p>根据前面的学习，我们了解到不同的编码方式对应不同的棋盘，而<code>UNICODE</code>因为要存放所有的数据，那么它的棋盘是最大的。<br>不仅如此，棋盘里每个数字都是很长的(4个字节)，因为不仅要表示字母，还要表示汉字等。</p>
+</blockquote>
+<blockquote>
+<p>如果完全按照<code>UNICODE</code>的方式来存储数据，就会有很大的浪费。<br>比如在<code>ISO-8859-1</code>中，<code>a</code> 字符对应的数字是<code>0x61</code><br>而<code>UNICODE</code>中对应的数字是 <code>0x00000061</code>，倘若一篇文章大部分都是英文字母，那么按照<code>UNICODE</code>的方式进行数据保存就会消耗很多空间</p>
+</blockquote>
+<blockquote>
+<p>在这种情况下，就出现了<code>UNICODE</code>的各种减肥子编码, 比如UTF-8对数字和字母就使用一个字节，而对汉字就使用3个字节，从而达到了减肥还能保证健康的效果</p>
+</blockquote>
+<blockquote>
+<p><code>UTF-8</code>，<code>UTF-16</code>和<code>UTF-32</code> 针对不同类型的数据有不同的减肥效果，一般说来<code>UTF-8</code>是比较常用的方式<br><img src="/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b2.png" alt="img"></p>
+</blockquote>
+<h1 id="Java采用的是Unicode"><a href="#Java采用的是Unicode" class="headerlink" title="Java采用的是Unicode"></a>Java采用的是Unicode</h1><blockquote>
+<p>写在<code>.java</code>源代码中的汉字，在执行之后，都会变成<code>JVM</code>中的字符。<br>而这些中文字符采用的编码方式，都是使用<code>UNICODE</code>. “中”字对应的<code>UNICODE</code>是<code>4E2D</code>,所以在内存中，实际保存的数据就是十六进制的<code>0x4E2D</code>, 也就是十进制的<code>20013</code></p>
+</blockquote>
+<h1 id="一个汉字使用不同编码方式的表现"><a href="#一个汉字使用不同编码方式的表现" class="headerlink" title="一个汉字使用不同编码方式的表现"></a>一个汉字使用不同编码方式的表现</h1><p><img src="/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b3.png" alt="img"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> stream;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestStream</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String str = <span class="string">"中"</span>;</span><br><span class="line">        showCode(str);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showCode</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        String[] encodes = &#123; <span class="string">"BIG5"</span>, <span class="string">"GBK"</span>, <span class="string">"GB2312"</span>, <span class="string">"UTF-8"</span>, <span class="string">"UTF-16"</span>, <span class="string">"UTF-32"</span> &#125;;</span><br><span class="line">        <span class="keyword">for</span> (String encode : encodes) &#123;</span><br><span class="line">            showCode(str, encode);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showCode</span><span class="params">(String str, String encode)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            System.out.printf(<span class="string">"字符: \"%s\" 的在编码方式%s下的十六进制值是%n"</span>, str, encode);</span><br><span class="line">            <span class="keyword">byte</span>[] bs = str.getBytes(encode);</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">byte</span> b : bs) &#123;</span><br><span class="line">                <span class="keyword">int</span> i = b&amp;<span class="number">0xff</span>;</span><br><span class="line">                System.out.print(Integer.toHexString(i) + <span class="string">"\t"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnsupportedEncodingException e) &#123;</span><br><span class="line">            System.out.printf(<span class="string">"UnsupportedEncodingException: %s编码方式无法解析字符%s\n"</span>, encode, str);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><em>26行为何<code>byte</code>转<code>int</code>要<code>&amp;0xff</code>?</em></strong><br><a href="https://www.cnblogs.com/think-in-java/p/5527389.html" target="_blank" rel="noopener">点我</a></p>
+<h1 id="文件的编码方式-记事本"><a href="#文件的编码方式-记事本" class="headerlink" title="文件的编码方式-记事本"></a>文件的编码方式-记事本</h1><blockquote>
+<p>接下来讲，字符在文件中的保存<br>字符保存在文件中肯定也是以数字形式保存的，即对应在不同的棋盘上的不同的数字<br>用记事本打开任意文本文件，并且另存为，就能够在编码这里看到一个下拉。<br>ANSI 这个不是ASCII的意思，而是采用本地编码的意思。如果你是中文的操作系统，就会使GBK，如果是英文的就会是ISO-8859-1<br>Unicode UNICODE原生的编码方式<br>Unicode big endian 另一个 UNICODE编码方式<br>UTF-8 最常见的UTF-8编码方式，数字和字母用一个字节， 汉字用3个字节。</p>
+</blockquote>
+<p><img src="/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b4.png" alt="img"></p>
+<h1 id="文件的编码方式-eclipse"><a href="#文件的编码方式-eclipse" class="headerlink" title="文件的编码方式-eclipse"></a>文件的编码方式-eclipse</h1><blockquote>
+<p>eclipse也有类似的编码方式，右键任意文本文件，点击最下面的”property”<br>就可以看到Text file encoding<br>也有ISO-8859-1，GBK,UTF-8等等选项。<br>其他的US-ASCII,UTF-16，UTF-16BE,UTF-16LE不常用。</p>
+</blockquote>
+<p><img src="/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b5.png" alt="img"></p>
+<h1 id="用FileInputStream-字节流正确读取中文"><a href="#用FileInputStream-字节流正确读取中文" class="headerlink" title="用FileInputStream 字节流正确读取中文"></a>用FileInputStream 字节流正确读取中文</h1><blockquote>
+<p>为了能够正确的读取中文内容</p>
+</blockquote>
+<ol>
+<li>必须了解文本是以哪种编码方式保存字符的</li>
+<li>使用字节流读取了文本后，再使用对应的编码方式去识别这些数字，得到正确的字符</li>
+</ol>
+<p>如本例，一个文件中的内容是字符中，编码方式是GBK，那么读出来的数据一定是D6D0。<br>再使用GBK编码方式识别D6D0，就能正确的得到字符中<br><strong><em>在GBK的棋盘上找到的中字后，JVM会自动找到中在UNICODE这个棋盘上对应的数字，并且以UNICODE上的数字保存在内存中。</em></strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> stream;</span><br><span class="line">   </span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line">   </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestStream</span> </span>&#123;</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        File f = <span class="keyword">new</span> File(<span class="string">"E:\\project\\j2se\\src\\test.txt"</span>);</span><br><span class="line">        <span class="keyword">try</span> (FileInputStream fis = <span class="keyword">new</span> FileInputStream(f);) &#123;</span><br><span class="line">            <span class="keyword">byte</span>[] all = <span class="keyword">new</span> <span class="keyword">byte</span>[(<span class="keyword">int</span>) f.length()];</span><br><span class="line">            fis.read(all);</span><br><span class="line">   </span><br><span class="line">            <span class="comment">//文件中读出来的数据是</span></span><br><span class="line">            System.out.println(<span class="string">"文件中读出来的数据是："</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">byte</span> b : all)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> i = b&amp;<span class="number">0x000000ff</span>;  <span class="comment">//只取16进制的后两位</span></span><br><span class="line">                System.out.println(Integer.toHexString(i));</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"把这个数字，放在GBK的棋盘上去："</span>);</span><br><span class="line">            String str = <span class="keyword">new</span> String(all,<span class="string">"GBK"</span>);</span><br><span class="line">            System.out.println(str);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="用FileReader-字符流正确读取中文"><a href="#用FileReader-字符流正确读取中文" class="headerlink" title="用FileReader 字符流正确读取中文"></a>用FileReader 字符流正确读取中文</h1><blockquote>
+<p>FileReader得到的是字符，所以一定是已经把字节根据某种编码识别成了字符了<br>而FileReader使用的编码方式是Charset.defaultCharset()的返回值，如果是中文的操作系统，就是GBK<br>FileReader是不能手动设置编码方式的，为了使用其他的编码方式，只能使用InputStreamReader来代替，像这样</p>
+</blockquote>
+<ul>
+<li><code>BufferedReader br=new BufferedReader(new InputStreamReader(new FileInputStream(file),&quot;unicode&quot;));</code></li>
+</ul>
+<p>在本例中，用记事本另存为UTF-8格式，然后用UTF-8就能识别对应的中文了。</p>
+<p><strong><em>解释</em></strong>： 为什么中字前面有一个?<br><strong><em>如果是使用记事本另存为UTF-8的格式，那么在第一个字节有一个标示符，叫做BOM用来标志这个文件是用UTF-8来编码的</em></strong></p>
+<p><img src="/2020/05/26/java-IO%E4%B8%AD%E6%96%87%E9%97%AE%E9%A2%98/b6.png" alt="img"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> stream;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</span><br><span class="line"><span class="keyword">import</span> java.nio.charset.Charset;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestStream</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> UnsupportedEncodingException, FileNotFoundException </span>&#123;</span><br><span class="line">        File f = <span class="keyword">new</span> File(<span class="string">"E:\\project\\j2se\\src\\test.txt"</span>);</span><br><span class="line">        System.out.println(<span class="string">"默认编码方式:"</span>+Charset.defaultCharset());</span><br><span class="line">        <span class="comment">//FileReader得到的是字符，所以一定是已经把字节根据某种编码识别成了字符了</span></span><br><span class="line">        <span class="comment">//而FileReader使用的编码方式是Charset.defaultCharset()的返回值，如果是中文的操作系统，就是GBK</span></span><br><span class="line">        <span class="keyword">try</span> (FileReader fr = <span class="keyword">new</span> FileReader(f)) &#123;</span><br><span class="line">            <span class="keyword">char</span>[] cs = <span class="keyword">new</span> <span class="keyword">char</span>[(<span class="keyword">int</span>) f.length()];</span><br><span class="line">            fr.read(cs);</span><br><span class="line">            System.out.printf(<span class="string">"FileReader会使用默认的编码方式%s,识别出来的字符是：%n"</span>,Charset.defaultCharset());</span><br><span class="line">            System.out.println(<span class="keyword">new</span> String(cs));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//FileReader是不能手动设置编码方式的，为了使用其他的编码方式，只能使用InputStreamReader来代替</span></span><br><span class="line">        <span class="comment">//并且使用new InputStreamReader(new FileInputStream(f),Charset.forName("UTF-8")); 这样的形式</span></span><br><span class="line">        <span class="keyword">try</span> (InputStreamReader isr = <span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(f),Charset.forName(<span class="string">"UTF-8"</span>))) &#123;</span><br><span class="line">            <span class="keyword">char</span>[] cs = <span class="keyword">new</span> <span class="keyword">char</span>[(<span class="keyword">int</span>) f.length()];</span><br><span class="line">            isr.read(cs);</span><br><span class="line">            System.out.printf(<span class="string">"InputStreamReader 指定编码方式UTF-8,识别出来的字符是：%n"</span>);</span><br><span class="line">            System.out.println(<span class="keyword">new</span> String(cs));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/23/java-IO/" rel="next" title="java IO">
+                <i class="fa fa-chevron-left"></i> java IO
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/27/java-%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2/" rel="prev" title="java-图形界面">
+                java-图形界面 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="piyi" />
+            
+              <p class="site-author-name" itemprop="name">piyi</p>
+              <p class="site-description motion-element" itemprop="description">piyi</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/996870382" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编码概念"><span class="nav-number">1.</span> <span class="nav-text">编码概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见编码"><span class="nav-number">2.</span> <span class="nav-text">常见编码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UNICODE和UTF"><span class="nav-number">3.</span> <span class="nav-text">UNICODE和UTF</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java采用的是Unicode"><span class="nav-number">4.</span> <span class="nav-text">Java采用的是Unicode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一个汉字使用不同编码方式的表现"><span class="nav-number">5.</span> <span class="nav-text">一个汉字使用不同编码方式的表现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件的编码方式-记事本"><span class="nav-number">6.</span> <span class="nav-text">文件的编码方式-记事本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件的编码方式-eclipse"><span class="nav-number">7.</span> <span class="nav-text">文件的编码方式-eclipse</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用FileInputStream-字节流正确读取中文"><span class="nav-number">8.</span> <span class="nav-text">用FileInputStream 字节流正确读取中文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用FileReader-字符流正确读取中文"><span class="nav-number">9.</span> <span class="nav-text">用FileReader 字符流正确读取中文</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">piyi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
