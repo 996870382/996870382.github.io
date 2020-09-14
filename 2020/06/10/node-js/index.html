@@ -111,18 +111,34 @@
 
 
 
-<meta name="description" content="piyi">
+<meta name="description" content="node.js 入门介绍什么是 Node.js，众所周知 javascript 是在浏览器上运行的脚本语言，主要用来控制 html 元素，即 html dom 对象，是纯粹的 客户端语言。那么要和服务端交互，就需要等待服务端的开发人员，而服务端开发又以 java 居多，对于不了解 java　语言的前端开发人员，有的时候就不得不干等着服务端准备好，很多时候，青春就在这样的尬等中消逝了。那么于是就有人">
 <meta property="og:type" content="article">
 <meta property="og:title" content="node.js">
 <meta property="og:url" content="http://yoursite.com/2020/06/10/node-js/index.html">
 <meta property="og:site_name" content="piyi的小站">
-<meta property="og:description" content="piyi">
+<meta property="og:description" content="node.js 入门介绍什么是 Node.js，众所周知 javascript 是在浏览器上运行的脚本语言，主要用来控制 html 元素，即 html dom 对象，是纯粹的 客户端语言。那么要和服务端交互，就需要等待服务端的开发人员，而服务端开发又以 java 居多，对于不了解 java　语言的前端开发人员，有的时候就不得不干等着服务端准备好，很多时候，青春就在这样的尬等中消逝了。那么于是就有人">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n1.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n2.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n3.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n4.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n5.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n6.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n7.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n8.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n9.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n10.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n11.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n12.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n13.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n14.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/06/10/node-js/n15.JPG">
 <meta property="article:published_time" content="2020-06-10T09:12:57.000Z">
-<meta property="article:modified_time" content="2020-06-10T09:14:52.806Z">
+<meta property="article:modified_time" content="2020-06-11T09:23:14.019Z">
 <meta property="article:author" content="piyi">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="node.js">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/10/node-js/n1.JPG">
 
 
 
@@ -389,7 +405,137 @@
       
 
       
-        
+        <h1 id="node-js-入门"><a href="#node-js-入门" class="headerlink" title="node.js 入门"></a>node.js 入门</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>什么是 Node.js，众所周知 javascript 是在浏览器上运行的脚本语言，主要用来控制 html 元素，即 html dom 对象，是纯粹的 客户端语言。<br>那么要和服务端交互，就需要等待服务端的开发人员，而服务端开发又以 java 居多，对于不了解 java　语言的前端开发人员，有的时候就不得不干等着服务端准备好，很多时候，青春就在这样的尬等中消逝了。<br>那么于是就有人想，如果服务端也是用 javascript 开写的话，那么前端人员不是很容易也可以开发服务端的东西了吗？ 于是就有大佬开发了一个 v8 引擎，它在服务端运行 javascript 语言，在这个基础上再进行了一定的发展，就出现了可以在服务端运行的 javascript， 它就叫做 node.js 了。<br>可以把 node.js 简单的看成 javascript 写的 tomcat …</p>
+<h2 id="node-js的优势"><a href="#node-js的优势" class="headerlink" title="node.js的优势"></a>node.js的优势</h2><p>既然已经有了tomcat这样的基于 java 的服务器，为什么还要有 node.js 呢？</p>
+<ol>
+<li>node.js 上的应用可以使用 javascript 开发，这样方便前端人员</li>
+<li>node.js 的 I/O 操作是非阻塞式的，比起 tomcat 这种 阻塞式 的更有优势</li>
+</ol>
+<p><strong><em>本章就来做一个 node.js 的服务端，体验一下</em></strong></p>
+<h2 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h2><p>node.js 的官方下载地址是：<br><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p>
+<h2 id="检验安装成功与否"><a href="#检验安装成功与否" class="headerlink" title="检验安装成功与否"></a>检验安装成功与否</h2><p>先运行 cmd ，然后在控制台中输入<br><code>node --version</code><br>出现如图所示的版本号，即表示安装成功了<br><img src="/2020/06/10/node-js/n1.JPG" alt="img"></p>
+<h2 id="第一个应用"><a href="#第一个应用" class="headerlink" title="第一个应用"></a>第一个应用</h2><p>以上就安装好 node环境了，然后我们会基于这个进行开发工作。<br>首先创建个项目以及源文件目录<br><code>e:\node.js\project\nodejs\src</code></p>
+<h2 id="服务器代码-server-js"><a href="#服务器代码-server-js" class="headerlink" title="服务器代码 server.js"></a>服务器代码 server.js</h2><p>接着编写服务器代码，在src下新建文件 server.js</p>
+<ol>
+<li>引入 http 模块<br><code>var http = require(&#39;http&#39;);</code></li>
+<li>准备处理请求和响应的 service 函数，就像是 servlet 里的 doGet, doPost 方法。<br>这个service函数做了两件事：<br>a. 设置返回代码200，以及返回格式为 text/plain<br>b. 返回内容是: Hello Node.js<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function service(request, response) &#123;</span><br><span class="line">    response.writeHead(200, &#123;'Content-Type': 'text/plain'&#125;);</span><br><span class="line">    response.end('Hello Node.js');</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>基于service函数来创建服务器<br><code>var server = http.createServer(service);</code></li>
+<li>服务器监听于8088端口<br>server.listen(8088);<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var http = require('http');</span><br><span class="line">function service(request, response) &#123;</span><br><span class="line">    response.writeHead(200, &#123;'Content-Type': 'text/plain'&#125;);</span><br><span class="line">    response.end('Hello Node.js');</span><br><span class="line">&#125;</span><br><span class="line">var server = http.createServer(service);</span><br><span class="line">server.listen(8088);</span><br></pre></td></tr></table></figure>
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2>执行如下命令<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">e:</span><br><span class="line">cd e:\node.js\project\nodejs\src</span><br><span class="line">node server.js</span><br></pre></td></tr></table></figure>
+就启动了服务端，并运行刚才的server.js代码了。</li>
+</ol>
+<p><strong><em>别把cmd窗口关了</em></strong></p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>访问地址进行测试：<br><a href="http://127.0.0.1:8088/" target="_blank" rel="noopener">http://127.0.0.1:8088/</a><br><img src="/2020/06/10/node-js/n2.JPG" alt="img"></p>
+<h1 id="获取参数"><a href="#获取参数" class="headerlink" title="获取参数"></a>获取参数</h1><p>既然是web 服务器，那么总归要解决如何获取参数的问题。 本知识点就讲解如何通过 node.js 获取参数</p>
+<h2 id="server-js"><a href="#server-js" class="headerlink" title="server.js"></a>server.js</h2><p>代码讲解都在注释里了</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var http = require('http');</span><br><span class="line">var url=require('url'); //引入url 模块，帮助解析</span><br><span class="line">var querystring=require('querystring');// 引入 querystring 库，也是帮助解析用的</span><br><span class="line">function service(req,response)&#123;</span><br><span class="line">    //获取返回的url对象的query属性值</span><br><span class="line">    var arg = url.parse(req.url).query;</span><br><span class="line">     </span><br><span class="line">    //将arg参数字符串反序列化为一个对象</span><br><span class="line">    var params = querystring.parse(arg);</span><br><span class="line">     </span><br><span class="line">    //请求的方式</span><br><span class="line">    console.log("method - " + req.method);</span><br><span class="line">     </span><br><span class="line">    //请求的url</span><br><span class="line">    console.log("url - " + req.url);</span><br><span class="line"> </span><br><span class="line">    //获取参数id</span><br><span class="line">    console.log("id- " + params.id);</span><br><span class="line"> </span><br><span class="line">    response.writeHead(200, &#123;'Content-Type': 'text/plain'&#125;);</span><br><span class="line">    response.end('Hello Node.js');</span><br><span class="line">&#125;</span><br><span class="line">var server = http.createServer(service);</span><br><span class="line">server.listen(8088);</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行-1"><a href="#运行-1" class="headerlink" title="运行"></a>运行</h2><p>访问测试地址<br><a href="http://127.0.0.1:8088/?id=123" target="_blank" rel="noopener">http://127.0.0.1:8088/?id=123</a><br>如图所示，可以看到id的值 123 被获取出来了<br><strong><em>这个/favicon.ico 不管它</em></strong><br><img src="/2020/06/10/node-js/n3.JPG" alt="img"></p>
+<h2 id="模仿和排错"><a href="#模仿和排错" class="headerlink" title="模仿和排错"></a>模仿和排错</h2><p>在确保可运行项目能够正确无误地运行之后，再严格照着教程的步骤，对代码模仿一遍。<br>模仿过程难免代码有出入，导致无法得到期望的运行结果，此时此刻通过比较正确答案 ( 可运行项目 ) 和自己的代码，来定位问题所在。<br>采用这种方式，学习有效果，排错有效率，可以较为明显地提升学习速度，跨过学习路上的各个槛。</p>
+<h2 id="关于favion-ico"><a href="#关于favion-ico" class="headerlink" title="关于favion.ico"></a>关于favion.ico</h2><p>在日志里，会出现 /favicon.ico 信息，这个 favion 是 favorite icon 的缩写，即网站图标<br>用node.js 就会有这么一个默认的访问。。。 和业务没有实际关系，忽略掉好了。。。</p>
+<h1 id="模块系统"><a href="#模块系统" class="headerlink" title="模块系统"></a>模块系统</h1><h2 id="模块系统概念"><a href="#模块系统概念" class="headerlink" title="模块系统概念"></a>模块系统概念</h2><p>在node.js中，所谓的模块，就是别人写的 js<br>比如在前面教程中的 server.js 里引入 http模块<br><code>var http = require(&#39;http&#39;);</code><br>就是引用别人写的 http.js 文件。<br>本知识点会自己写一个 模块，然后用 server.js 去引用来演示这个现象</p>
+<h2 id="自定义模块"><a href="#自定义模块" class="headerlink" title="自定义模块"></a>自定义模块</h2><p>在server.js 同一个目录下创建 hello.js<br>定义了两个函数</p>
+<ol>
+<li><p>和之前 server.js 里的请求处理函数一模一样的 service 函数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function service(request, response) &#123;</span><br><span class="line">    response.writeHead(200, &#123;'Content-Type': 'text/plain'&#125;);</span><br><span class="line">    response.end('Hello Node.js');</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建一个 sayHello 函数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function sayHello()&#123;</span><br><span class="line">	console.log('hello ysj');</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>到目前为止 hello.js 有两个函数了。 但是，这两个函数并不能通过外部调用，除非通过 exports 指定如何去调用他们</p>
+</li>
+<li><p>允许外部通过 hi() 这个函数名称调用 sayHello() 这个函数<br><code>exports.hi = sayHello;</code></p>
+</li>
+<li><p>允许外部通过 service() 同名调用<br><code>exports.service = service;</code></p>
+</li>
+</ol>
+<p>如此这般 hello.js 这个模块就准备好了</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function service(request, response) &#123;</span><br><span class="line">    response.writeHead(200, &#123;'Content-Type': 'text/plain'&#125;);</span><br><span class="line">    response.end('Hello Node.js');</span><br><span class="line">&#125;</span><br><span class="line">function sayHello()&#123;</span><br><span class="line">    console.log('hello ysj');</span><br><span class="line">&#125;</span><br><span class="line">exports.hi = sayHello;</span><br><span class="line">exports.service = service;</span><br></pre></td></tr></table></figure>
+
+<h2 id="server-js-1"><a href="#server-js-1" class="headerlink" title="server.js"></a>server.js</h2><ol>
+<li>通过 ./hello 来加载这个模块。 记得，比如加上 ./ ,否则会到 node安装目录下去寻找 ，是找不到的<br><code>var h = require(&#39;./hello&#39;);</code></li>
+<li>调用 hi() 函数，间接地就调用了hello.js 里的 sayHello()函数,因此可以看到如图所示的打印信息<br><code>h.hi();</code></li>
+<li>基于h.service() 函数创建服务<br><code>var server = http.createServer(h.service);</code></li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var http = require('http');</span><br><span class="line">var h = require('./hello');</span><br><span class="line">h.hi();</span><br><span class="line">var server = http.createServer(h.service);</span><br><span class="line">server.listen(8088);</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h2><ol>
+<li><p>启动服务端<br><img src="/2020/06/10/node-js/n4.JPG" alt="img"></p>
+</li>
+<li><p>访问地址进行测试：<a href="http://127.0.0.1:8088/" target="_blank" rel="noopener">http://127.0.0.1:8088/</a><br>看到如图所示的效果，虽然其效果和前面是一样的，但是是通过自定义模块实现的<br><img src="/2020/06/10/node-js/n5.JPG" alt="img"></p>
+</li>
+</ol>
+<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><h2 id="server-js-的问题"><a href="#server-js-的问题" class="headerlink" title="server.js 的问题"></a>server.js 的问题</h2><p>首先回顾一下前面 server.js 的代码， 这个代码很清爽，也很容易维护。 但是当业务开始略微复杂的时候，怎么办呢？<br>比如业务上需要通过访问 /listCategory 显示所有的分类，又需要通过访问 /listProduct 显示所有的产品，那么仅仅通过一个 service(request, response) 方法来进行维护不是很麻烦吗<br>所以在这个时候，就会引入路由的概念了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var http = require('http');</span><br><span class="line">function service(request, response) &#123;</span><br><span class="line">    response.writeHead(200, &#123;'Content-Type': 'text/plain'&#125;);</span><br><span class="line">    response.end('Hello Node.js');</span><br><span class="line">&#125;</span><br><span class="line">var server = http.createServer(service);</span><br><span class="line">server.listen(8088);</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由概念"><a href="#路由概念" class="headerlink" title="路由概念"></a>路由概念</h2><p>如果没有路由的概念，那么无论是访问/listCategory路径 还是访问 /listProduct 路径，都是在service(request,response) 函数里做的。</p>
+<p>那么引入路由的概念的话，就是指访问 /listCategory 路径，会访问 listCategory函数。 而访问 /listProduct 路径，就会访问 listProduct 函数，这样子维护起来就容易多了。</p>
+<p>如代码所示，会提供 listCategory() 函数。<br>再如图所示，访问地址 /listCategory 就会显示 listCategory() 函数的返回值。<br><img src="/2020/06/10/node-js/n6.JPG" alt="img"><br><strong><em>这里的代码仅仅是片段，接下来才会给出完整的代码</em></strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function listCategory() &#123; </span><br><span class="line">    return "a lot of categorys";</span><br><span class="line">&#125; </span><br><span class="line">   </span><br><span class="line">function listProduct() &#123; </span><br><span class="line">    return "a lot of products";</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由代码实现"><a href="#路由代码实现" class="headerlink" title="路由代码实现"></a>路由代码实现</h2><p>为了达到前面的路由效果，需要多个模块协同配合达到这个效果。 所谓的多个模块，其实就是多个.js文件里的多个函数互相配合。</p>
+<h2 id="业务处理模块-requestHandlers-js"><a href="#业务处理模块-requestHandlers-js" class="headerlink" title="业务处理模块 requestHandlers.js"></a>业务处理模块 requestHandlers.js</h2><p>首先是业务处理模块 ，即提供 listCategory函数和listProduct()函数</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function listCategory() &#123; </span><br><span class="line">    return "a lot of categorys";</span><br><span class="line">&#125; </span><br><span class="line">   </span><br><span class="line">function listProduct() &#123; </span><br><span class="line">    return "a lot of products";</span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">exports.listCategory = listCategory; </span><br><span class="line">exports.listProduct = listProduct;</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由模块-router-js"><a href="#路由模块-router-js" class="headerlink" title="路由模块 router.js"></a>路由模块 router.js</h2><p>router函数第一个参数 handle 是一个数组，第二个参数是 路径。<br>这个模块，乍一看会有点晕，要结合后面的模块来看</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function route(handle, pathname) &#123; </span><br><span class="line">  if (typeof handle[pathname] === 'function') &#123; </span><br><span class="line">    return handle[pathname](); </span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return pathname + ' is not defined';</span><br><span class="line">  &#125; </span><br><span class="line">&#125; </span><br><span class="line">exports.route = route;</span><br></pre></td></tr></table></figure>
+
+<h2 id="服务器模块-server-js"><a href="#服务器模块-server-js" class="headerlink" title="服务器模块 server.js"></a>服务器模块 server.js</h2><p>这个就是启动服务器的模块，同样的。。。还是要结合后面的代码来看</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var http = require("http"); </span><br><span class="line">var url = require("url"); </span><br><span class="line">   </span><br><span class="line">function start(route, handle) &#123; </span><br><span class="line">  function onRequest(request, response) &#123; </span><br><span class="line">    var pathname = url.parse(request.url).pathname; </span><br><span class="line">    var html = route(handle, pathname); </span><br><span class="line">    response.writeHead(200, &#123;"Content-Type": "text/plain"&#125;); </span><br><span class="line">    response.write(html); </span><br><span class="line">    response.end(); </span><br><span class="line">  &#125; </span><br><span class="line">   </span><br><span class="line">  http.createServer(onRequest).listen(8088); </span><br><span class="line">&#125; </span><br><span class="line">   </span><br><span class="line">exports.start = start;</span><br></pre></td></tr></table></figure>
+
+<h2 id="入口主模块-index-js"><a href="#入口主模块-index-js" class="headerlink" title="入口主模块 index.js"></a>入口主模块 index.js</h2><p>与以往启动使用 server.js不同，带路由功能，一般都会通过 index.js 启动，所以index.js 就是入口模块。<br>handle 是一个数组，映射了不同的访问路径与 业务处理模块对应函数的一一对应关系。<br><code>handle[&quot;/listCategory&quot;] = requestHandlers.listCategory;</code><br>这就表示访问路径 <code>/listCategory</code>的话，就会交给函数 requestHandlers.listCategory 来处理。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var server = require("./server"); </span><br><span class="line">var router = require("./router"); </span><br><span class="line">var requestHandlers = require("./requestHandlers"); </span><br><span class="line"> </span><br><span class="line">var handle = &#123;&#125; </span><br><span class="line">handle["/listCategory"] = requestHandlers.listCategory; </span><br><span class="line">handle["/listProduct"] = requestHandlers.listProduct; </span><br><span class="line">   </span><br><span class="line">server.start(router.route, handle);</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路整理"><a href="#思路整理" class="headerlink" title="思路整理"></a>思路整理</h2><ol>
+<li>通过如下方式启动服务器<br><code>node index.js</code></li>
+<li>index.js 调用了 server.start 函数，并且传递了 router.js 里route 函数和handle数组作为参数</li>
+<li>serverl.js 通过了8088端口启动了服务。 然后用 onRequest 函数来处理业务</li>
+<li>1 在 onRequest 中，首先获取 访问路径 pathname</li>
+<li>2 然后调用 router.js 的route 函数，并把pathname 和 handle数组传递进去</li>
+<li>在router.js 中，通过pathname为下标获调用真正的业务函数，并把业务函数的返回值返回出去。</li>
+<li>1 如果找不到，比如访问 /listUser 这个路径就没有在 handle 数组中找到对应，那么就会返回 listUser is not defined.</li>
+<li>当访问地址是 /listCategory的时候， 真正的业务函数 requestHandlers.js 中的 listCategory() 就会被调用，并返回业务 Html 代码 : “a lots of categorys”.</li>
+</ol>
+<p>通过以上的方式，最后就落实在了 requestHandlers.js 的业务代码上面了。<br>虽然看上去略复杂，但是以后如果要开发新的功能，比如 /listUser, 那么就只需要新增加 listUser 函数，并在 index.js 中对他进行映射即可了。</p>
+<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><h2 id="在路由的基础上进行开发"><a href="#在路由的基础上进行开发" class="headerlink" title="在路由的基础上进行开发"></a>在路由的基础上进行开发</h2><p>因为前面学习了路由，现在正好实践一下，在路由教程的基础之上开发新的功能。</p>
+<h2 id="准备deom-html"><a href="#准备deom-html" class="headerlink" title="准备deom.html"></a>准备deom.html</h2><p>在 src 目录下 新建 deom.html 文件，并在其中敲入如下文字:<br><code>欢迎来到我的页面</code></p>
+<h2 id="业务处理模块-requestHandlers-js-1"><a href="#业务处理模块-requestHandlers-js-1" class="headerlink" title="业务处理模块 requestHandlers.js"></a>业务处理模块 requestHandlers.js</h2><p>在 requestHandlers.js 中新增两个函数，分别是读和写<br>开头要引入 fs.js 表示使用文件模块<br><code>var fs = require(&quot;fs&quot;);</code><br>读方法是</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function readFile()&#123;</span><br><span class="line">	var html = fs.readFileSync('demo.html');</span><br><span class="line">	return html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>写方法是：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function writeFile()&#123;</span><br><span class="line">    fs.writeFile('demo.html', 'hello from how2java',(err)=&gt;&#123;</span><br><span class="line">		if(err) throw err;</span><br><span class="line">	&#125;);</span><br><span class="line">    return "write successful";</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>标记这两个函数<br><code>exports.readFile = readFile;</code><br><code>exports.writeFile = writeFile;</code> </p>
+<p><strong><em>readFileSync 这个是同步读，一般nodejs会还是会使用异步读，不过为了使用异步读，需要打破当前路由代码的结构，为了不增加学习负担，就暂时用同步读来演示了吧，效果是一样的。 而且不是 大量的 I/O 操作， 也看不出同步读和异步读的区别。</em></strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">var fs = require("fs");</span><br><span class="line"> </span><br><span class="line">function listCategory() &#123; </span><br><span class="line">    return "a lot of categorys";</span><br><span class="line">&#125; </span><br><span class="line">   </span><br><span class="line">function listProduct() &#123; </span><br><span class="line">    return "a lot of products";</span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line">function readFile()&#123;</span><br><span class="line">    var html = fs.readFileSync('demo.html');</span><br><span class="line">    return html;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">function writeFile()&#123;</span><br><span class="line">    fs.writeFile('demo.html', 'hello from how2java',(err)=&gt;&#123;</span><br><span class="line">		if(err) throw err;</span><br><span class="line">	&#125;);</span><br><span class="line">    return "write successful";</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">exports.listCategory = listCategory; </span><br><span class="line">exports.listProduct = listProduct; </span><br><span class="line">exports.readFile = readFile; </span><br><span class="line">exports.writeFile = writeFile;</span><br></pre></td></tr></table></figure>
+
+<h2 id="主模块-index-js"><a href="#主模块-index-js" class="headerlink" title="主模块 index.js"></a>主模块 index.js</h2><p>在主模块 index.js 中新增读写的映射：<br><code>handle[&quot;/readFile&quot;] = requestHandlers.readFile;</code><br><code>handle[&quot;/writeFile&quot;] = requestHandlers.writeFile;</code>  </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var server = require("./server"); </span><br><span class="line">var router = require("./router"); </span><br><span class="line">var requestHandlers = require("./requestHandlers"); </span><br><span class="line"> </span><br><span class="line">var handle = &#123;&#125; </span><br><span class="line">handle["/listCategory"] = requestHandlers.listCategory; </span><br><span class="line">handle["/listProduct"] = requestHandlers.listProduct; </span><br><span class="line">handle["/readFile"] = requestHandlers.readFile; </span><br><span class="line">handle["/writeFile"] = requestHandlers.writeFile; </span><br><span class="line">   </span><br><span class="line">server.start(router.route, handle);</span><br></pre></td></tr></table></figure>
+
+<h2 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h2><p>重启后访问测试地址观察效果<br><a href="http://127.0.0.1:8088/readFile" target="_blank" rel="noopener">http://127.0.0.1:8088/readFile</a><br><a href="http://127.0.0.1:8088/writeFile" target="_blank" rel="noopener">http://127.0.0.1:8088/writeFile</a></p>
+<h1 id="npm-安装模块"><a href="#npm-安装模块" class="headerlink" title="npm 安装模块"></a>npm 安装模块</h1><h2 id="npm-概念"><a href="#npm-概念" class="headerlink" title="npm 概念"></a>npm 概念</h2><p>前面学习了模块，那么可以想想，有很多其他做好的模块，我们只要拿来用就可以了。<br>那么npm 是什么呢？就是用来下载别人的模块，和发布自己的模块用的工具。</p>
+<h2 id="npm-版本"><a href="#npm-版本" class="headerlink" title="npm 版本"></a>npm 版本</h2><p>伴随着 node 的安装， npm 是自动安装的。<br>可以通过如下命令查看当前 npm 的版本：<br><code>npm -v</code><br><img src="/2020/06/10/node-js/n7.JPG" alt="img"></p>
+<h2 id="安装库"><a href="#安装库" class="headerlink" title="安装库"></a>安装库</h2><p>首先切换到项目目录下：<br><code>E:\node.js\project\nodejs\src</code><br>然后执行命令<br><code>npm install how2java</code><br>这样就安装好了<br><img src="/2020/06/10/node-js/n8.JPG" alt="img"></p>
+<h2 id="安装的目录所在"><a href="#安装的目录所在" class="headerlink" title="安装的目录所在"></a>安装的目录所在</h2><p>如图所示，本地安装成功后就会在这里了。<br><img src="/2020/06/10/node-js/n9.JPG" alt="img"></p>
+<h2 id="调用-test-js使用安装模块的方法"><a href="#调用-test-js使用安装模块的方法" class="headerlink" title="调用 test.js使用安装模块的方法"></a>调用 test.js使用安装模块的方法</h2><p>引入模块<br><code>var how2java = require(&quot;how2java&quot;);</code><br>调用代码<br><code>how2java.hello();</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var how2java = require("how2java"); </span><br><span class="line">how2java.hello();</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行测试"><a href="#运行测试" class="headerlink" title="运行测试"></a>运行测试</h2><p><code>node test.js</code></p>
+<p>启动后，在控制台观察如图所示的调用 how2java 模块的效果<br><img src="/2020/06/10/node-js/n10.JPG" alt="img"></p>
+<h2 id="how2java-模块哪里来"><a href="#how2java-模块哪里来" class="headerlink" title="how2java 模块哪里来"></a>how2java 模块哪里来</h2><p>那么问题就来了，这个how2java模块哪里来的呢？ 下个知识点就会讲解如何通过 npm 发布模块了</p>
+<h1 id="npm-发布模块"><a href="#npm-发布模块" class="headerlink" title="npm 发布模块"></a>npm 发布模块</h1><h2 id="how2java-模块"><a href="#how2java-模块" class="headerlink" title="how2java 模块"></a>how2java 模块</h2><p>在上个例子里讲解了如何通过 npm 安装 how2java 模块，可是这个 how2java 模块是从哪里来的呢？<br>这个 how2java 模块也是通过 npm 这个工具，发布出去的。<br>本知识点就会讲解如何来制作和发布自定义模块。</p>
+<h2 id="npmjs-com"><a href="#npmjs-com" class="headerlink" title="npmjs.com"></a>npmjs.com</h2><p>所有npm都是发布在 <a href="https://www.npmjs.com/" target="_blank" rel="noopener">https://www.npmjs.com/</a> 上面的，所以在发布之前，需要到 npmjs 上去注册一个账号，才有权限发布自己定义模块。</p>
+<p><strong><em>必须激活 账号。<br>注册之后，就会有个激活信发到注册邮箱里，必须激活。否则后面发布模块会失败。</em></strong></p>
+<h2 id="新建项目目录"><a href="#新建项目目录" class="headerlink" title="新建项目目录"></a>新建项目目录</h2><p><code>e:\project\how2java</code><br><img src="/2020/06/10/node-js/n11.JPG" alt="img"></p>
+<h2 id="新建-a-js"><a href="#新建-a-js" class="headerlink" title="新建 a.js"></a>新建 a.js</h2><p>a.js 代码很简单，就是个函数，以及exports<br><img src="/2020/06/10/node-js/n12.JPG" alt="img"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function hello()&#123;</span><br><span class="line">  console.log("hello from how2java");</span><br><span class="line">&#125;</span><br><span class="line">exports.hello=hello;</span><br></pre></td></tr></table></figure>
+
+<h2 id="新建-package-json"><a href="#新建-package-json" class="headerlink" title="新建 package.json"></a>新建 package.json</h2><p>package.json 文件，就是告诉 npmjs.com 这个模块的相关信息。<br>可以手动创建 package.json 复制我的内容（项目名称 name修改成其他的，不要再用 how2java,因为这个名称已经被我占用了）</p>
+<p>或者用 npm 命令来创建package.json 文件<br><code>npm init</code></p>
+<p>这个命令就是导致package.json 文件的生成，不嫌麻烦可以用命令生成。<br><img src="/2020/06/10/node-js/n13.JPG" alt="img"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "name": "how2java",</span><br><span class="line">  "version": "1.0.3",</span><br><span class="line">  "description": "npm of how2java",</span><br><span class="line">  "main": "a.js",</span><br><span class="line">  "scripts": &#123;</span><br><span class="line">    "test": "echo \"Error: no test specified\" &amp;&amp; exit 1"</span><br><span class="line">  &#125;,</span><br><span class="line">  "keywords": [</span><br><span class="line">    "how2java"</span><br><span class="line">  ],</span><br><span class="line">  "author": "how2j",</span><br><span class="line">  "license": "ISC"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="登陆-npm"><a href="#登陆-npm" class="headerlink" title="登陆 npm"></a>登陆 npm</h2><p>接着就是要发布了，在发布之前用如下命令登陆 前面 npmjs.com 步骤时注册的账号和密码<br><code>npm adduser</code><br><img src="/2020/06/10/node-js/n14.JPG" alt="img"></p>
+<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><p>成功登陆之后，就可以发布模板了。使用如下命令：<br><code>npm publish</code><br><img src="/2020/06/10/node-js/n15.JPG" alt="img"></p>
+<h1 id="待编辑。。。"><a href="#待编辑。。。" class="headerlink" title="待编辑。。。"></a>待编辑。。。</h1>
       
     </div>
     
@@ -430,6 +576,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/26/HttpServletRequest%E4%B8%AD-getRequestDispatcher-%E4%B8%8EsendRedirect-%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="HttpServletRequest中 getRequestDispatcher()与sendRedirect() 的区别">
+                HttpServletRequest中 getRequestDispatcher()与sendRedirect() 的区别 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -481,8 +631,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -501,7 +660,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -523,7 +682,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -556,6 +715,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#node-js-入门"><span class="nav-number">1.</span> <span class="nav-text">node.js 入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node-js的优势"><span class="nav-number">1.2.</span> <span class="nav-text">node.js的优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载安装包"><span class="nav-number">1.3.</span> <span class="nav-text">下载安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检验安装成功与否"><span class="nav-number">1.4.</span> <span class="nav-text">检验安装成功与否</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个应用"><span class="nav-number">1.5.</span> <span class="nav-text">第一个应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器代码-server-js"><span class="nav-number">1.6.</span> <span class="nav-text">服务器代码 server.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">1.7.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试"><span class="nav-number">1.8.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取参数"><span class="nav-number">2.</span> <span class="nav-text">获取参数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#server-js"><span class="nav-number">2.1.</span> <span class="nav-text">server.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行-1"><span class="nav-number">2.2.</span> <span class="nav-text">运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模仿和排错"><span class="nav-number">2.3.</span> <span class="nav-text">模仿和排错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于favion-ico"><span class="nav-number">2.4.</span> <span class="nav-text">关于favion.ico</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模块系统"><span class="nav-number">3.</span> <span class="nav-text">模块系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模块系统概念"><span class="nav-number">3.1.</span> <span class="nav-text">模块系统概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义模块"><span class="nav-number">3.2.</span> <span class="nav-text">自定义模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server-js-1"><span class="nav-number">3.3.</span> <span class="nav-text">server.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试-1"><span class="nav-number">3.4.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由"><span class="nav-number">4.</span> <span class="nav-text">路由</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#server-js-的问题"><span class="nav-number">4.1.</span> <span class="nav-text">server.js 的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由概念"><span class="nav-number">4.2.</span> <span class="nav-text">路由概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由代码实现"><span class="nav-number">4.3.</span> <span class="nav-text">路由代码实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务处理模块-requestHandlers-js"><span class="nav-number">4.4.</span> <span class="nav-text">业务处理模块 requestHandlers.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由模块-router-js"><span class="nav-number">4.5.</span> <span class="nav-text">路由模块 router.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器模块-server-js"><span class="nav-number">4.6.</span> <span class="nav-text">服务器模块 server.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#入口主模块-index-js"><span class="nav-number">4.7.</span> <span class="nav-text">入口主模块 index.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路整理"><span class="nav-number">4.8.</span> <span class="nav-text">思路整理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件操作"><span class="nav-number">5.</span> <span class="nav-text">文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在路由的基础上进行开发"><span class="nav-number">5.1.</span> <span class="nav-text">在路由的基础上进行开发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#准备deom-html"><span class="nav-number">5.2.</span> <span class="nav-text">准备deom.html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务处理模块-requestHandlers-js-1"><span class="nav-number">5.3.</span> <span class="nav-text">业务处理模块 requestHandlers.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#主模块-index-js"><span class="nav-number">5.4.</span> <span class="nav-text">主模块 index.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问"><span class="nav-number">5.5.</span> <span class="nav-text">访问</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-安装模块"><span class="nav-number">6.</span> <span class="nav-text">npm 安装模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-概念"><span class="nav-number">6.1.</span> <span class="nav-text">npm 概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-版本"><span class="nav-number">6.2.</span> <span class="nav-text">npm 版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装库"><span class="nav-number">6.3.</span> <span class="nav-text">安装库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装的目录所在"><span class="nav-number">6.4.</span> <span class="nav-text">安装的目录所在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用-test-js使用安装模块的方法"><span class="nav-number">6.5.</span> <span class="nav-text">调用 test.js使用安装模块的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行测试"><span class="nav-number">6.6.</span> <span class="nav-text">运行测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#how2java-模块哪里来"><span class="nav-number">6.7.</span> <span class="nav-text">how2java 模块哪里来</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npm-发布模块"><span class="nav-number">7.</span> <span class="nav-text">npm 发布模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#how2java-模块"><span class="nav-number">7.1.</span> <span class="nav-text">how2java 模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npmjs-com"><span class="nav-number">7.2.</span> <span class="nav-text">npmjs.com</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建项目目录"><span class="nav-number">7.3.</span> <span class="nav-text">新建项目目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建-a-js"><span class="nav-number">7.4.</span> <span class="nav-text">新建 a.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建-package-json"><span class="nav-number">7.5.</span> <span class="nav-text">新建 package.json</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登陆-npm"><span class="nav-number">7.6.</span> <span class="nav-text">登陆 npm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布"><span class="nav-number">7.7.</span> <span class="nav-text">发布</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#待编辑。。。"><span class="nav-number">8.</span> <span class="nav-text">待编辑。。。</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
