@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="show命名 use 数据库名;        进入指定数据库 show databases;    返回所有数据库 show tables;        返回当前选择的数据库内的所有表 show columns from 表名(desc 表名);    返回表结构 show status;        显示服务器状态信息 show create database 创建数据库 show cre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySql数据库">
+<meta property="og:url" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/index.html">
+<meta property="og:site_name" content="piyi的小站">
+<meta property="og:description" content="show命名 use 数据库名;        进入指定数据库 show databases;    返回所有数据库 show tables;        返回当前选择的数据库内的所有表 show columns from 表名(desc 表名);    返回表结构 show status;        显示服务器状态信息 show create database 创建数据库 show cre">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/1.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/2.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/3.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/4.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/5.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/6.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/7.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/8.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/9.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/10.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/11.JPG">
+<meta property="og:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/12.JPG">
+<meta property="article:published_time" content="2020-10-23T06:32:59.000Z">
+<meta property="article:modified_time" content="2020-10-30T09:50:37.891Z">
+<meta property="article:author" content="piyi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/1.JPG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/10/23/MySql数据库/"/>
+
+
+
+
+
+  <title>MySql数据库 | piyi的小站</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b15569dfb7ac0a3548e36ce0ac946914";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">piyi的小站</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">深度自闭中···</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="piyi">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="piyi的小站">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MySql数据库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-23T14:32:59+08:00">
+                2020-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="show命名"><a href="#show命名" class="headerlink" title="show命名"></a>show命名</h1><ul>
+<li>use 数据库名;        进入指定数据库</li>
+<li>show databases;    返回所有数据库</li>
+<li>show tables;        返回当前选择的数据库内的所有表</li>
+<li>show columns from 表名(desc 表名);    返回表结构</li>
+<li>show status;        显示服务器状态信息</li>
+<li>show create database 创建数据库</li>
+<li>show create table        创建表</li>
+<li>show grants    显示授予用户的安全权限</li>
+<li>show errors 和show warnings 用来显示服务器错误或警告消息</li>
+</ul>
+<h1 id="检索数据"><a href="#检索数据" class="headerlink" title="检索数据"></a>检索数据</h1><p>DISTINCT关键字 去重</p>
+<h2 id="LIMIT子句-返回显示几行"><a href="#LIMIT子句-返回显示几行" class="headerlink" title="LIMIT子句    返回显示几行"></a>LIMIT子句    返回显示几行</h2><p>例:<br>select prod_name from products limit 5;    返回前五行结果<br>select prod_name from products limit 4,5; 返回第四行开始的五行结果</p>
+<h2 id="order-by-子句"><a href="#order-by-子句" class="headerlink" title="order by 子句"></a>order by 子句</h2><p>select prod_name from products order by prod_name; 返回的行按prod_name列的首字符排序</p>
+<p>select prod_name from products order by prod_name desc;<br>按降序排序</p>
+<p>select prod_id,prod_price,prod_name from products order by prod_price,prod_name;<br>返回的行先按prod_price排序，若prod_price相同再按prod_name排序</p>
+<h2 id="使用完全限定的表名"><a href="#使用完全限定的表名" class="headerlink" title="使用完全限定的表名"></a>使用完全限定的表名</h2><p>select products.prod_name from products;<br>上述SQL语句等价于 select prod_name from products;</p>
+<p>表名也可以是完全限定的:<br>select products.prod_name from ysj.products;<br><strong><em>有些情形需要完全限定名</em></strong></p>
+<h1 id="过滤数据"><a href="#过滤数据" class="headerlink" title="过滤数据"></a>过滤数据</h1><blockquote>
+<p>在SELECT语句中，数据根据WHERE子句中指定的搜索条件进行过滤。WHERE子句在表名（FROM子句）之后给出</p>
+</blockquote>
+<p>WHERE子句的位置:在同时使用ORDER BY和WHERE子句时，应该让ORDER BY位于WHERE之后，否则将会产生错误</p>
+<p>select prod_name,prod_price from products where prod_price=2.5;<br>从products表中检索两个列，返回prod_price值为2.50的行</p>
+<blockquote>
+<p> MySQL允许给出多个WHERE子句。这些子句可以两种方式使用：以AND子句的方式或OR子句的方式使用</p>
+</blockquote>
+<p>AND操作符 与<br>OR操作符 或</p>
+<p>select prod_id,prod_price,prod_name from products where vend_id=1003 and prod_price&lt;=10;<br>此SQL语句检索由供应商1003制造且价格小于等于10美元的所有产品的名称和价格。</p>
+<p>select prod_name,prod_price from products where vend_id=1002 or vend_id=1003;<br>此SQL语句检索由任一个指定供应商制造的所有产品的产品名和价格</p>
+<p><strong><em>AND操作符比OR操作符计算优先级高，通过圆括号可以改变优先级</em></strong><br>select prod_name,prod_price from products where (vend_id=1002 or vend_id=1003) and prod_price &gt;=10;</p>
+<blockquote>
+<p>IN操作符<br>IN操作符用来指定条件范围，范围中的每个条件都可以进行匹配。IN取合法值的由逗号分隔的清单，全都括在圆括号中。</p>
+</blockquote>
+<p>select prod_name,prod_price from products where vend_id in(1002,1003) order by prod_name;<br>此SELECT语句检索供应商1002和1003制造的所有产品。</p>
+<p><strong><em>IN操作符完成与OR相同的功能</em></strong></p>
+<blockquote>
+<p>为什么要使用in操作符？</p>
+</blockquote>
+<ul>
+<li>在使用长的合法选项清单时，IN操作符的语法更清楚且更直观。</li>
+<li>在使用IN时，计算的次序更容易管理</li>
+<li>IN操作符一般比OR操作符清单执行更快</li>
+<li>IN的最大优点是可以包含其他SELECT语句，使得能够更动态地建立WHERE子句</li>
+</ul>
+<blockquote>
+<p>NOT操作符<br>WHERE子句中的NOT操作符有且只有一个功能，那就是否定它之后所跟的任何条件</p>
+</blockquote>
+<p>select prod_name,prod_proce from products where vend_id not in(1002，1003) order by prod_name;<br>列出除1002和1003之外的所有供应商制造的产品</p>
+<p><strong><em>MySQL支持使用NOT对IN、BETWEEN和EXISTS子句取反，这与多数其他DBMS允许使用NOT对各种条件取反有很大的差别。</em></strong></p>
+<h1 id="用通配符进行过滤"><a href="#用通配符进行过滤" class="headerlink" title="用通配符进行过滤"></a>用通配符进行过滤</h1><h2 id="通配符"><a href="#通配符" class="headerlink" title="% 通配符"></a>% 通配符</h2><p>在搜索串中，%表示任何字符出现任意次数<br>select prod_id,prod_name from products where prod_name like ‘jet%’;<br>在执行这条子句时，将检索prod_name中任意以jet起头的词</p>
+<p>select prod_id,prod_name from products where prod_name like ‘%jet%’;<br>将检索prod_name任意包含jet的词</p>
+<p><strong><em>虽然似乎%通配符可以匹配任何东西，但有一个例外，即NULL。即使是WHERE prod_name LIKE ‘%’也不能匹配用值NULL作为产品名的行。</em></strong></p>
+<h2 id="通配符-1"><a href="#通配符-1" class="headerlink" title="_ 通配符"></a>_ 通配符</h2><p><em>只匹配单个字符而不是多个字符<br>select prod_id,prod_name from products where prod_name like ‘</em> ton anvil’;<br>_总是匹配一个字符，不能多也不能少</p>
+<h2 id="使用通配符技巧"><a href="#使用通配符技巧" class="headerlink" title="使用通配符技巧"></a>使用通配符技巧</h2><p>通配符搜索的处理一般要比前面讨论的其他搜索所花时间更长。这里给出一些使用通配符要记住的技巧：</p>
+<ul>
+<li>不要过度使用通配符。如果其他操作符能达到相同的目的，应该使用其他操作符</li>
+<li>在确实需要使用通配符时，除非绝对有必要，否则不要把它们用在搜索模式的开始处。把通配符置于搜索模式的开始处，搜索起来是最慢的</li>
+<li>仔细注意通配符的位置。如果放错地方，可能不会返回想要的数据</li>
+</ul>
+<h1 id="用正则表达式进行搜索"><a href="#用正则表达式进行搜索" class="headerlink" title="用正则表达式进行搜索"></a>用正则表达式进行搜索</h1><p>对正则表达式更为透彻的介绍可能还需要参阅作者的《正则表达式必知必会》</p>
+<p>正则表达式的作用是匹配文本，将一个模式（正则表达式）与一个文本串进行比较。MySQL用WHERE子句对正则表达式提供了初步的支持，允许你指定正则表达式，过滤SELECT检索出的数据。</p>
+<p><strong><em>MySQL仅支持多数正则表达式实现的一个很小的子集</em></strong><br>select prod_name from products where prod_name regexp ‘1000’ order by prod_name;<br>检索列prod_name包含文本1000的所有行</p>
+<p>select prod_name from products where prod_name regexp ‘.000’ order by prod_name;<br>这里使用了正则表达式.000。.是正则表达式语言中一个特殊的字符。它表示匹配任意字符</p>
+<blockquote>
+<p>LIKE与REGEXP的区别<br>select prod_name from products where prod_name like ‘1000’ order by prod_name;<br>不返回值</p>
+</blockquote>
+<p>select prod_name from products where prod_name regexp ‘1000’ order by prod_name;<br>返回包含’1000’的值</p>
+<p><strong><em>LIKE匹配整个字符串然后返回结果，REGEXP匹配子串返回结果</em></strong></p>
+<blockquote>
+<p>匹配不区分大小写<br>MySQL中的正则表达式匹配不区分大小写。为区分大小写，可使用BINARY关键字<br>例:<br>WHERE prod_name REGEXP BINARY ‘JetPack .000’。</p>
+</blockquote>
+<h2 id="OR-匹配"><a href="#OR-匹配" class="headerlink" title="OR 匹配"></a>OR 匹配</h2><p>为搜索两个串之一，使用|：<br>select prod_name from products where prod_name regexp ‘1000|2000’ order by prod_name;<br>返回包含 1000 或 2000 的值</p>
+<p>使用|从功能上类似于在SELECT语句中使用OR语句，多个OR条件可并入单个正则表达式。</p>
+<p>两个以上的OR条件可以给出两个以上的OR条件。例如，’1000 | 2000 | 3000’将匹配1000或2000或3000。</p>
+<p>select prod_name from products where prod_name regexp ‘[123] Ton’ order by prod_name;<br>这里，使用了正则表达式[123] Ton。[123]定义一组字符，它的意思是匹配1或2或3，因此，1 ton和2 ton都匹配且返回（没有3 ton）<br>[]是另一种形式的OR语句，正则表达式[123]Ton为[1|2|3]Ton的缩写</p>
+<h2 id="匹配范围"><a href="#匹配范围" class="headerlink" title="匹配范围"></a>匹配范围</h2><p>集合来定义要匹配的一个或多个字符。例如，下面的集合将匹配数字0到9：<br>[0123456789]</p>
+<p>为简化这种类型的集合，可使用-来定义一个范围。下面的式子功能上等同于上述数字列表：<br>[0-9]<br>范围不限于完整的集合，[1-3]和[6-9]也是合法的范围。此外，范围不一定只是数值的，[a-z]匹配任意字母字符。</p>
+<p>select prod_name from products where prod_name regexp ‘[1-5] Ton’ order by prod_name;<br>这里使用正则表达式[1-5] Ton。[1-5]定义了一个范围，这个表达式意思是匹配1到5，因此返回3个匹配行。由于5 ton匹配，所以返回.5 ton</p>
+<h2 id="匹配特殊字符"><a href="#匹配特殊字符" class="headerlink" title="匹配特殊字符"></a>匹配特殊字符</h2><p>如果要找出包含.字符的值，怎样搜索？<br>为了匹配特殊字符，必须用\为前导。\-表示查找-，\.表示查找.</p>
+<h2 id="匹配字符类"><a href="#匹配字符类" class="headerlink" title="匹配字符类"></a>匹配字符类</h2><p>为更方便工作，可以使用预定义的字符集，称为字符类<br><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/1.JPG" alt="img"></p>
+<h2 id="匹配多个实例"><a href="#匹配多个实例" class="headerlink" title="匹配多个实例"></a>匹配多个实例</h2><p><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/2.JPG" alt="img"></p>
+<p>select prod_name from products where prod_name regexp ‘\([0-9] sticks?\)’;<br>\( 匹配(<br>[0-9] 匹配单个数字<br>s? 匹配0或1个s</p>
+<h2 id="定位符"><a href="#定位符" class="headerlink" title="定位符"></a>定位符</h2><p>为了匹配特定位置的文本，需要使用定位符<br><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/3.JPG" alt="img"><br>例:<br>select prod_name from products where prod_name regexp ‘[0-9\.]’;<br>^匹配串的开始。因此，^[0-9\.]只在.或任意数字为串中第一个字符时才匹配它们</p>
+<h2 id="测试编写的正则表达式"><a href="#测试编写的正则表达式" class="headerlink" title="测试编写的正则表达式"></a>测试编写的正则表达式</h2><p>可以在不使用数据库表的情况下用SELECT来测试正则表达式。REGEXP检查总是返回0（没有匹配）或1（匹配）。可以用带文字串的REGEXP来测试表达式，并试验它们。相应的语法如下：<br>select ‘hello’ regexp ‘[0-9]’<br>这个例子显然将返回0（因为文本hello中没有数字）</p>
+<h1 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h1><h2 id="拼接字段"><a href="#拼接字段" class="headerlink" title="拼接字段"></a>拼接字段</h2><p>concat() 拼接字段<br>例:<br>select concat(vend_name,’(‘,vend_country,’)’) from vendors;</p>
+<h2 id="去除空格"><a href="#去除空格" class="headerlink" title="去除空格"></a>去除空格</h2><p>RTrim() 去掉字段最右边空格<br>LTrim() 去掉字段最左边空格<br>Trim() 去掉串两端空格</p>
+<h2 id="使用别名"><a href="#使用别名" class="headerlink" title="使用别名"></a>使用别名</h2><p>例:<br>select vend_name as vend from vendors;<br>select vend_name vend from vendors;</p>
+<h2 id="执行算术计算"><a href="#执行算术计算" class="headerlink" title="执行算术计算"></a>执行算术计算</h2><p>例:<br>select prod_id,quantity,item_price,quantity<em>item_price as expanded_price from orderitems where order_num=20005;<br>输出中显示的expanded_price列为一个计算字段，此计算为quantity</em>item_price</p>
+<p>MySQL支持表10-1中列出的基本算术操作符。此外，圆括号可用来区分优先顺序<br><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/4.JPG" alt="img"></p>
+<h2 id="测试计算"><a href="#测试计算" class="headerlink" title="测试计算"></a>测试计算</h2><p>SELECT提供了测试和试验函数与计算的一个很好的办法。虽然SELECT通常用来从表中检索数据，但可以省略FROM子句以便简单地访问和处理表达式。例如，SELECT 3*2;将返回6，SELECT Trim(‘abc’);将返回abc，而SELECT Now()利用Now()函数返回当前日期和时间。通过这些例子，可以明白如何根据需要使用SELECT进行试验。</p>
+<h1 id="数据处理函数"><a href="#数据处理函数" class="headerlink" title="数据处理函数"></a>数据处理函数</h1><h2 id="文本处理函数"><a href="#文本处理函数" class="headerlink" title="文本处理函数"></a>文本处理函数</h2><p><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/5.JPG" alt="img"><br><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/6.JPG" alt="img"></p>
+<h2 id="日期和时间处理函数"><a href="#日期和时间处理函数" class="headerlink" title="日期和时间处理函数"></a>日期和时间处理函数</h2><p>首先需要注意的是MySQL使用的日期格式。无论你什么时候指定一个日期，不管是插入或更新表值还是用WHERE子句进行过滤，日期必须为格式yyyy-mm-dd。因此，2005年9月1日，给出为2005-09-01<br><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/7.JPG" alt="img"></p>
+<h2 id="数值处理函数"><a href="#数值处理函数" class="headerlink" title="数值处理函数"></a>数值处理函数</h2><p><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/8.JPG" alt="img"></p>
+<h1 id="聚集函数"><a href="#聚集函数" class="headerlink" title="聚集函数"></a>聚集函数</h1><p>我们经常需要汇总数据而不用把它们实际检索出来，为此MySQL提供了专门的函数<br><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/9.JPG" alt="img"><br><strong><em>上述函数都忽略列值为null的行</em></strong></p>
+<h2 id="DISTINCT关键字"><a href="#DISTINCT关键字" class="headerlink" title="DISTINCT关键字"></a>DISTINCT关键字</h2><p>在聚合函数中对字段使用DISTINCT参数，参与计算的相同列值将只考虑一个值</p>
+<h1 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h1><p>使用GROUP BY子句注意点:</p>
+<ul>
+<li>GROUP BY子句可以包含任意数目的列。这使得能对分组进行嵌套，为数据分组提供更细致的控制</li>
+<li>如果在GROUP BY子句中嵌套了分组，数据将在最后规定的分组上进行汇总。换句话说，在建立分组时，指定的所有列都一起计算（所以不能从个别的列取回数据）</li>
+<li>GROUP BY子句中列出的每个列都必须是检索列或有效的表达式（但不能是聚集函数）。如果在SELECT中使用表达式，则必须在GROUP BY子句中指定相同的表达式。不能使用别名</li>
+<li>除聚集计算语句外，SELECT语句中的每个列都必须在GROUP BY子句中给出</li>
+<li>如果分组列中具有NULL值，则NULL将作为一个分组返回。如果列中有多行NULL值，它们将分为一组</li>
+<li>GROUP BY子句必须出现在WHERE子句之后，ORDER BY子句之前</li>
+</ul>
+<h2 id="WITH-ROLLUP-关键字"><a href="#WITH-ROLLUP-关键字" class="headerlink" title="WITH ROLLUP 关键字"></a>WITH ROLLUP 关键字</h2><p>WITH ROLLUP 关键字将分组后的列值再加和汇总起来<br>select vend_id,sum(prod_price) from products group by vend_id with rollup;</p>
+<h2 id="过滤分组"><a href="#过滤分组" class="headerlink" title="过滤分组"></a>过滤分组</h2><p>目前为止所学过的所有类型的WHERE子句都可以用HAVING来替代。唯一的差别是WHERE过滤行，而HAVING过滤分组。<br><strong><em>HAVING支持所有WHERE操作符</em></strong><br><strong><em>WHERE在数据分组前进行过滤，HAVING在数据分组后进行过滤</em></strong></p>
+<h1 id="select子句顺序"><a href="#select子句顺序" class="headerlink" title="select子句顺序"></a>select子句顺序</h1><p><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/10.JPG" alt="img"><br><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/11.JPG" alt="img"></p>
+<h1 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h1><p>假如需要列出订购物品TNT2的所有客户，应该怎样检索？下面列出具体的步骤<br>(1) 检索包含物品TNT2的所有订单的编号。<br>(2) 检索具有前一步骤列出的订单编号的所有客户的ID。<br>(3) 检索前一步骤返回的所有客户ID的客户信息。<br>上述每个步骤都可以单独作为一个查询来执行。可以把一条SELECT语句返回的结果用于另一条SELECT语句的WHERE子句。也可以使用子查询来把3个查询组合成一条语句。</p>
+<p>select * from customers where cust_id in (select cust_id from orders where order_num in (select order_num from orderitems where prod_id=”TNT2”));</p>
+<h2 id="作为计算字段使用子查询"><a href="#作为计算字段使用子查询" class="headerlink" title="作为计算字段使用子查询"></a>作为计算字段使用子查询</h2><p>使用子查询的另一方法是创建计算字段。假如需要显示customers表中每个客户的订单总数。订单与相应的客户ID存储在orders表中。为了执行这个操作，遵循下面的步骤。<br>(1) 从customers表中检索客户列表。<br>(2) 对于检索出的每个客户，统计其在orders表中的订单数目。<br>select cust_name,cust_state,(select count(*) from orders where orders.cust_id=customers.cust_id) as orders from customers;</p>
+<h1 id="联结表"><a href="#联结表" class="headerlink" title="联结表"></a>联结表</h1><h2 id="笛卡儿积"><a href="#笛卡儿积" class="headerlink" title="笛卡儿积"></a>笛卡儿积</h2><p>由没有联结条件的表关系返回的结果为笛卡儿积。检索出的行的数目将是第一个表中的行数乘以第二个表中的行数。<br>例:<br>select vend_name,prod_name,prod_price from vendors,products;</p>
+<h2 id="内部联结"><a href="#内部联结" class="headerlink" title="内部联结"></a>内部联结</h2><p>目前为止所用的联结称为等值联结（equijoin），它基于两个表之间的相等测试。这种联结也称为内部联结。<br>例:<br>select vend_name,prod_name,prod_price from vendors,products where vendors.vend_id=products.vend_id;</p>
+<p>select vend_name,prod_name,prod_price from vendors inner join products on vendors.vend_id = products.vend_id;</p>
+<p><strong><em>ANSI SQL规范首选INNER JOIN语法。此外，尽管使用WHERE子句定义联结的确比较简单，但是使用明确的联结语法能够确保不会忘记联结条件，有时候这样做也能影响性能。</em></strong></p>
+<h2 id="联结多个表"><a href="#联结多个表" class="headerlink" title="联结多个表"></a>联结多个表</h2><p>SQL对一条SELECT语句中可以联结的表的数目没有限制。创建联结的基本规则也相同。首先列出所有表，然后定义表之间的关系<br>例:<br>select prod_name,vend_name,prod_price,quantity from orderitems,products,vendors where products.vend_id=vendors.vend_id and orderitems.prod_id = products.prod_id and order_num=20005;<br>此例子显示编号为20005的订单中的物品。订单物品存储在orderitems表中。每个产品按其产品ID存储，它引用products表中的产品。这些产品通过供应商ID联结到vendors表中相应的供应商，供应商ID存储在每个产品的记录中。这里的FROM子句列出了3个表，而WHERE子句定义了这两个联结条件，而第三个联结条件用来过滤出订单20005中的物品。</p>
+<p>select cust_name,cust_contact from customers,orders,orderitems where customers.cust_id=orders.cust_id and orders.order_num=orderitems.order_num and orderitems.prod_id=’TNT2’;</p>
+<p><strong><em>MySQL在运行时关联指定的每个表以处理联结。这种处理可能是非常耗费资源的，因此应该仔细，不要联结不必要的表。联结的表越多，性能下降越厉害</em></strong></p>
+<h1 id="高级联结"><a href="#高级联结" class="headerlink" title="高级联结"></a>高级联结</h1><h2 id="使用表别名"><a href="#使用表别名" class="headerlink" title="使用表别名"></a>使用表别名</h2><p>别名除了用于列名和计算字段外，SQL还允许给表名起别名。这样做有两个主要理由：</p>
+<ul>
+<li>缩短SQL语句；</li>
+<li>允许在单条SELECT语句中多次使用相同的表。</li>
+</ul>
+<p>例:<br>select cust_name,cust_contact from customers as c,orders as o,orderitems as oi where c.cust_id=o.cust_id and oi.order_num=o.order_num and prod_id=’TNT2’;</p>
+<h2 id="自联结"><a href="#自联结" class="headerlink" title="自联结"></a>自联结</h2><p>select p1.prod_id,p1.prod_name from products p1,products p2 where p1.vend_id=p2.vend_id and p2.prod_id=’DTNTR’;<br>此查询中需要的两个表实际上是相同的表，因此products表在FROM子句中出现了两次。虽然这是完全合法的，但对products的引用具有二义性，因为MySQL不知道你引用的是products表中的哪个实例。为解决此问题，使用了表别名。</p>
+<h2 id="自然联结"><a href="#自然联结" class="headerlink" title="自然联结"></a>自然联结</h2><p>无论何时对表进行联结，应该至少有一个列出现在不止一个表中（被联结的列）。标准的联结（前一章中介绍的内部联结）返回所有数据，甚至相同的列多次出现。自然联结排除多次出现，使每个列只返回一次<br>select c.*,o.order_num,o.order_date,oi.prod_id,oi.quantity,oi.item_price from customers as c,orders as o,orderitems as oi where c.cust_id=o.cust_id and oi.order_num=o.order_num and prod_id=’FB’;</p>
+<h2 id="外部联结"><a href="#外部联结" class="headerlink" title="外部联结"></a>外部联结</h2><p>许多联结将一个表中的行与另一个表中的行相关联。但有时候会需要包含没有关联行的那些行</p>
+<p>外部联结语法与内部联结类似，为了检索所有客户，包括那些没有订单的客户，可如下进行：<br>select customers.cust_id,orders.order_num from customers inner join orders on customers.cust_id = orders.cust_id;</p>
+<p><strong><em>LEFT OUTER JOIN:左外联结</em></strong><br><strong><em>RIGHT OUTER JOIN:右外联结</em></strong></p>
+<h2 id="使用带聚集函数的联结"><a href="#使用带聚集函数的联结" class="headerlink" title="使用带聚集函数的联结"></a>使用带聚集函数的联结</h2><p>select customers.cust_name,customers.cust_id,count(orders.order_num) as num_ord from customers left outer join orders on customers.cust_id=orders.cust_id group by customers.cust_id;</p>
+<h2 id="使用联结和联结条件"><a href="#使用联结和联结条件" class="headerlink" title="使用联结和联结条件"></a>使用联结和联结条件</h2><p>关于联结及其使用的某些要点：</p>
+<ul>
+<li>注意所使用的联结类型。一般我们使用内部联结，但使用外部联结也是有效的</li>
+<li>保证使用正确的联结条件，否则将返回不正确的数据</li>
+<li>应该总是提供联结条件，否则会得出笛卡儿积</li>
+<li>在一个联结中可以包含多个表，甚至对于每个联结可以采用不同的联结类型。虽然这样做是合法的，一般也很有用，但应该在一起测试它们前，分别测试每个联结。这将使故障排除更为简单</li>
+</ul>
+<h1 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h1><p>MySQL也允许执行多个查询（多条SELECT语句），并将结果作为单个查询结果集返回。这些组合查询通常称为并（union）或复合查询</p>
+<p>有两种基本情况，其中需要使用组合查询：</p>
+<ul>
+<li>在单个查询中从不同的表返回类似结构的数据</li>
+<li>对单个表执行多个查询，按单个查询返回数据</li>
+</ul>
+<h2 id="使用UNION"><a href="#使用UNION" class="headerlink" title="使用UNION"></a>使用UNION</h2><p>假如需要价格小于等于5的所有物品的一个列表，而且还想包括供应商1001和1002生产的所有物品（不考虑价格）</p>
+<p>使用where子句：<br>select * from products where prod_price&lt;=5 or vend_id in(1001,1002);</p>
+<p>使用UNION:<br>select * from products where prod_price&lt;=5 union select * from products where vend_id in(1001,1002);</p>
+<blockquote>
+<p>UNION规则</p>
+</blockquote>
+<ul>
+<li>UNION必须由两条或两条以上的SELECT语句组成，语句之间用关键字UNION分隔</li>
+<li>UNION中的每个查询必须包含相同的列、表达式或聚集函数（不过各个列不需要以相同的次序列出）</li>
+<li>列数据类型必须兼容：类型不必完全相同，但必须是DBMS可以隐含地转换的类型（例如，不同的数值类型或不同的日期类型）</li>
+</ul>
+<p><strong><em>UNION从查询结果集中会自动去除重复的行，这是UNION的默认行为，如果想返回所有匹配行，可使用UNION ALL而不是UNION(多个where子句的查询也会去除重复的行)</em></strong></p>
+<blockquote>
+<p>对组合查询结果排序</p>
+</blockquote>
+<p>SELECT语句的输出用ORDER BY子句排序。在用UNION组合查询时，只能使用一条ORDER BY子句，它必须出现在最后一条SELECT语句之后</p>
+<h1 id="全文本搜索"><a href="#全文本搜索" class="headerlink" title="全文本搜索"></a>全文本搜索</h1><p>并非所有引擎都支持全文本搜索，MySQL支持几种基本的数据库引擎，两个最常使用的引擎为MyISAM和InnoDB，前者支持全文本搜索，而后者不支持。样例表中productnotes用的MyISAM</p>
+<p>LIKE关键字利用通配操作符匹配文本，REGEXP用正则表达式匹配列值，虽然这两个搜索机制非常有用，但存在几个重要限制:</p>
+<ul>
+<li>性能——通配符和正则表达式匹配通常要求MySQL尝试匹配表中所有行（而且这些搜索极少使用表索引）。因此，由于被搜索行数不断增加，这些搜索可能非常耗时</li>
+<li>明确控制——使用通配符和正则表达式匹配，很难（而且并不总是能）明确地控制匹配什么和不匹配什么。例如，指定一个词必须匹配，一个词必须不匹配，而一个词仅在第一个词确实匹配的情况下才可以匹配或者才可以不匹配</li>
+<li>智能化的结果——虽然基于通配符和正则表达式的搜索提供了非常灵活的搜索，但它们都不能提供一种智能化的选择结果的方法。例如，一个特殊词的搜索将会返回包含该词的所有行，而不区分包含单个匹配的行和包含多个匹配的行（按照可能是更好的匹配来排列它们）。类似，一个特殊词的搜索将不会找出不包含该词但包含其他相关词的行</li>
+<li></li>
+</ul>
+<p>所有这些限制以及更多的限制都可以用全文本搜索来解决。在使用全文本搜索时，MySQL不需要分别查看每个行，不需要分别分析和处理每个词。MySQL创建指定列中各词的一个索引，搜索可以针对这些词进行。这样，MySQL可以快速有效地决定哪些词匹配（哪些行包含它们），哪些词不匹配，它们匹配的频率，等等</p>
+<p><strong><em>为了进行全文本搜索，必须索引被搜索的列，而且要随着数据的改变不断地重新索引。在对表列进行适当设计后，MySQL会自动进行所有的索引和重新索引。在索引之后，SELECT可与Match()和Against()一起使用以实际执行搜索。</em></strong></p>
+<h2 id="启用全文本搜索支持"><a href="#启用全文本搜索支持" class="headerlink" title="启用全文本搜索支持"></a>启用全文本搜索支持</h2><p>例:<br>create table productnotes(<br>    note_id int not null auto_increment,<br>    prod_id char(10) not null,<br>    note_date datetime not null,<br>    note_text text null,<br>    primary key(note_id),<br>    fulltext(note_text)<br>)engine=MyISAM;<br>为了进行全文本搜索，MySQL根据子句FULLTEXT(note_text)的指示对它进行索引。这里的FULLTEXT索引单个列，如果需要也可以指定多个列。</p>
+<p>在定义之后，MySQL自动维护该索引。在增加、更新或删除行时，索引随之自动更新。可以在创建表时指定FULLTEXT，或者在稍后指定（在这种情况下所有已有数据必须立即索引）。</p>
+<p><strong><em>如果正在导入数据到一个新表，应该首先导入所有数据，然后再修改表，定义FULLTEXT</em></strong></p>
+<h2 id="进行全文本搜索"><a href="#进行全文本搜索" class="headerlink" title="进行全文本搜索"></a>进行全文本搜索</h2><p>在索引之后，使用两个函数Match()和Against()执行全文本搜索，其中Match()指定被搜索的列，Against()指定要使用的搜索表达式<br>例:<br>select note_text from productnotes where match(note_text) against(‘rabbit’);</p>
+<p>传递给Match()的值必须与FULLTEXT()定义中的相同。如果指定多个列，则必须列出它们（而且次序正确）</p>
+<p>除非使用BINARY方式，否则全文本搜索不区分大小写</p>
+<blockquote>
+<p>在SELECT而不是WHERE子句中使用Match()和Against()。这使所有行都被返回Match()和Against()用来建立一个计算列（别名为rank），此列包含全文本搜索计算出的等级值。等级由MySQL根据行中词的数目、唯一词的数目、整个索引中词的总数以及包含该词的行的数目计算出来。正如所见，不包含词rabbit的行等级为0（因此不被前一例子中的WHERE子句选择）。确实包含词rabbit的两个行每行都有一个等级值，文本中词靠前的行的等级值比词靠后的行的等级值高。</p>
+</blockquote>
+<p>select note_text,match(note_text) against(‘rabbit’) as rank from productnotes;</p>
+<h2 id="使用查询扩展"><a href="#使用查询扩展" class="headerlink" title="使用查询扩展"></a>使用查询扩展</h2><p>假如你想找出所有提到anvils的注释。只有一个注释包含词anvils，但你还想找出可能与你的搜索有关的所有其他行，即使它们不包含词anvils，此时使用查询扩展</p>
+<p>使用查询扩展时，MySQL对数据和索引进行两遍扫描来完成搜索：</p>
+<ul>
+<li>首先，进行一个基本的全文本搜索，找出与搜索条件匹配的所有行</li>
+<li>其次，MySQL检查这些匹配行并选择所有有用的词</li>
+<li>再其次，MySQL再次进行全文本搜索，这次不仅使用原来的条件，而且还使用所有有用的词<br>例:<br>首先进行一个简单的全文本搜索，没有查询扩展：<br>select note_text from productnotes where match(note_text) against(‘anvils’);<br>只有一行包含词anvils，因此只返回一行</li>
+</ul>
+<p>下面是相同的搜索，这次使用查询扩展：<br>select note_text from productnotes where match(note_text) against(‘anvils’ with query expansion);<br>这次返回了7行。第一行包含词anvils，因此等级最高。第二行与anvils无关，但因为它包含第一行中的两个词（customer和recommend），所以也被检索出来。第3行也包含这两个相同的词，但它们在文本中的位置更靠后且分开得更远，因此也包含这一行，但等级为第三。第三行确实也没有涉及anvils（按它们的产品名）</p>
+<p>查询扩展极大地增加了返回的行数，但这样做也增加了你实际上并不想要的行的数目</p>
+<h2 id="布尔文本搜索"><a href="#布尔文本搜索" class="headerlink" title="布尔文本搜索"></a>布尔文本搜索</h2><p>MySQL支持全文本搜索的另外一种形式，称为布尔方式，即使没有FULLTEXT索引也可以使用</p>
+<p>为了匹配包含heavy但不包含任意以rope开始的词的行，可使用以下查询：<br>select note_text from productnotes where match(note_text) against(‘heavy -rope*’ in boolean mode);</p>
+<p><img src="/2020/10/23/MySql%E6%95%B0%E6%8D%AE%E5%BA%93/12.JPG" alt="img"></p>
+<h2 id="全文本搜索的使用说明"><a href="#全文本搜索的使用说明" class="headerlink" title="全文本搜索的使用说明"></a>全文本搜索的使用说明</h2><ul>
+<li>在索引全文本数据时，短词被忽略且从索引中排除。短词定义为那些具有3个或3个以下字符的词（如果需要，这个数目可以更改）</li>
+<li>MySQL带有一个内建的非用词（stopword）列表，这些词在索引全文本数据时总是被忽略。如果需要，可以覆盖这个列表</li>
+<li>许多词出现的频率很高，搜索它们没有用处（返回太多的结果）。因此，MySQL规定了一条50%规则，如果一个词出现在50%以上的行中，则将它作为一个非用词忽略。50%规则不用于IN BOOLEAN MODE</li>
+<li>如果表中的行数少于3行，则全文本搜索不返回结果（因为每个词或者不出现，或者至少出现在50%的行中）</li>
+<li>忽略词中的单引号。例如，don’t索引为dont</li>
+<li>不具有词分隔符（包括日语和汉语）的语言不能恰当地返回全文本搜索结果</li>
+<li>如前所述，仅在MyISAM数据库引擎中支持全文本搜索</li>
+</ul>
+<h1 id="数据插入"><a href="#数据插入" class="headerlink" title="数据插入"></a>数据插入</h1><p>INSERT是用来插入（或添加）行到数据库表的。插入可以用几种方式使用：</p>
+<ul>
+<li>插入完整的行</li>
+<li>插入行的一部分</li>
+<li>插入多行</li>
+<li>插入某些查询的结果</li>
+</ul>
+<p>例:<br>insert into customers values(null,’Pep E. LaPew’,’100 Main Street’,’Los Angeles’,’CA’,’90046’,’USA’,null,null);<br>这种语法很简单，但并不安全，应该尽量避免使用,上面的SQL语句高度依赖于表中列的定义次序</p>
+<p>编写INSERT语句的更安全（不过更烦琐）的方法如下：<br>insert into customers(cust_name,cust_address,cust_city,cust_state,cust_zip,cust_country,cust_contact,cust_email) values(null,’Pep E. LaPew’,’100 Main Street’,’Los Angeles’,’CA’,’90046’,’USA’,null,null);<br>因为提供了列名，VALUES必须以其指定的次序匹配指定的列名，不一定按各个列出现在实际表中的次序。其优点是，即使表的结构改变，此INSERT语句仍然能正确工作</p>
+<p><strong><em>提高整体性能:如果数据检索是最重要的（通常是这样），则你可以通过在INSERT和INTO之间添加关键字LOW_PRIORITY，指示MySQL降低INSERT语句的优先级，如下所示：insert low_priority into …;这也适用UPDATE和DELETE语句</em></strong></p>
+<h2 id="插入多行"><a href="#插入多行" class="headerlink" title="插入多行"></a>插入多行</h2><p>insert into customers(<br>    cust_name,<br>    cust_address,<br>    cust_city,<br>    cust_state,<br>    cust_zip,<br>    cust_country,<br>    cust_contact,<br>    cust_email)<br>    values(<br>    null,’Pep E. LaPew’,’100 Main Street’,’Los Angeles’,’CA’,’90046’,’USA’,null,null),<br>    (null,’Pep E. LaPew’,’100 Main Street’,’Los Angeles’,’CA’,’90046’,’USA’,null,null),<br>    (null,’Pep E. LaPew’,’100 Main Street’,’Los Angeles’,’CA’,’90046’,’USA’,null,null);</p>
+<h2 id="插入检索出的数据"><a href="#插入检索出的数据" class="headerlink" title="插入检索出的数据"></a>插入检索出的数据</h2><p>INSERT还存在另一种形式，可以利用它将一条SELECT语句的结果插入表中。这就是所谓的INSERT SELECT，它是由一条INSERT语句和一条SELECT语句组成的<br>例:<br>insert into customers(cust_id,cust_contact,cust_email,cust_name,cust_address,cust_city,cust_state,cust_zip,cust_country) SELECT cust_id,cust_contact,cust_email,cust_name,cust_address,cust_city,cust_state,cust_country from custnew;<br>这个例子使用INSERT SELECT从custnew中将所有数据导入customers。SELECT语句从custnew检索出要插入的值，而不是列出它们。SELECT中列出的每个列对应于customers表名后所跟的列表中的每个列。这条语句将插入多少行有赖于custnew表中有多少行。如果这个表为空，则没有行被插入（也不产生错误，因为操作仍然是合法的）。如果这个表确实含有数据，则所有数据将被插入到customers</p>
+<p>这个例子导入了cust_id（假设你能够确保cust_id的值不重复）。你也可以简单地省略这列（从INSERT和SELECT中），这样MySQL就会生成新值</p>
+<p><strong><em>为简单起见，这个例子在INSERT和SELECT语句中使用了相同的列名。但是，不一定要求列名匹配。事实上，MySQL甚至不关心SELECT返回的列名。它使用的是列的位置，因此SELECT中的第一列（不管其列名）将用来填充表列中指定的第一个列，第二列将用来填充表列中指定的第二个列，如此等等。这对于从使用不同列名的表中导入数据是非常有用的</em></strong></p>
+<p><strong><em>INSERT SELECT中SELECT语句可包含WHERE子句以过滤插入的数据</em></strong></p>
+<h1 id="更新和删除数据"><a href="#更新和删除数据" class="headerlink" title="更新和删除数据"></a>更新和删除数据</h1><h2 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h2><p>基本的UPDATE语句由3部分组成，分别是：</p>
+<ul>
+<li>要更新的表</li>
+<li>列名和它们的新值</li>
+<li>确定要更新行的过滤条件<br>举一个简单例子。客户10005现在有了电子邮件地址，因此他的记录需要更新，语句如下：<br>update customers set cust_email=’ysj@qq.com’ where cust_id=10005;</li>
+</ul>
+<blockquote>
+<p>IGNORE关键字</p>
+</blockquote>
+<p>如果用UPDATE语句更新多行，并且在更新这些行中的一行或多行时出一个现错误，则整个UPDATE操作被取消,可使用IGNORE关键字，如下所示：<br>update ignore customers…</p>
+<blockquote>
+<p>为了删除某个列的值，可设置它为NULL（假如表定义允许NULL值）。如下进行：</p>
+</blockquote>
+<p>update customers set cust_email=null where cust_id =10005;</p>
+<h2 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h2><p>使用DELETE语句。可以两种方式使用DELETE：</p>
+<ul>
+<li>从表中删除特定的行</li>
+<li>从表中删除所有行</li>
+</ul>
+<p>面的语句从customers表中删除一行：<br>delete from customers where cust_id=10006;</p>
+<p>DELETE FROM要求指定从中删除数据的表名。WHERE子句过滤要删除的行。在这个例子中，只删除客户10006。<br><strong><em>如果省略WHERE子句，它将删除表中每个客户;DELETE删除整行而不是删除列。为了删除指定的列，请使用UPDATE语句</em></strong></p>
+<p><strong><em>DELETE语句从表中删除行，甚至是删除表中所有行。但是，DELETE不删除表本身。</em></strong></p>
+<h2 id="TRUNCATE-TABLE语句"><a href="#TRUNCATE-TABLE语句" class="headerlink" title="TRUNCATE TABLE语句"></a>TRUNCATE TABLE语句</h2><p>如果想从表中删除所有行，不要使用DELETE。可使用TRUNCATE TABLE语句，它完成相同的工作，但速度更快（TRUNCATE实际是删除原来的表并重新创建一个表，而不是逐行删除表中的数据）</p>
+<h2 id="更新和删除的注意点"><a href="#更新和删除的注意点" class="headerlink" title="更新和删除的注意点"></a>更新和删除的注意点</h2><p>UPDATE和DELETE语句全都具有WHERE子句，这样做的理由很充分。如果省略了WHERE子句，则UPDATE或DELETE将被应用到表中所有的行</p>
+<p>SQL程序员使用UPDATE或DELETE时所遵循的习惯：</p>
+<ul>
+<li>除非确实打算更新和删除每一行，否则绝对不要使用不带WHERE子句的UPDATE或DELETE语句</li>
+<li>保证每个表都有主键，尽可能像WHERE子句那样使用它（可以指定各主键、多个值或值的范围）</li>
+<li>在对UPDATE或DELETE语句使用WHERE子句前，应该先用SELECT进行测试，保证它过滤的是正确的记录，以防编写的WHERE子句不正确</li>
+<li>使用强制实施引用完整性的数据库，这样MySQL将不允许删除具有与其他表相关联的数据的行</li>
+</ul>
+<h1 id="创建和操纵表"><a href="#创建和操纵表" class="headerlink" title="创建和操纵表"></a>创建和操纵表</h1><p>在创建新表时，指定的表名必须不存在，否则将出错。如果要防止意外覆盖已有的表，SQL要求首先手工删除该表，然后再重建它，而不是简单地用创建表语句覆盖它。</p>
+<p>如果你仅想在一个表不存在时创建它，应该在表名后给出IF NOT EXISTS。这样做不检查已有表的模式是否与你打算创建的表模式相匹配。它只是查看表名是否存在，并且仅在表名不存在时创建它</p>
+<h2 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h2><p>primary key(vend_id);</p>
+<h2 id="AUTO-INCREMENT"><a href="#AUTO-INCREMENT" class="headerlink" title="AUTO_INCREMENT"></a>AUTO_INCREMENT</h2><p>如果一个列被指定为AUTO_INCREMENT，则它需要使用特殊的值吗？你可以简单地在INSERT语句中指定一个值，只要它是唯一的（至今尚未使用过）即可，该值将被用来替代自动生成的值。后续的增量将开始使用该手工插入的值</p>
+<p>如何在使用AUTO_INCREMENT列时获得这个值呢？可使用last_insert_id()函数获得这个值，如下所示：<br>select last_insert_id();<br>此语句返回最后一个AUTO_INCREMENT值，然后可以将它用于后续的MySQL语句</p>
+<h2 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h2><p>默认值用CREATE TABLE语句的列定义中的DEFAULT关键字指定</p>
+<p>MySQL不允许使用函数作为默认值，它只支持常量</p>
+<h2 id="引擎类型"><a href="#引擎类型" class="headerlink" title="引擎类型"></a>引擎类型</h2><p>MySQL有一个具体管理和处理数据的内部引擎。在你使用CREATE TABLE语句时，该引擎具体创建表，而在你使用SELECT语句或进行其他数据库处理时，该引擎在内部处理你的请求。多数时候，此引擎都隐藏在DBMS内，不需要过多关注它</p>
+<p>MySQL与其他DBMS不一样，它具有多种引擎。它打包多个引擎，这些引擎都隐藏在MySQL服务器内，全都能执行CREATE TABLE和SELECT等命令</p>
+<p>你完全可以忽略这些数据库引擎。如果省略ENGINE=语句，则使用默认引擎（很可能是MyISAM），多数SQL语句都会默认使用它。但并不是所有语句都默认使用它，这就是为什么ENGINE=语句很重要的原因</p>
+<p>以下是几个需要知道的引擎：</p>
+<ul>
+<li>InnoDB是一个可靠的事务处理引擎，它不支持全文本搜索</li>
+<li>MEMORY在功能等同于MyISAM，但由于数据存储在内存（不是磁盘）中，速度很快（特别适合于临时表）</li>
+<li>MyISAM是一个性能极高的引擎，它支持全文本搜索，但不支持事务处理</li>
+</ul>
+<p><strong><em>混用引擎类型有一个大缺陷,使用一个引擎的表不能引用具有使用不同引擎的表的外键</em></strong></p>
+<h2 id="更新表"><a href="#更新表" class="headerlink" title="更新表"></a>更新表</h2><p>为更新表定义，可使用ALTER TABLE语句</p>
+<p>例:<br>alter table demo add sex varchar(5);<br>给demo表添加一个sex列，必须明确其数据类型</p>
+<p>alter table demo drop column sex;<br>删除demo表的sex列</p>
+<p>alter table orderitems add constraint fk_orderitems_orders foreign key(order_num) references orders (order_num);<br>给orderitems表的order_num字段添加外键约束指向orders表的order_num字段</p>
+<h2 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h2><p>DROP TABLE 表名;<br>删除整个表而不是其内容</p>
+<h2 id="重命名表"><a href="#重命名表" class="headerlink" title="重命名表"></a>重命名表</h2><p>rename table 原表名 to 新表名</p>
+<p>rename table 原表名 to 新表名,原表名 to 新表名,原表名 to 新表名;<br>对多个表重命名</p>
+<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><p>视图是虚拟的表。与包含数据的表不一样，视图只包含使用时动态检索数据的查询<br>例:<br>select cust_name,cust_contact from customers,orders,orderitems where customers.cust_id=orders.cust_id and orderitems.order_num=orders.order_num and prod_id=’TNT2’;<br>此查询用来检索订购了某个特定产品的客户。任何需要这个数据的人都必须理解相关表的结构，并且知道如何创建查询和对表进行联结。为了检索其他产品（或多个产品）的相同数据，必须修改最后的WHERE子句。</p>
+<p>现在，假如可以把整个查询包装成一个名为productcustomers的虚拟表，则可以如下轻松地检索出相同的数据：<br>select cust_name,cust_contact from productcustomers where prod_id=’TNT2’;<br>这就是视图的作用。productcustomers是一个视图，作为视图，它不包含表中应该有的任何列或数据，它包含的是一个SQL查询（与上面用以正确联结表的相同的查询）</p>
+<h2 id="为什么使用视图"><a href="#为什么使用视图" class="headerlink" title="为什么使用视图"></a>为什么使用视图</h2><ul>
+<li>重用SQL语句</li>
+<li>简化复杂的SQL操作。在编写查询后，可以方便地重用它而不必知道它的基本查询细节</li>
+<li>使用表的组成部分而不是整个表</li>
+<li>保护数据。可以给用户授予表的特定部分的访问权限而不是整个表的访问权限</li>
+<li>更改数据格式和表示。视图可返回与底层表的表示和格式不同的数据</li>
+</ul>
+<p>在视图创建之后，可以用与表基本相同的方式利用它们。可以对视图执行SELECT操作，过滤和排序数据，将视图联结到其他视图或表，甚至能添加和更新数据(添加和更新数据存在某些限制)</p>
+<p>视图本身不包含数据，因此它们返回的数据是从其他表中检索出来的。在添加或更改这些表中的数据时，视图将返回改变过的数据</p>
+<h2 id="视图的规则和限制"><a href="#视图的规则和限制" class="headerlink" title="视图的规则和限制"></a>视图的规则和限制</h2><ul>
+<li>与表一样，视图必须唯一命名（不能给视图取与别的视图或表相同的名字）</li>
+<li>对于可以创建的视图数目没有限制</li>
+<li>为了创建视图，必须具有足够的访问权限。这些限制通常由数据库管理人员授予</li>
+<li>视图可以嵌套，即可以利用从其他视图中检索数据的查询来构造一个视图</li>
+<li>ORDER BY可以用在视图中，但如果从该视图检索数据SELECT中也含有ORDER BY，那么该视图中的ORDER BY将被覆盖。</li>
+<li>视图不能索引，也不能有关联的触发器或默认值</li>
+<li>视图可以和表一起使用。例如，编写一条联结表和视图的SELECT语句</li>
+</ul>
+<h2 id="使用视图"><a href="#使用视图" class="headerlink" title="使用视图"></a>使用视图</h2><ul>
+<li>视图用CREATE VIEW语句来创建</li>
+<li>使用SHOW CREATE VIEW viewname；来查看创建视图的语句</li>
+<li>用DROP删除视图，其语法为DROP VIEW viewname</li>
+<li>更新视图时，可以先用DROP再用CREATE，也可以直接用CREATE OR REPLACE VIEW。如果要更新的视图不存在，则第2条更新语句会创建一个视图；如果要更新的视图存在，则第2条更新语句会替换原有视图</li>
+</ul>
+<h2 id="利用视图简化复杂的联结"><a href="#利用视图简化复杂的联结" class="headerlink" title="利用视图简化复杂的联结"></a>利用视图简化复杂的联结</h2><p>create view productcustomers as select cust_name,cust_contact,prod_id from customers,orders,orderitems where customers.cust_id=orders.cust_id and orderitems.order_num=orders.order_num;<br>这条语句创建一个名为productcustomers的视图，它联结三个表，以返回已订购了任意产品的所有客户的列表。如果执行SELECT * FROM productcustomers，将列出订购了任意产品的客户</p>
+<p>为检索订购了产品TNT2的客户，可如下进行：<br>select cust_name,cust_contact from productcustomers where prod_id=’TNT2’;</p>
+<h2 id="用视图重新格式化检索出的数据"><a href="#用视图重新格式化检索出的数据" class="headerlink" title="用视图重新格式化检索出的数据"></a>用视图重新格式化检索出的数据</h2><p>视图的另一常见用途是重新格式化检索出的数据。下面的SELECT语句在单个组合计算列中返回供应商名和位置：<br>select concat(rtrim(vend_name),’(‘,rtrim(vend_country),’)’) as vend_title from vendors order by vend_name;</p>
+<p>现在，假如经常需要这个格式的结果。不必在每次需要时执行联结，创建一个视图，每次需要时使用它即可。为把此语句转换为视图，可按如下进行：<br>create view vendorlocations as select concat(rtrim(vend_name),’(‘,rtrim(vend_country),’)’) as vend_title from vendors order by vend_name;</p>
+<h2 id="用视图过滤不想要的数据"><a href="#用视图过滤不想要的数据" class="headerlink" title="用视图过滤不想要的数据"></a>用视图过滤不想要的数据</h2><p>视图对于应用普通的WHERE子句也很有用。例如，可以定义customeremaillist视图，它过滤没有电子邮件地址的客户。为此目的，可使用下面的语句：<br>create view customeremaillist as select cust_id,cust_name,cust_email from customers where cust_email is not null;</p>
+<h2 id="更新视图"><a href="#更新视图" class="headerlink" title="更新视图"></a>更新视图</h2><p>通常，视图是可更新的，新一个视图将更新其基表，视图本身没有数据。如果你对视图增加或删除行，实际上是对其基表增加或删除行</p>
+<p>如果MySQL不能正确地确定被更新的基数据，则不允许更新（包括插入和删除）。这实际上意味着，如果视图定义中有以下操作，则不能进行视图的更新：</p>
+<ul>
+<li>分组</li>
+<li>联结</li>
+<li>子查询</li>
+<li>并</li>
+<li>聚集函数</li>
+<li>distinct</li>
+<li>计算列</li>
+</ul>
+<h1 id="使用存储过程"><a href="#使用存储过程" class="headerlink" title="使用存储过程"></a>使用存储过程</h1><p>迄今为止，使用的大多数SQL语句都是针对一个或多个表的单条语句。并非所有操作都这么简单，经常会有一个完整的操作需要多条语句才能完成。例如，考虑以下的情形：</p>
+<ul>
+<li>为了处理订单，需要核对以保证库存中有相应的物品。</li>
+<li>如果库存有物品，这些物品需要预定以便不将它们再卖给别的人，并且要减少可用的物品数量以反映正确的库存量。</li>
+<li>库存中没有的物品需要订购，这需要与供应商进行某种交互。</li>
+<li>关于哪些物品入库（并且可以立即发货）和哪些物品退订，需要通知相应的客户</li>
+</ul>
+<p>执行这个处理需要针对许多表的多条MySQL语句。此外，需要执行的具体语句及其次序也不是固定的，它们可能会（和将）根据哪些物品在库存中哪些不在而变化。</p>
+<p>那么，怎样编写此代码？可以单独编写每条语句，并根据结果有条件地执行另外的语句。在每次需要这个处理时（以及每个需要它的应用中）都必须做这些工作。</p>
+<p>可以创建存储过程。存储过程简单来说，就是为以后的使用而保存的一条或多条MySQL语句的集合。可将其视为批文件，虽然它们的作用不仅限于批处理</p>
+<h2 id="为什么要使用存储过程"><a href="#为什么要使用存储过程" class="headerlink" title="为什么要使用存储过程"></a>为什么要使用存储过程</h2><ul>
+<li>通过把处理封装在容易使用的单元中，简化复杂的操作（正如前面例子所述）</li>
+<li>由于不要求反复建立一系列处理步骤，这保证了数据的完整性。如果所有开发人员和应用程序都使用同一（试验和测试）存储过程，则所使用的代码都是相同的。这一点的延伸就是防止错误。需要执行的步骤越多，出错的可能性就越大。防止错误保证了数据的一致性</li>
+<li>简化对变动的管理。如果表名、列名或业务逻辑（或别的内容）有变化，只需要更改存储过程的代码。使用它的人员甚至不需要知道这些变化</li>
+<li>提高性能。因为使用存储过程比使用单独的SQL语句要快</li>
+<li>存在一些只能用在单个请求中的MySQL元素和特性，存储过程可以使用它们来编写功能更强更灵活的代码</li>
+</ul>
+<p><strong><em>换句话说，使用存储过程有3个主要的好处，即简单、安全、高性能</em></strong></p>
+<h2 id="执行存储过程"><a href="#执行存储过程" class="headerlink" title="执行存储过程"></a>执行存储过程</h2><p>MySQL称存储过程的执行为调用，因此MySQL执行存储过程的语句为CALL。CALL接受存储过程的名字以及需要传递给它的任意参数。请看以下例子：<br>call productpricing(@pricelow,@pricehigh,@priceaverage);<br>其中，执行名为productpricing的存储过程，它计算并返回产品的最低、最高和平均价格</p>
+<h2 id="创建存储过程"><a href="#创建存储过程" class="headerlink" title="创建存储过程"></a>创建存储过程</h2><p>delimiter //<br>create procedure productpricing()<br>begin<br>select avg(prod_price) as priceaverage from products;<br>end //<br>delimiter ;<br>此存储过程名为productpricing，用CREATE PROCEDURE productpricing()语句定义。如果存储过程接受参数，它们将在()中列举出来。此存储过程没有参数，但后跟的()仍然需要。BEGIN和END语句用来限定存储过程体，过程体本身仅是一个简单的SELECT语句</p>
+<p>在MySQL处理这段代码时，它创建一个新的存储过程product pricing。没有返回数据，因为这段代码并未调用存储过程，这里只是为以后使用而创建它</p>
+<h2 id="mysql命令行客户机的分隔符"><a href="#mysql命令行客户机的分隔符" class="headerlink" title="mysql命令行客户机的分隔符"></a>mysql命令行客户机的分隔符</h2><p>默认的MySQL语句分隔符为<code>;</code>。mysql命令行实用程序也使用;作为语句分隔符。如果命令行实用程序要解释存储过程自身内的;字符，则它们最终不会成为存储过程的成分，这会使存储过程中的SQL出现句法错误</p>
+<p>解决办法是临时更改命令行实用程序的语句分隔符，如下所示：<br>delimiter //<br>create procedure productpricing()<br>begin<br>select avg(prod_price) as priceaverage from products;<br>end //<br>delimiter ;</p>
+<p>其中，DELIMITER //告诉命令行实用程序使用//作为新的语句结束分隔符，可以看到标志存储过程结束的END定义为END //而不是END;。这样，存储过程体内的;仍然保持不动，并且正确地传递给数据库引擎。最后，为恢复为原来的语句分隔符，可使用DELIMITER ;。除\符号外，任何字符都可以用作语句分隔符。</p>
+<h2 id="删除存储过程"><a href="#删除存储过程" class="headerlink" title="删除存储过程"></a>删除存储过程</h2><p>存储过程在创建之后，被保存在服务器上以供使用，直至被删除。<br>drop procedure productpricing;</p>
+<blockquote>
+<p>仅当存在时删除</p>
+</blockquote>
+<p>如果指定的过程不存在，则DROP PROCEDURE将产生一个错误。当过程存在想删除它时（如果过程不存在也不产生错误）可使用DROP PROCEDURE IF EXISTS。</p>
+<h2 id="使用参数"><a href="#使用参数" class="headerlink" title="使用参数"></a>使用参数</h2><p>一般，存储过程并不显示结果，而是把结果返回给你指定的变量</p>
+<p>变量:内存中一个特定的位置，用来临时存储数据</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delimiter //</span><br><span class="line">mysql&gt; create procedure productpricing(</span><br><span class="line">    -&gt; out pl decimal(8,2),</span><br><span class="line">    -&gt; out ph decimal(8,2),</span><br><span class="line">    -&gt; out pa decimal(8,2)</span><br><span class="line">    -&gt; )</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; select min(prod_price) into pl from products;</span><br><span class="line">    -&gt; select max(prod_price) into ph from products;</span><br><span class="line">    -&gt; select avg(prod_price) into pa from products;</span><br><span class="line">    -&gt; end //</span><br><span class="line">mysql&gt; delimiter ;</span><br></pre></td></tr></table></figure>
+<p>此存储过程接受3个参数：pl存储产品最低价格，ph存储产品最高价格，pa存储产品平均价格。每个参数必须具有指定的类型，这里使用十进制值。关键字OUT指出相应的参数用来从存储过程传出一个值（返回给调用者）。MySQL支持IN（传递给存储过程）、OUT（从存储过程传出，如这里所用）和INOUT（对存储过程传入和传出）类型的参数。存储过程的代码位于BEGIN和END语句内，如前所见，它们是一系列SELECT语句，用来检索值，然后保存到相应的变量（通过指定INTO关键字）。</p>
+<p>为调用此修改过的存储过程，必须指定3个变量名，如下所示：<br>call productpricing(@a,@b,@c);<br>由于此存储过程要求3个参数，因此必须正好传递3个参数，所有MySQL变量都必须以@开始</p>
+<p>为了显示检索出的产品平均价格，可如下进行：<br>select @ a;</p>
+<p>为了获得3个值，可使用以下语句：<br>select @a,@b,@c;</p>
+<p>这次使用IN和OUT参数。ordertotal接受订单号并返回该订单的合计：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delimiter //</span><br><span class="line">mysql&gt; create procedure ordertotal(</span><br><span class="line">    -&gt; in onumber int,</span><br><span class="line">    -&gt; out ototal decimal(8,2)</span><br><span class="line">    -&gt; )</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; select sum(item_price*quantity) from orderitems where order_num=onumber into ototal;</span><br><span class="line">    -&gt; end //</span><br><span class="line">	mysql&gt; delimiter ;</span><br></pre></td></tr></table></figure>
+<p>onumber定义为IN，因为订单号被传入存储过程。ototal定义为OUT，因为要从存储过程返回合计。SELECT语句使用这两个参数，WHERE子句使用onumber选择正确的行，INTO使用ototal存储计算出来的合计。</p>
+<p>为调用这个新存储过程，可使用以下语句：<br>call ordertotal(20005,@total);</p>
+<h2 id="建立只能存储过程"><a href="#建立只能存储过程" class="headerlink" title="建立只能存储过程"></a>建立只能存储过程</h2><p>考虑这个场景。你需要获得与以前一样的订单合计，但需要对合计增加营业税，不过只针对某些顾客（或许是你所在州中那些顾客）。那么，你需要做下面几件事情：获得合计（与以前一样）；把营业税有条件地添加到合计；返回合计（带或不带税）。</p>
+<p>存储过程的完整工作如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delimiter //</span><br><span class="line">mysql&gt; create procedure ordertotal(</span><br><span class="line">    -&gt; in onumber int,</span><br><span class="line">    -&gt; in taxable boolean,</span><br><span class="line">    -&gt; out ototal decimal(8,2))</span><br><span class="line">    -&gt; comment '获取订单总额，可选加税'</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; declare total decimal(8,2);</span><br><span class="line">    -&gt; declare taxrate int default 6;</span><br><span class="line">    -&gt; select sum(item_price*quantity) from orderitems where order_num=onumber into total;</span><br><span class="line">    -&gt; if taxable then</span><br><span class="line">    -&gt; select total+(total/100*taxrate) into total;</span><br><span class="line">    -&gt; end if;</span><br><span class="line">	-&gt; select total into ototal;</span><br><span class="line">    -&gt; end //</span><br><span class="line">	mysql&gt; delimiter ;</span><br></pre></td></tr></table></figure>
+<p>添加了另外一个参数taxable，它是一个布尔值（如果要增加税则为真，否则为假）。在存储过程体中，用DECLARE语句定义了两个局部变量。DECLARE要求指定变量名和数据类型，它也支持可选的默认值（这个例子中的taxrate的默认被设置为6%）。SELECT语句已经改变，因此其结果存储到total（局部变量）而不是ototal。IF语句检查taxable是否为真，如果为真，则用另一SELECT语句增加营业税到局部变量total。最后，用另一SELECT语句将total（它增加或许不增加营业税）保存到ototal。</p>
+<p>本例子中的存储过程在CREATE PROCEDURE语句中包含了一个COMMENT值。它不是必需的，但如果给出，将在SHOW PROCEDURE STATUS的结果中显示</p>
+<p>这显然是一个更高级，功能更强的存储过程。为试验它，请用以下两条语句：<br>call ordertotal(20005,0,@total);<br>select @total;</p>
+<p>这个例子给出了MySQL的IF语句的基本用法。IF语句还支持ELSEIF和ELSE子句（前者还使用THEN子句，后者不使用）</p>
+<h2 id="检查存储过程"><a href="#检查存储过程" class="headerlink" title="检查存储过程"></a>检查存储过程</h2><p>show create procedure ordertotal;<br>显示创建的存储过程的create语句</p>
+<p>show procedure status;<br>列出所有创建的存储过程的详细信息(包括何时、由谁创建等)<br>限制其输出，可使用LIKE指定一个过滤模式，例如：<br>show procedure status like ‘ordertotal’;<br>列出ordertotal存储过程的详细信息</p>
+<h1 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h1><p>有时，需要在检索出来的行中前进或后退一行或多行。这就是使用游标的原因。游标（cursor）是一个存储在MySQL服务器上的数据库查询，它不是一条SELECT语句，而是被该语句检索出来的结果集。在存储了游标之后，应用程序可以根据需要滚动或浏览其中的数据。游标主要用于交互式应用，其中用户需要滚动屏幕上的数据，并对数据进行浏览或做出更改。</p>
+<p><strong><em>不像多数DBMS，MySQL游标只能用于存储过程（和函数）</em></strong></p>
+<p>使用游标涉及几个明确的步骤:</p>
+<ul>
+<li>在能够使用游标前，必须声明（定义）它。这个过程实际上没有检索数据，它只是定义要使用的SELECT语句</li>
+<li>一旦声明后，必须打开游标以供使用。这个过程用前面定义的SELECT语句把数据实际检索出来</li>
+<li>对于填有数据的游标，根据需要取出（检索）各行</li>
+<li>在结束游标使用时，必须关闭游标</li>
+</ul>
+<p>在声明游标后，可根据需要频繁地打开和关闭游标。在游标打开后，可根据需要频繁地执行取操作</p>
+<h2 id="创建游标"><a href="#创建游标" class="headerlink" title="创建游标"></a>创建游标</h2><p>游标用DECLARE语句创建，并定义相应的SELECT语句，根据需要带WHERE和其他子句:<br>declare ordernumbers cursor for select order_num from orders;</p>
+<h2 id="打开和关闭游标"><a href="#打开和关闭游标" class="headerlink" title="打开和关闭游标"></a>打开和关闭游标</h2><p>open 游标名;<br>打开游标</p>
+<p>close 游标名;<br>关闭游标</p>
+<p>在一个游标关闭后，如果没有重新打开，则不能使用它。但是，使用声明过的游标不需要再次声明，用OPEN语句打开它就可以了</p>
+<p><strong>**如果你不明确关闭游标，MySQL将会在到达END语句时自动关闭它</strong></p>
+<h2 id="使用游标数据"><a href="#使用游标数据" class="headerlink" title="使用游标数据"></a>使用游标数据</h2><p>在一个游标被打开后，可以使用FETCH语句分别访问它的每一行。FETCH指定检索什么数据（所需的列），检索出来的数据存储在什么地方。它还向前移动游标中的内部行指针，使下一条FETCH语句检索下一行（不重复读取同一行）</p>
+<p>fetch ordernumbers into o;</p>
+<h2 id="循环使用游标数据"><a href="#循环使用游标数据" class="headerlink" title="循环使用游标数据"></a>循环使用游标数据</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delimiter //</span><br><span class="line">mysql&gt; create procedure processorders()</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; declare done boolean default 0;</span><br><span class="line">    -&gt; declare o int;</span><br><span class="line">    -&gt; declare ordernumbers cursor for select order_num from orders;</span><br><span class="line">    -&gt; declare continue handler for sqlstate '02000' set done=1;</span><br><span class="line">    -&gt; open ordernumbers;</span><br><span class="line">    -&gt; repeat</span><br><span class="line">    -&gt; fetch ordernumbers into o;</span><br><span class="line">    -&gt; until done end repeat;</span><br><span class="line">    -&gt; close ordernumbers;</span><br><span class="line">    -&gt; end //</span><br><span class="line">	mysql&gt; delimiter ;</span><br></pre></td></tr></table></figure>
+
+<p>这个例子使用FETCH检索当前order_num到声明的名为o的变量中。这个例子中的FETCH是在REPEAT内，因此它反复执行直到done为真（由UNTIL done END REPEAT;规定）。为使它起作用，用一个DEFAULT 0（假，不结束）定义变量done。那么，done怎样才能在结束时被设置为真呢？答案是用以下语句：<br><code>declare continue handler for sqlstate &#39;02000&#39; set done=1;</code><br>这条语句定义了一个CONTINUE HANDLER，它是在条件出现时被执行的代码。这里，它指出当SQLSTATE ‘02000’出现时，SET done=1。SQLSTATE ‘02000’是一个未找到条件，当REPEAT由于没有更多的行供循环而不能继续时，出现这个条件。</p>
+<p>如果调用这个存储过程，它将定义几个变量和一个CONTINUE HANDLER，定义并打开一个游标，重复读取所有行，然后关闭游标。如果一切正常，你可以在循环内放入任意需要的处理（在FETCH语句之后，循环结束之前）</p>
+<p>为了把这些内容组织起来，下面给出我们的游标存储过程样例的更进一步修改的版本，这次对取出的数据进行某种实际的处理：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; delimiter //</span><br><span class="line">mysql&gt; create procedure processorders()</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; declare done boolean default 0;</span><br><span class="line">    -&gt; declare o int;</span><br><span class="line">    -&gt; declare t decimal(8,2);</span><br><span class="line">    -&gt; declare ordernumbers cursor for select order_num from orders;</span><br><span class="line">    -&gt; declare continue handler for sqlstate '02000' set done=1;</span><br><span class="line">    -&gt; create table if not exists ordertotals(order_num int,total decimal(8,2));</span><br><span class="line">    -&gt; open ordernumbers;</span><br><span class="line">    -&gt; repeat</span><br><span class="line">    -&gt; fetch ordernumbers into o;</span><br><span class="line">    -&gt; call ordertotal(o,1,t);</span><br><span class="line">    -&gt; insert into ordertotals(order_num,total) values(o,t);</span><br><span class="line">    -&gt; until done end repeat;</span><br><span class="line">    -&gt; close ordernumbers;</span><br><span class="line">    -&gt; end //</span><br><span class="line">mysql&gt; delimiter ;</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，我们增加了另一个名为t的变量（存储每个订单的合计）。此存储过程还在运行中创建了一个新表（如果它不存在的话），名为ordertotals。这个表将保存存储过程生成的结果。FETCH像以前一样取每个order_num，然后用CALL执行另一个存储过程（我们在前一章中创建）来计算每个订单的带税的合计（结果存储到t）。最后，用INSERT保存每个订单的订单号和合计。</p>
+<p>此存储过程不返回数据，但它能够创建和填充另一个表，可以用一条简单的SELECT语句查看该表：<br>call processorders();<br>select * from ordertotals;</p>
+<h1 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h1><p>MySQL语句在需要时被执行，存储过程也是如此。但是，如果你想要某条语句（或某些语句）在事件发生时自动执行，怎么办呢？例如：</p>
+<ul>
+<li>每当增加一个顾客到某个数据库表时，都检查其电话号码格式是否正确，州的缩写是否为大写；</li>
+<li>每当订购一个产品时，都从库存数量中减去订购的数量；</li>
+<li>无论何时删除一行，都在某个存档表中保留一个副本</li>
+</ul>
+<p>所有这些例子的共同之处是它们都需要在某个表发生更改时自动处理。这确切地说就是触发器。触发器是MySQL响应以下任意语句而自动执行的一条MySQL语句（或位于BEGIN和END语句之间的一组语句）：</p>
+<ul>
+<li>delete;</li>
+<li>insert;</li>
+<li>update;</li>
+</ul>
+<p>其他MySQL语句不支持触发器</p>
+<h2 id="创建触发器"><a href="#创建触发器" class="headerlink" title="创建触发器"></a>创建触发器</h2><p>在创建触发器时，需要给出4条信息：</p>
+<ul>
+<li>唯一的触发器名</li>
+<li>触发器关联的表</li>
+<li>触发器应该响应的活动（DELETE、INSERT或UPDATE）</li>
+<li>触发器何时执行（处理之前或之后）</li>
+</ul>
+<p><strong><em>保持每个数据库的触发器名唯一</em></strong></p>
+<p>触发器用CREATE TRIGGER语句创建。下面是一个简单的例子：<br> create trigger newproduct after insert on products for each row select ‘product表插入一行’ into @new;</p>
+<p> CREATE TRIGGER用来创建名为newproduct的新触发器。触发器可在一个操作发生之前或之后执行，这里给出了AFTER INSERT，所以此触发器将在INSERT语句成功执行后执行。这个触发器还指定FOR EACH ROW，因此代码对每个插入行执行。在products表每插入一行数据时newproduct触发器都会将’product表插入一行’赋值给<code>@new</code>变量</p>
+<p> 通过<code>select @new;</code> 可以查看到</p>
+<p> <strong><em>只有表才支持触发器，视图不支持（临时表也不支持）。</em></strong></p>
+<p> 触发器按每个表每个事件每次地定义，每个表每个事件每次只允许一个触发器。因此，每个表最多支持6个触发器（每条INSERT、UPDATE和DELETE的之前和之后）。单一触发器不能与多个事件或多个表关联，所以，如果你需要一个对INSERT和UPDATE操作执行的触发器，则应该定义两个触发器</p>
+<p> 如果BEFORE触发器失败，则MySQL将不执行请求的操作。此外，如果BEFORE触发器或语句本身失败，MySQL将不执行AFTER触发器（如果有的话）。</p>
+<h2 id="删除触发器"><a href="#删除触发器" class="headerlink" title="删除触发器"></a>删除触发器</h2><p>drop trigger 触发器名</p>
+<p>触发器不能更新或覆盖。为了修改一个触发器，必须先删除它，然后再重新创建</p>
+<h1 id="事务处理"><a href="#事务处理" class="headerlink" title="事务处理"></a>事务处理</h1><p>事务处理（transaction processing）可以用来维护数据库的完整性，它保证成批的MySQL操作要么完全执行，要么完全不执行</p>
+<p>在使用事务和事务处理时，有几个关键词汇反复出现。下面是关于事务处理需要知道的几个术语：</p>
+<ul>
+<li>事务（transaction）指一组SQL语句；</li>
+<li>回退（rollback）指撤销指定SQL语句的过程；</li>
+<li>提交（commit）指将未存储的SQL语句结果写入数据库表；</li>
+<li>保留点（savepoint）指事务处理中设置的临时占位符（place- holder），你可以对它发布回退（与回退整个事务处理不同）</li>
+</ul>
+<h2 id="控制事务处理"><a href="#控制事务处理" class="headerlink" title="控制事务处理"></a>控制事务处理</h2><p>管理事务处理的关键在于将SQL语句组分解为逻辑块，并明确规定数据何时应该回退，何时不应该回退。</p>
+<p>MySQL使用下面的语句来标识事务的开始：<br>start transaction</p>
+<h2 id="使用ROLLBACK"><a href="#使用ROLLBACK" class="headerlink" title="使用ROLLBACK"></a>使用ROLLBACK</h2><p>MySQL的ROLLBACK命令用来回退（撤销）MySQL语句，请看下面的语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select * from ordertotals;</span><br><span class="line">+<span class="comment">-----------+---------+</span></span><br><span class="line">| order_num | total   |</span><br><span class="line">+<span class="comment">-----------+---------+</span></span><br><span class="line">|     20005 |  158.86 |</span><br><span class="line">|     20009 |   40.78 |</span><br><span class="line">|     20006 |   58.30 |</span><br><span class="line">|     20007 | 1060.00 |</span><br><span class="line">|     20008 |  132.50 |</span><br><span class="line">|     20008 |  132.50 |</span><br><span class="line">+<span class="comment">-----------+---------+</span></span><br><span class="line">6 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">start</span> <span class="keyword">transaction</span>;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; delete from ordertotals;</span><br><span class="line">Query OK, 6 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from ordertotals;</span><br><span class="line">Empty <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">rollback</span>;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select * from ordertotals;</span><br><span class="line">+<span class="comment">-----------+---------+</span></span><br><span class="line">| order_num | total   |</span><br><span class="line">+<span class="comment">-----------+---------+</span></span><br><span class="line">|     20005 |  158.86 |</span><br><span class="line">|     20009 |   40.78 |</span><br><span class="line">|     20006 |   58.30 |</span><br><span class="line">|     20007 | 1060.00 |</span><br><span class="line">|     20008 |  132.50 |</span><br><span class="line">|     20008 |  132.50 |</span><br><span class="line">+<span class="comment">-----------+---------+</span></span><br><span class="line">6 rows in <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br></pre></td></tr></table></figure>
+<p>这个例子从显示ordertotals表（此表在第24章中填充）的内容开始。首先执行一条SELECT以显示该表不为空。然后开始一个事务处理，用一条DELETE语句删除ordertotals中的所有行。另一条SELECT语句验证ordertotals确实为空。这时用一条ROLLBACK语句回退START TRANSACTION之后的所有语句，最后一条SELECT语句显示该表不为空</p>
+<p>显然，ROLLBACK只能在一个事务处理内使用（在执行一条START TRANSACTION命令之后）</p>
+<p>事务处理用来管理INSERT、UPDATE和DELETE语句。你不能回退SELECT语句。（这样做也没有什么意义。）你不能回退CREATE或DROP操作。事务处理块中可以使用这两条语句，但如果你执行回退，它们不会被撤销。</p>
+<h2 id="使用commit"><a href="#使用commit" class="headerlink" title="使用commit"></a>使用commit</h2><p>一般的MySQL语句都是直接针对数据库表执行和编写的。这就是所谓的隐含提交（implicit commit），即提交（写或保存）操作是自动进行的。但是，在事务处理块中，提交不会隐含地进行。为进行明确的提交，使用COMMIT语句，如下所示：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; start transaction;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; delete from orderitems where order_num=20010;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; delete from orders where order_num=20010;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; commit;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，从系统中完全删除订单20010。因为涉及更新两个数据库表orders和orderItems，所以使用事务处理块来保证订单不被部分删除。最后的COMMIT语句仅在不出错时写出更改。如果第一条DELETE起作用，但第二条失败，则DELETE不会提交（实际上，它是被自动撤销的）。</p>
+<p><strong><em>当COMMIT或ROLLBACK语句执行后，事务会自动关闭（将来的更改会隐含提交）</em></strong></p>
+<h2 id="使用保留点"><a href="#使用保留点" class="headerlink" title="使用保留点"></a>使用保留点</h2><p>简单的ROLLBACK和COMMIT语句就可以写入或撤销整个事务处理。但是，只是对简单的事务处理才能这样做，更复杂的事务处理可能需要部分提交或回退。</p>
+<p>例如，前面描述的添加订单的过程为一个事务处理。如果发生错误，只需要返回到添加orders行之前即可，不需要回退到customers表（如果存在的话）。</p>
+<p>为了支持回退部分事务处理，必须能在事务处理块中合适的位置放置占位符。这样，如果需要回退，可以回退到某个占位符。</p>
+<p>这些占位符称为保留点。为了创建占位符，可如下使用SAVEPOINT语句：<br><code>savepoint 保留点名</code></p>
+<p>个保留点都取标识它的唯一名字，以便在回退时，MySQL知道要回退到何处。为了回退到本例给出的保留点，可如下进行：<br><code>rollback to 保留点名</code></p>
+<p>可以在MySQL代码中设置任意多的保留点，越多越好。为什么呢？因为保留点越多，你就越能按自己的意愿灵活地进行回退。</p>
+<p>保留点在事务处理完成（执行一条ROLLBACK或COMMIT）后自动释放。自MySQL 5以来，也可以用RELEASE SAVEPOINT明确地释放保留点。</p>
+<h2 id="更改默认的提交行为"><a href="#更改默认的提交行为" class="headerlink" title="更改默认的提交行为"></a>更改默认的提交行为</h2><p>默认的MySQL行为是自动提交所有更改。换句话说，任何时候你执行一条MySQL语句，该语句实际上都是针对表执行的，而且所做的更改立即生效。为指示MySQL不自动提交更改，需要使用以下语句：<br>set autocommit=0;<br><strong><em>autocommit标志是针对每个连接而不是服务器的。</em></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/10/22/%E8%BD%AF%E8%80%83-%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%AC%94%E8%AE%B0/" rel="next" title="软考-软件工程师笔记">
+                <i class="fa fa-chevron-left"></i> 软考-软件工程师笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="piyi" />
+            
+              <p class="site-author-name" itemprop="name">piyi</p>
+              <p class="site-description motion-element" itemprop="description">piyi</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/996870382" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#show命名"><span class="nav-number">1.</span> <span class="nav-text">show命名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检索数据"><span class="nav-number">2.</span> <span class="nav-text">检索数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#LIMIT子句-返回显示几行"><span class="nav-number">2.1.</span> <span class="nav-text">LIMIT子句    返回显示几行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#order-by-子句"><span class="nav-number">2.2.</span> <span class="nav-text">order by 子句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用完全限定的表名"><span class="nav-number">2.3.</span> <span class="nav-text">使用完全限定的表名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#过滤数据"><span class="nav-number">3.</span> <span class="nav-text">过滤数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用通配符进行过滤"><span class="nav-number">4.</span> <span class="nav-text">用通配符进行过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符"><span class="nav-number">4.1.</span> <span class="nav-text">% 通配符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通配符-1"><span class="nav-number">4.2.</span> <span class="nav-text">_ 通配符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用通配符技巧"><span class="nav-number">4.3.</span> <span class="nav-text">使用通配符技巧</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用正则表达式进行搜索"><span class="nav-number">5.</span> <span class="nav-text">用正则表达式进行搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#OR-匹配"><span class="nav-number">5.1.</span> <span class="nav-text">OR 匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配范围"><span class="nav-number">5.2.</span> <span class="nav-text">匹配范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配特殊字符"><span class="nav-number">5.3.</span> <span class="nav-text">匹配特殊字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配字符类"><span class="nav-number">5.4.</span> <span class="nav-text">匹配字符类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配多个实例"><span class="nav-number">5.5.</span> <span class="nav-text">匹配多个实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定位符"><span class="nav-number">5.6.</span> <span class="nav-text">定位符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试编写的正则表达式"><span class="nav-number">5.7.</span> <span class="nav-text">测试编写的正则表达式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建计算字段"><span class="nav-number">6.</span> <span class="nav-text">创建计算字段</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#拼接字段"><span class="nav-number">6.1.</span> <span class="nav-text">拼接字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除空格"><span class="nav-number">6.2.</span> <span class="nav-text">去除空格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用别名"><span class="nav-number">6.3.</span> <span class="nav-text">使用别名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行算术计算"><span class="nav-number">6.4.</span> <span class="nav-text">执行算术计算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试计算"><span class="nav-number">6.5.</span> <span class="nav-text">测试计算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据处理函数"><span class="nav-number">7.</span> <span class="nav-text">数据处理函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本处理函数"><span class="nav-number">7.1.</span> <span class="nav-text">文本处理函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期和时间处理函数"><span class="nav-number">7.2.</span> <span class="nav-text">日期和时间处理函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值处理函数"><span class="nav-number">7.3.</span> <span class="nav-text">数值处理函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#聚集函数"><span class="nav-number">8.</span> <span class="nav-text">聚集函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DISTINCT关键字"><span class="nav-number">8.1.</span> <span class="nav-text">DISTINCT关键字</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分组"><span class="nav-number">9.</span> <span class="nav-text">分组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#WITH-ROLLUP-关键字"><span class="nav-number">9.1.</span> <span class="nav-text">WITH ROLLUP 关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过滤分组"><span class="nav-number">9.2.</span> <span class="nav-text">过滤分组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#select子句顺序"><span class="nav-number">10.</span> <span class="nav-text">select子句顺序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#子查询"><span class="nav-number">11.</span> <span class="nav-text">子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#作为计算字段使用子查询"><span class="nav-number">11.1.</span> <span class="nav-text">作为计算字段使用子查询</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#联结表"><span class="nav-number">12.</span> <span class="nav-text">联结表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#笛卡儿积"><span class="nav-number">12.1.</span> <span class="nav-text">笛卡儿积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部联结"><span class="nav-number">12.2.</span> <span class="nav-text">内部联结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联结多个表"><span class="nav-number">12.3.</span> <span class="nav-text">联结多个表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#高级联结"><span class="nav-number">13.</span> <span class="nav-text">高级联结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用表别名"><span class="nav-number">13.1.</span> <span class="nav-text">使用表别名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自联结"><span class="nav-number">13.2.</span> <span class="nav-text">自联结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自然联结"><span class="nav-number">13.3.</span> <span class="nav-text">自然联结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#外部联结"><span class="nav-number">13.4.</span> <span class="nav-text">外部联结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用带聚集函数的联结"><span class="nav-number">13.5.</span> <span class="nav-text">使用带聚集函数的联结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用联结和联结条件"><span class="nav-number">13.6.</span> <span class="nav-text">使用联结和联结条件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#组合查询"><span class="nav-number">14.</span> <span class="nav-text">组合查询</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用UNION"><span class="nav-number">14.1.</span> <span class="nav-text">使用UNION</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全文本搜索"><span class="nav-number">15.</span> <span class="nav-text">全文本搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#启用全文本搜索支持"><span class="nav-number">15.1.</span> <span class="nav-text">启用全文本搜索支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进行全文本搜索"><span class="nav-number">15.2.</span> <span class="nav-text">进行全文本搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用查询扩展"><span class="nav-number">15.3.</span> <span class="nav-text">使用查询扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔文本搜索"><span class="nav-number">15.4.</span> <span class="nav-text">布尔文本搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全文本搜索的使用说明"><span class="nav-number">15.5.</span> <span class="nav-text">全文本搜索的使用说明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据插入"><span class="nav-number">16.</span> <span class="nav-text">数据插入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入多行"><span class="nav-number">16.1.</span> <span class="nav-text">插入多行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入检索出的数据"><span class="nav-number">16.2.</span> <span class="nav-text">插入检索出的数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新和删除数据"><span class="nav-number">17.</span> <span class="nav-text">更新和删除数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#更新数据"><span class="nav-number">17.1.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除数据"><span class="nav-number">17.2.</span> <span class="nav-text">删除数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TRUNCATE-TABLE语句"><span class="nav-number">17.3.</span> <span class="nav-text">TRUNCATE TABLE语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新和删除的注意点"><span class="nav-number">17.4.</span> <span class="nav-text">更新和删除的注意点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建和操纵表"><span class="nav-number">18.</span> <span class="nav-text">创建和操纵表</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#主键"><span class="nav-number">18.1.</span> <span class="nav-text">主键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AUTO-INCREMENT"><span class="nav-number">18.2.</span> <span class="nav-text">AUTO_INCREMENT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认值"><span class="nav-number">18.3.</span> <span class="nav-text">默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引擎类型"><span class="nav-number">18.4.</span> <span class="nav-text">引擎类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新表"><span class="nav-number">18.5.</span> <span class="nav-text">更新表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除表"><span class="nav-number">18.6.</span> <span class="nav-text">删除表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重命名表"><span class="nav-number">18.7.</span> <span class="nav-text">重命名表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视图"><span class="nav-number">19.</span> <span class="nav-text">视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么使用视图"><span class="nav-number">19.1.</span> <span class="nav-text">为什么使用视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图的规则和限制"><span class="nav-number">19.2.</span> <span class="nav-text">视图的规则和限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用视图"><span class="nav-number">19.3.</span> <span class="nav-text">使用视图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用视图简化复杂的联结"><span class="nav-number">19.4.</span> <span class="nav-text">利用视图简化复杂的联结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用视图重新格式化检索出的数据"><span class="nav-number">19.5.</span> <span class="nav-text">用视图重新格式化检索出的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用视图过滤不想要的数据"><span class="nav-number">19.6.</span> <span class="nav-text">用视图过滤不想要的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新视图"><span class="nav-number">19.7.</span> <span class="nav-text">更新视图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用存储过程"><span class="nav-number">20.</span> <span class="nav-text">使用存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要使用存储过程"><span class="nav-number">20.1.</span> <span class="nav-text">为什么要使用存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行存储过程"><span class="nav-number">20.2.</span> <span class="nav-text">执行存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建存储过程"><span class="nav-number">20.3.</span> <span class="nav-text">创建存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql命令行客户机的分隔符"><span class="nav-number">20.4.</span> <span class="nav-text">mysql命令行客户机的分隔符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除存储过程"><span class="nav-number">20.5.</span> <span class="nav-text">删除存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用参数"><span class="nav-number">20.6.</span> <span class="nav-text">使用参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立只能存储过程"><span class="nav-number">20.7.</span> <span class="nav-text">建立只能存储过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查存储过程"><span class="nav-number">20.8.</span> <span class="nav-text">检查存储过程</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#游标"><span class="nav-number">21.</span> <span class="nav-text">游标</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建游标"><span class="nav-number">21.1.</span> <span class="nav-text">创建游标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开和关闭游标"><span class="nav-number">21.2.</span> <span class="nav-text">打开和关闭游标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用游标数据"><span class="nav-number">21.3.</span> <span class="nav-text">使用游标数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环使用游标数据"><span class="nav-number">21.4.</span> <span class="nav-text">循环使用游标数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#触发器"><span class="nav-number">22.</span> <span class="nav-text">触发器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建触发器"><span class="nav-number">22.1.</span> <span class="nav-text">创建触发器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除触发器"><span class="nav-number">22.2.</span> <span class="nav-text">删除触发器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事务处理"><span class="nav-number">23.</span> <span class="nav-text">事务处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#控制事务处理"><span class="nav-number">23.1.</span> <span class="nav-text">控制事务处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用ROLLBACK"><span class="nav-number">23.2.</span> <span class="nav-text">使用ROLLBACK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用commit"><span class="nav-number">23.3.</span> <span class="nav-text">使用commit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用保留点"><span class="nav-number">23.4.</span> <span class="nav-text">使用保留点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改默认的提交行为"><span class="nav-number">23.5.</span> <span class="nav-text">更改默认的提交行为</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">piyi</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
